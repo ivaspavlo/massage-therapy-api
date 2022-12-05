@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.stereotype.Service;
 import pavlo.pro.massage.therapy.api.dto.model.RoleDto;
 import pavlo.pro.massage.therapy.api.dto.model.UserDto;
 import pavlo.pro.massage.therapy.api.service.UserService;
@@ -16,7 +17,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-
+@Service
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     UserService userService;
@@ -35,7 +36,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private List<GrantedAuthority> getUserAuthority(Set<RoleDto> userRoles) {
         Set<GrantedAuthority> roles = new HashSet<>();
         userRoles.forEach((role) -> {
-            roles.add(new SimpleGrantedAuthority(role.getTitle()));
+            roles.add(new SimpleGrantedAuthority(role.getTitle().toString()));
         });
         return new ArrayList<GrantedAuthority>(roles);
     }

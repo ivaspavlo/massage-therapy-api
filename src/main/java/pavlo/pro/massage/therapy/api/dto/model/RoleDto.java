@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import pavlo.pro.massage.therapy.api.model.ERole;
 
 @Data
 @Accessors(chain = true)
@@ -13,5 +14,5 @@ import lombok.experimental.Accessors;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RoleDto {
     private String id;
-    private String title;
+    private ERole title;
 }
