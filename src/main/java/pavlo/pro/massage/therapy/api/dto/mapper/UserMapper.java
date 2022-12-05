@@ -1,5 +1,6 @@
 package pavlo.pro.massage.therapy.api.dto.mapper;
 
+import org.modelmapper.ModelMapper;
 import pavlo.pro.massage.therapy.api.dto.model.RoleDto;
 import pavlo.pro.massage.therapy.api.dto.model.UserDto;
 import pavlo.pro.massage.therapy.api.model.User;
@@ -20,11 +21,12 @@ public class UserMapper {
                 .setPhone(user.getPhone())
                 .setBookings(user.getBookings())
                 .setArticles(user.getArticles())
-                .setRoles(user.getRoles(new HashSet<RoleDto>(user
-                    .getRoles()
-                    .stream()
-                    .map(role -> new ModelMapper().map(role, RoleDto.class))
-                    .collect(Collectors.toSet())))
+                .setRoles(
+                    new HashSet<RoleDto>(user
+                        .getRoles()
+                        .stream()
+                        .map(role -> new ModelMapper().map(role, RoleDto.class))
+                        .collect(Collectors.toSet()))
                 );
     }
 }
