@@ -22,6 +22,7 @@ public class UserDto {
     private String email;
     private String phone;
     private String birth;
+    private boolean isAdmin;
     private HashSet<RoleDto> roles;
     private HashSet<Booking> bookings;
     private HashSet<Article> articles;
