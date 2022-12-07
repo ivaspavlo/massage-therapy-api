@@ -16,5 +16,5 @@ public class Role {
     @Id
     private String id;
     @Indexed(unique = true, direction = IndexDirection.DESCENDING)
-    private ERole title;
+    private ERole name;
 }

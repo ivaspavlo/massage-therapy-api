@@ -7,6 +7,6 @@ public class RoleMapper {
     public static RoleDto toRoleDto(Role role) {
         return new RoleDto()
                 .setId(role.getId())
-                .setTitle(role.getTitle());
+                .setName(role.getName());
     }
 }

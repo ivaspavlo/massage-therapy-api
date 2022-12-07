@@ -7,5 +7,5 @@ import pavlo.pro.massage.therapy.api.model.Role;
 import java.util.Optional;
 
 public interface RoleRepository extends MongoRepository<Role, String> {
-    Role findByName(ERole name);
+    Role findByName(ERole title);
 }

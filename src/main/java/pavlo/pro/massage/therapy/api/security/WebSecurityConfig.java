@@ -20,6 +20,9 @@ import pavlo.pro.massage.therapy.api.security.jwt.AuthTokenFilter;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig {
     @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
     UserDetailsServiceImpl userDetailsService;
 
     @Autowired
