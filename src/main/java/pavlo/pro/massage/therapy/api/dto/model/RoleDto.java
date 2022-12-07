@@ -14,5 +14,5 @@ import pavlo.pro.massage.therapy.api.model.ERole;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RoleDto {
     private String id;
-    private ERole title;
+    private ERole name;
 }

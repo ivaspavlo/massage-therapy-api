@@ -39,15 +39,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto signup(UserDto userDto) throws RuntimeException {
-        Role userRole;
+        Role userRole = new Role();
+        userRole.setName(ERole.ROLE_ADMIN);
         Optional<User> existingUser = userRepository.findByEmail(userDto.getEmail());
         User newUser;
         if (existingUser == null) {
-            if (userDto.isAdmin()) {
-                userRole = roleRepository.findByName(ERole.ROLE_ADMIN);
-            } else {
-                userRole = roleRepository.findByName(ERole.ROLE_USER);
-            }
+//            if (userDto.isAdmin()) {
+//                userRole = roleRepository.findByName(ERole.ROLE_ADMIN);
+//            } else {
+//                userRole = roleRepository.findByName(ERole.ROLE_USER);
+//            }
             newUser = new User()
                 .setEmail(userDto.getEmail())
                 .setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()))
