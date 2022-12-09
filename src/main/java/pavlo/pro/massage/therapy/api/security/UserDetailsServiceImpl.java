@@ -42,6 +42,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     private UserDetails buildUserForAuthentication(UserDto user, List<GrantedAuthority> authorities) {
-        return new User(user.getEmail(), user.getPassword(), authorities);
+        return new UserDetailsImpl(user.getId(), user.getEmail(), user.getPassword(), authorities);
     }
 }
