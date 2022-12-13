@@ -10,8 +10,10 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
 import pavlo.pro.massage.therapy.api.security.jwt.AuthEntryPointJwt;
 import pavlo.pro.massage.therapy.api.security.jwt.AuthTokenFilter;
 
@@ -33,10 +35,8 @@ public class WebSecurityConfig {
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-
         authProvider.setUserDetailsService(userDetailsService);
         authProvider.setPasswordEncoder(passwordEncoder());
-
         return authProvider;
     }
 
@@ -45,7 +45,8 @@ public class WebSecurityConfig {
         return authConfig.getAuthenticationManager();
     }
 
-    public BCryptPasswordEncoder passwordEncoder() {
+    @Bean
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -70,5 +71,6 @@ public class WebSecurityConfig {
         http.authenticationProvider(authenticationProvider());
         return http.build();
     }
-
 }
+
+

@@ -43,7 +43,7 @@ public class AuthController {
     @Autowired
     JwtUtils jwtUtils;
 
-    @PostMapping("/login")
+    @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
         Authentication authentication = authenticationManager.authenticate(
@@ -61,7 +61,7 @@ public class AuthController {
             .collect(Collectors.toList());
 
         return ResponseEntity.ok(
-            new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(), userDetails.getEmail(), roles)
+            new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(), roles)
         );
     }
 
