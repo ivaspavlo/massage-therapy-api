@@ -1,47 +1,30 @@
 package pavlo.pro.massage.therapy.api.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
-import pavlo.pro.massage.therapy.api.dto.model.RoleDto;
-import pavlo.pro.massage.therapy.api.dto.model.UserDto;
-import pavlo.pro.massage.therapy.api.service.UserService;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import pavlo.pro.massage.therapy.api.model.User;
+import pavlo.pro.massage.therapy.api.repository.UserRepository;
+import pavlo.pro.massage.therapy.api.security.UserDetailsImpl;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
-    UserService userService;
+    UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        UserDto userDto = userService.findUserByEmail(email);
-        if (userDto == null) {
-            throw new UsernameNotFoundException("User with email " + email + " does not exist.");
-        } else {
-            List<GrantedAuthority> authorities = getUserAuthority(userDto.getRoles());
-            return buildUserForAuthentication(userDto, authorities);
-        }
+    @Transactional
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository
+            .findByUsername(username)
+            .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username)
+        );
+
+        return UserDetailsImpl.build(user);
     }
 
-    private List<GrantedAuthority> getUserAuthority(Set<RoleDto> userRoles) {
-        Set<GrantedAuthority> roles = new HashSet<>();
-        userRoles.forEach((role) -> {
-            roles.add(new SimpleGrantedAuthority(role.getName().toString()));
-        });
-        return new ArrayList<GrantedAuthority>(roles);
-    }
-
-    private UserDetails buildUserForAuthentication(UserDto user, List<GrantedAuthority> authorities) {
-        return new UserDetailsImpl(user.getId(), user.getEmail(), user.getPassword(), authorities);
-    }
 }
