@@ -1,4 +1,4 @@
-package pavlo.pro.massage.therapy.api;
+package pavlo.pro.massageservicesapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
