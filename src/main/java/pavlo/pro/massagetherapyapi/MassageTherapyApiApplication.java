@@ -1,15 +1,13 @@
-package pavlo.pro.massageservicesapi;
+package pavlo.pro.massagetherapyapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Application {
+public class MassageTherapyApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(MassageTherapyApiApplication.class, args);
 	}
-
-	// https://github.com/murraco/spring-boot-jwt
 
 }
