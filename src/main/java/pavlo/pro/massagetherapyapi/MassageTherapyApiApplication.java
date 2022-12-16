@@ -11,3 +11,6 @@ public class MassageTherapyApiApplication {
 	}
 
 }
+
+// https://github.com/khandelwal-arpit/springboot-starterkit
+// https://github.com/bezkoder/spring-boot-security-jwt-auth-mongodb
