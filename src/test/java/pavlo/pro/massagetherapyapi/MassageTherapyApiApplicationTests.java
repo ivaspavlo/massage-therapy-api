@@ -1,10 +1,10 @@
-package pavlo.pro.massageservicesapi;
+package pavlo.pro.massagetherapyapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ApplicationTests {
+class MassageTherapyApiApplicationTests {
 
 	@Test
 	void contextLoads() {
