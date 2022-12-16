@@ -2,7 +2,7 @@ package pavlo.pro.massagetherapyapi.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -19,7 +19,7 @@ import java.util.Optional;
 @Component
 public class UserServiceImpl implements UserService {
     @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private RoleRepository roleRepository;
@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User signup(User userData) throws ResponseStatusException {
-        Role userRole = roleRepository.findByRole(ERole.ROLE_USER.toString());
+        Role userRole = roleRepository.findByName(ERole.ROLE_USER.toString());
         User user = userRepository.findByEmail(userData.getEmail());
         if (user == null) {
             user = new User()
@@ -80,7 +80,7 @@ public class UserServiceImpl implements UserService {
         Optional<User> user = Optional.ofNullable(userRepository.findByEmail(userData.getEmail()));
         if (user.isPresent()) {
             User userModel = user.get();
-            userModel.setPassword(bCryptPasswordEncoder.encode(newPassword));
+            userModel.setPassword(passwordEncoder.encode(newPassword));
             return userModel;
         }
         throw new ResponseStatusException(
