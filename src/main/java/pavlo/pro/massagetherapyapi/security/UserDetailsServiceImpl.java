@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import pavlo.pro.massagetherapyapi.model.Role;
 import pavlo.pro.massagetherapyapi.model.User;
+import pavlo.pro.massagetherapyapi.repository.UserRepository;
 import pavlo.pro.massagetherapyapi.service.UserService;
 
 import java.util.ArrayList;
@@ -20,11 +21,11 @@ import java.util.List;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    private UserService userService;
+    private UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = userService.findUserByEmail(email);
+        User user = userRepository.findByEmail(email);
         if (user != null) {
             List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());
             return buildUserForAuthentication(user, authorities);
