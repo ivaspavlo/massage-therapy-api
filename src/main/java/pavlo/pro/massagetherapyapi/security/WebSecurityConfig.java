@@ -54,7 +54,7 @@ public class WebSecurityConfig {
             .cors().and().csrf().disable()
             .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-            .authorizeRequests().antMatchers("/api/auth/**").permitAll()
+            .authorizeRequests().antMatchers("/api/v1/user/auth/**").permitAll()
             .antMatchers("/api/test/**").permitAll()
             .anyRequest().authenticated();
 
