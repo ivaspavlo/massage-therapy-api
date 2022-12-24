@@ -22,6 +22,7 @@ import pavlo.pro.massagetherapyapi.security.JwtUtils;
 import pavlo.pro.massagetherapyapi.service.UserService;
 
 import javax.validation.Valid;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,7 +42,7 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
-    @PostMapping("/signup")
+    @PostMapping("/auth/signup")
     public Response signup(@RequestBody @Valid UserSignupRequest userSignupRequest) {
         return Response.ok().setPayload(registerUser(userSignupRequest));
     }
@@ -55,11 +56,10 @@ public class UserController {
         return userService.signup(user);
     }
 
-    @PostMapping("/signin")
+    @PostMapping("/auth/signin")
     public ResponseEntity<?> signin(@RequestBody @Valid LoginRequest loginRequest) {
-        Authentication authentication = authenticationManager.authenticate(
-            new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword())
-        );
+        Authentication authToken = new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword(), Collections.emptyList());
+        Authentication authentication = authenticationManager.authenticate(authToken);
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         String jwt = jwtUtils.generateJwtToken(authentication);

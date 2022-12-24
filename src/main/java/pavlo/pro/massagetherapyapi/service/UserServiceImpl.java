@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
                 .setFirstName(userData.getFirstName())
                 .setLastName(userData.getFirstName())
                 .setRoles(new HashSet<>(Arrays.asList(userRole)));
-            return user;
+            return userRepository.save(user);
         }
         throw new ResponseStatusException(
             HttpStatus.NOT_FOUND,
