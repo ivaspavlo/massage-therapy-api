@@ -24,7 +24,6 @@ public class MassageBookingSlot {
     @NotBlank
     String end;
 
-    // Start from here
     @DBRef
     String massageId;
 }
