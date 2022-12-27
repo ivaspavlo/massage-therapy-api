@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import pavlo.pro.massagetherapyapi.model.User;
+import pavlo.pro.massagetherapyapi.model.Role;
 import pavlo.pro.massagetherapyapi.payload.request.LoginRequest;
 import pavlo.pro.massagetherapyapi.payload.request.UserSignupRequest;
 import pavlo.pro.massagetherapyapi.payload.response.JwtResponse;
@@ -22,8 +24,7 @@ import pavlo.pro.massagetherapyapi.security.JwtUtils;
 import pavlo.pro.massagetherapyapi.service.UserService;
 
 import javax.validation.Valid;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -58,12 +59,13 @@ public class UserController {
 
     @PostMapping("/auth/signin")
     public ResponseEntity<?> signin(@RequestBody @Valid LoginRequest loginRequest) {
-        Authentication authToken = new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword(), Collections.emptyList());
+        User user = userRepository.findByEmail(loginRequest.getEmail());
+
+        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword(), new ArrayList<GrantedAuthority>(user.getRoles()));
         Authentication authentication = authenticationManager.authenticate(authToken);
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         String jwt = jwtUtils.generateJwtToken(authentication);
-        User user = userRepository.findByEmail(loginRequest.getEmail());
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         List<String> roles = userDetails.getAuthorities().stream()
             .map(item -> item.getAuthority())
