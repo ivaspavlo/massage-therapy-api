@@ -50,16 +50,26 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-            .cors().and().csrf().disable()
-            .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-            .authorizeRequests().antMatchers("/api/v1/user/auth/**").permitAll()
+        // Enable CORS and disable CSRF
+        http = http.cors().and().csrf().disable();
+
+        // Set session management to stateless
+        http = http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and();
+
+        // Set unauthorized requests exception handler
+        http.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and();
+
+        // Set permissions on endpoints
+        http.authorizeRequests()
+            .antMatchers("/api/v1/user/auth/**").permitAll()
             .antMatchers("/api/test/**").permitAll()
+            // All other endpoints are private
             .anyRequest().authenticated();
 
+        // Set auth provider
         http.authenticationProvider(authenticationProvider());
 
+        // Add JWT token filter
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();

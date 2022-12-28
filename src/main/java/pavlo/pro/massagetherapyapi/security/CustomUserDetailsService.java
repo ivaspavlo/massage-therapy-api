@@ -11,14 +11,13 @@ import org.springframework.stereotype.Service;
 import pavlo.pro.massagetherapyapi.model.Role;
 import pavlo.pro.massagetherapyapi.model.User;
 import pavlo.pro.massagetherapyapi.repository.UserRepository;
-import pavlo.pro.massagetherapyapi.service.UserService;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
@@ -30,7 +29,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());
             return buildUserForAuthentication(user, authorities);
         } else {
-            throw new UsernameNotFoundException("user with email " + email + " does not exist.");
+            throw new UsernameNotFoundException("User with email " + email + " does not exist.");
         }
     }
 

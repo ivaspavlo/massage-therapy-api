@@ -59,10 +59,12 @@ public class UserController {
 
     @PostMapping("/auth/signin")
     public ResponseEntity<?> signin(@RequestBody @Valid LoginRequest loginRequest) {
-        User user = userRepository.findByEmail(loginRequest.getEmail());
 
-        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword(), new ArrayList<GrantedAuthority>(user.getRoles()));
-        Authentication authentication = authenticationManager.authenticate(authToken);
+        UsernamePasswordAuthenticationToken authType = new UsernamePasswordAuthenticationToken(
+            loginRequest.getEmail(),
+            loginRequest.getPassword()
+        );
+        Authentication authentication = authenticationManager.authenticate(authType);
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         String jwt = jwtUtils.generateJwtToken(authentication);
