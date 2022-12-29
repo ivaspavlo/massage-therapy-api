@@ -9,6 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 import pavlo.pro.massagetherapyapi.model.ERole;
 import pavlo.pro.massagetherapyapi.model.Role;
 import pavlo.pro.massagetherapyapi.model.User;
+import pavlo.pro.massagetherapyapi.payload.request.UserSignupRequest;
 import pavlo.pro.massagetherapyapi.repository.RoleRepository;
 import pavlo.pro.massagetherapyapi.repository.UserRepository;
 
@@ -28,20 +29,21 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public User signup(User userData) throws ResponseStatusException {
+    public User signup(UserSignupRequest signupRequest) throws ResponseStatusException {
         Role userRole = roleRepository.findByName(ERole.ROLE_USER.toString());
-        User user = userRepository.findByEmail(userData.getEmail());
+        User user = userRepository.findByEmail(signupRequest.getEmail());
         if (user == null) {
             user = new User()
-                .setEmail(userData.getEmail())
-                .setFirstName(userData.getFirstName())
-                .setLastName(userData.getFirstName())
+                .setEmail(signupRequest.getEmail())
+                .setFirstName(signupRequest.getFirstName())
+                .setLastName(signupRequest.getFirstName())
+                .setPassword(signupRequest.getPassword())
                 .setRoles(new HashSet<>(Arrays.asList(userRole)));
             return userRepository.save(user);
         }
         throw new ResponseStatusException(
             HttpStatus.NOT_FOUND,
-            "User with the email: " + userData.getEmail() + " already exists."
+            "User with the email: " + signupRequest.getEmail() + " already exists."
         );
     }
 

@@ -8,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,19 +44,22 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    PasswordEncoder encoder;
+
     @PostMapping("/auth/signup")
-    public Response signup(@RequestBody @Valid UserSignupRequest userSignupRequest) {
-        return Response.ok().setPayload(registerUser(userSignupRequest));
+    public Response signup(@RequestBody @Valid UserSignupRequest signupRequest) {
+        return Response.ok().setPayload(userService.signup(signupRequest));
     }
 
-    private User registerUser(UserSignupRequest userSignupRequest) {
-        User user = new User()
-            .setEmail(userSignupRequest.getEmail())
-            .setFirstName(userSignupRequest.getFirstName())
-            .setLastName(userSignupRequest.getLastName())
-            .setPassword(userSignupRequest.getPassword());
-        return userService.signup(user);
-    }
+//    private User registerUser(UserSignupRequest userSignupRequest) {
+//        User user = new User()
+//            .setEmail(userSignupRequest.getEmail())
+//            .setFirstName(userSignupRequest.getFirstName())
+//            .setLastName(userSignupRequest.getLastName())
+//            .setPassword(encoder.encode(userSignupRequest.getPassword()));
+//        return userService.signup(user);
+//    }
 
     @PostMapping("/auth/signin")
     public ResponseEntity<?> signin(@RequestBody @Valid LoginRequest loginRequest) {
@@ -74,7 +78,7 @@ public class UserController {
             .collect(Collectors.toList());
 
         return ResponseEntity.ok(
-            new JwtResponse(jwt, user.getId(), roles)
+            new JwtResponse(jwt, userDetails.getUsername(), roles)
         );
     }
 
