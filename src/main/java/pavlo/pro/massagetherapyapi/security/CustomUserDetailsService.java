@@ -27,7 +27,6 @@ public class CustomUserDetailsService implements UserDetailsService {
         User user = userRepository.findByEmail(email);
         if (user != null) {
             List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());
-            UserDetails test = buildUserForAuthentication(user, authorities);
             return buildUserForAuthentication(user, authorities);
         } else {
             throw new UsernameNotFoundException("User with email " + email + " does not exist.");
@@ -43,8 +42,6 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
 
     private UserDetails buildUserForAuthentication(User user, List<GrantedAuthority> authorities) {
-        UserDetails test = new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
-
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
     }
 }

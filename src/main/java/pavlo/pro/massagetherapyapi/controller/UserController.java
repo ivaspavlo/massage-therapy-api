@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import pavlo.pro.massagetherapyapi.model.User;
-import pavlo.pro.massagetherapyapi.model.Role;
 import pavlo.pro.massagetherapyapi.payload.request.LoginRequest;
 import pavlo.pro.massagetherapyapi.payload.request.UserSignupRequest;
 import pavlo.pro.massagetherapyapi.payload.response.JwtResponse;
@@ -41,29 +38,13 @@ public class UserController {
     @Autowired
     AuthenticationManager authenticationManager;
 
-    @Autowired
-    UserRepository userRepository;
-
-    @Autowired
-    PasswordEncoder encoder;
-
     @PostMapping("/auth/signup")
     public Response signup(@RequestBody @Valid UserSignupRequest signupRequest) {
         return Response.ok().setPayload(userService.signup(signupRequest));
     }
 
-//    private User registerUser(UserSignupRequest userSignupRequest) {
-//        User user = new User()
-//            .setEmail(userSignupRequest.getEmail())
-//            .setFirstName(userSignupRequest.getFirstName())
-//            .setLastName(userSignupRequest.getLastName())
-//            .setPassword(encoder.encode(userSignupRequest.getPassword()));
-//        return userService.signup(user);
-//    }
-
     @PostMapping("/auth/signin")
     public ResponseEntity<?> signin(@RequestBody @Valid LoginRequest loginRequest) {
-
         UsernamePasswordAuthenticationToken authType = new UsernamePasswordAuthenticationToken(
             loginRequest.getEmail(),
             loginRequest.getPassword()
