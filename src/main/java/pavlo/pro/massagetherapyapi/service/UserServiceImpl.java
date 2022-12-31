@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
                 .setEmail(signupRequest.getEmail())
                 .setFirstName(signupRequest.getFirstName())
                 .setLastName(signupRequest.getFirstName())
-                .setPassword(signupRequest.getPassword())
+                .setPassword(passwordEncoder.encode(signupRequest.getPassword()))
                 .setRoles(new HashSet<>(Arrays.asList(userRole)));
             return userRepository.save(user);
         }
