@@ -9,7 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 import pavlo.pro.massagetherapyapi.model.ERole;
 import pavlo.pro.massagetherapyapi.model.Role;
 import pavlo.pro.massagetherapyapi.model.User;
-import pavlo.pro.massagetherapyapi.payload.request.UserSignupRequest;
+import pavlo.pro.massagetherapyapi.payload.request.UserSignupReq;
 import pavlo.pro.massagetherapyapi.repository.RoleRepository;
 import pavlo.pro.massagetherapyapi.repository.UserRepository;
 
@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public User signup(UserSignupRequest signupRequest) throws ResponseStatusException {
+    public User signup(UserSignupReq signupRequest) throws ResponseStatusException {
         Role userRole = roleRepository.findByName(ERole.ROLE_USER.toString());
         User user = userRepository.findByEmail(signupRequest.getEmail());
         if (user == null) {

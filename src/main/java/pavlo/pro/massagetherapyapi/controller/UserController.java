@@ -8,9 +8,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import pavlo.pro.massagetherapyapi.payload.request.LoginRequest;
-import pavlo.pro.massagetherapyapi.payload.request.UserSignupRequest;
-import pavlo.pro.massagetherapyapi.payload.response.JwtResponse;
+import pavlo.pro.massagetherapyapi.payload.request.LoginReq;
+import pavlo.pro.massagetherapyapi.payload.request.UserSignupReq;
+import pavlo.pro.massagetherapyapi.payload.response.JwtRes;
 import pavlo.pro.massagetherapyapi.payload.response.Response;
 import pavlo.pro.massagetherapyapi.security.CustomUserDetails;
 import pavlo.pro.massagetherapyapi.security.JwtUtils;
@@ -33,21 +33,16 @@ public class UserController {
     @Autowired
     AuthenticationManager authenticationManager;
 
-    @GetMapping("/testovich")
-    public Response testovich() {
-        return Response.ok().setPayload("It's alive!");
-    }
-
     @PostMapping("/auth/signup")
-    public Response signup(@RequestBody @Valid UserSignupRequest signupRequest) {
+    public Response signup(@RequestBody @Valid UserSignupReq signupRequest) {
         return Response.ok().setPayload(userService.signup(signupRequest));
     }
 
     @PostMapping("/auth/signin")
-    public ResponseEntity<?> signin(@RequestBody @Valid LoginRequest loginRequest) {
+    public ResponseEntity<?> signin(@RequestBody @Valid LoginReq loginReq) {
         UsernamePasswordAuthenticationToken authType = new UsernamePasswordAuthenticationToken(
-            loginRequest.getEmail(),
-            loginRequest.getPassword()
+            loginReq.getEmail(),
+            loginReq.getPassword()
         );
         Authentication authentication = authenticationManager.authenticate(authType);
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -60,7 +55,7 @@ public class UserController {
             .collect(Collectors.toList());
 
         return ResponseEntity.ok(
-            new JwtResponse(jwt, userDetails.getId(), roles)
+            new JwtRes(jwt, userDetails.getId(), roles)
         );
     }
 
