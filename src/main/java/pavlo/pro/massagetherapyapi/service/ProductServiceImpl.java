@@ -17,7 +17,7 @@ public class ProductServiceImpl implements ProductService {
     public Product createProduct(CreateProductReq createProductReq) throws ResponseStatusException {
         Product product = productRepository.findByTitle(createProductReq.getTitle());
         if (product == null) {
-            return productRepository.createProduct(
+            return productRepository.save(
                 new Product(
                     createProductReq.getTitle(),
                     createProductReq.getSubtitle(),
