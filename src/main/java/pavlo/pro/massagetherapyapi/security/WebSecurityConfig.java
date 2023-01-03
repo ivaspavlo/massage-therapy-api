@@ -62,6 +62,7 @@ public class WebSecurityConfig {
         http.authorizeRequests()
             .antMatchers("/api/v1/user/auth/**").permitAll()
             .antMatchers("/api/test/**").permitAll()
+            .antMatchers("/api/v1/product/**").hasAuthority("ADMIN")
             // All other endpoints are private
             .anyRequest().authenticated();
 
