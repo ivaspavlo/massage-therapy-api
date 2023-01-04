@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import pavlo.pro.massagetherapyapi.model.ERole;
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -62,7 +63,7 @@ public class WebSecurityConfig {
         http.authorizeRequests()
             .antMatchers("/api/v1/user/auth/**").permitAll()
             .antMatchers("/api/test/**").permitAll()
-            .antMatchers("/api/v1/product/**").hasAuthority("ADMIN")
+            .antMatchers("/api/v1/product/**").hasAuthority(ERole.ROLE_ADMIN.toString())
             // All other endpoints are private
             .anyRequest().authenticated();
 
