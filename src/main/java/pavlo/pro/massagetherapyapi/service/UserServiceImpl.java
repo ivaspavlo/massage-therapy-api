@@ -1,11 +1,13 @@
 package pavlo.pro.massagetherapyapi.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 
+import pavlo.pro.massagetherapyapi.exception.AppException;
+import pavlo.pro.massagetherapyapi.exception.EntityType;
+import pavlo.pro.massagetherapyapi.exception.ExceptionType;
 import pavlo.pro.massagetherapyapi.model.ERole;
 import pavlo.pro.massagetherapyapi.model.Role;
 import pavlo.pro.massagetherapyapi.model.User;
@@ -41,54 +43,36 @@ public class UserServiceImpl implements UserService {
                 .setRoles(new HashSet<>(Arrays.asList(userRole)));
             return userRepository.save(user);
         }
-        throw new ResponseStatusException(
-            HttpStatus.NOT_FOUND,
-            "User with the email: " + signupRequest.getEmail() + " already exists."
-        );
+        throw exception(EntityType.USER, ExceptionType.DUPLICATE_ENTITY, signupRequest.getEmail());
     }
 
     @Override
-    public User findUserByEmail(String email) throws ResponseStatusException {
+    public User findUserByEmail(String email) throws RuntimeException {
         Optional<User> user = Optional.ofNullable(userRepository.findByEmail(email));
         if (user.isPresent()) {
             return user.get();
         }
-        throw new ResponseStatusException(
-            HttpStatus.NOT_FOUND,
-            "User with the email: " + email + " not found."
-        );
+        throw exception(EntityType.USER, ExceptionType.ENTITY_NOT_FOUND, email);
     }
 
     @Override
-    public User updateProfile(User userData) throws ResponseStatusException {
-        Optional<User> user = Optional.ofNullable(
-            userRepository.findByEmail(userData.getEmail())
-        );
-        if (user.isPresent()) {
-            User userModel = user.get();
-            userModel
-                .setFirstName(userData.getFirstName())
-                .setLastName(userData.getLastName());
-            return userModel;
-        }
-        throw new ResponseStatusException(
-            HttpStatus.NOT_FOUND,
-            "User with the email: " + userData.getEmail() + " not found."
-        );
+    public User updateProfile(User userData) throws RuntimeException {
+        User user = findUserByEmail(userData.getEmail());
+        user
+            .setFirstName(userData.getFirstName())
+            .setLastName(userData.getLastName());
+        return userRepository.save(user);
     }
 
     @Override
     public User changePassword(User userData, String newPassword) {
-        Optional<User> user = Optional.ofNullable(userRepository.findByEmail(userData.getEmail()));
-        if (user.isPresent()) {
-            User userModel = user.get();
-            userModel.setPassword(passwordEncoder.encode(newPassword));
-            return userModel;
-        }
-        throw new ResponseStatusException(
-            HttpStatus.NOT_FOUND,
-            "User with the email: " + userData.getEmail() + " not found."
-        );
+        User user = findUserByEmail(userData.getEmail());
+        user.setPassword(passwordEncoder.encode(newPassword));
+        return userRepository.save(user);
+    }
+
+    private RuntimeException exception(EntityType entityType, ExceptionType exceptionType, String... args) {
+        return AppException.throwException(entityType, exceptionType, args);
     }
 
 }
