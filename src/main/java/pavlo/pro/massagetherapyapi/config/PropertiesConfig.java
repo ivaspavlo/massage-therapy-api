@@ -14,4 +14,5 @@ public class PropertiesConfig {
     public String getConfigValue(String configKey) {
         return env.getProperty(configKey);
     }
+
 }

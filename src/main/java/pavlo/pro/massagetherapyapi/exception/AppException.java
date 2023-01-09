@@ -1,10 +1,12 @@
 package pavlo.pro.massagetherapyapi.exception;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import pavlo.pro.massagetherapyapi.config.PropertiesConfig;
 import java.text.MessageFormat;
 import java.util.Optional;
 
+@Component
 public class AppException {
     private static PropertiesConfig propertiesConfig;
 
