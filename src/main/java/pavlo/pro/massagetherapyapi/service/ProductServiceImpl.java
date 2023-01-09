@@ -29,6 +29,7 @@ public class ProductServiceImpl implements ProductService {
                 )
             );
         }
+        RuntimeException ex = exception(EntityType.PRODUCT, ExceptionType.DUPLICATE_ENTITY, createProductReq.getTitle());
         throw exception(EntityType.PRODUCT, ExceptionType.DUPLICATE_ENTITY, createProductReq.getTitle());
     }
 
