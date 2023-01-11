@@ -11,7 +11,7 @@ import javax.validation.constraints.NotEmpty;
 @Accessors(chain = true)
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserSignupReq {
+public class SignupReq {
     @NotEmpty
     private String email;
 
