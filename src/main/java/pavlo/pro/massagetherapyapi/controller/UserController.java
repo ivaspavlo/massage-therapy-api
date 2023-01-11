@@ -1,15 +1,16 @@
 package pavlo.pro.massagetherapyapi.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import pavlo.pro.massagetherapyapi.model.User;
 import pavlo.pro.massagetherapyapi.payload.request.LoginReq;
-import pavlo.pro.massagetherapyapi.payload.request.UserSignupReq;
+import pavlo.pro.massagetherapyapi.payload.request.UpdateUserReq;
+import pavlo.pro.massagetherapyapi.payload.request.SignupReq;
 import pavlo.pro.massagetherapyapi.payload.response.JwtRes;
 import pavlo.pro.massagetherapyapi.payload.response.Response;
 import pavlo.pro.massagetherapyapi.security.CustomUserDetails;
@@ -34,12 +35,12 @@ public class UserController {
     AuthenticationManager authenticationManager;
 
     @PostMapping("/auth/signup")
-    public Response signup(@RequestBody @Valid UserSignupReq signupRequest) {
+    public Response signup(@RequestBody @Valid SignupReq signupRequest) {
         return Response.ok().setPayload(userService.signup(signupRequest));
     }
 
     @PostMapping("/auth/signin")
-    public ResponseEntity<?> signin(@RequestBody @Valid LoginReq loginReq) {
+    public Response<?> signin(@RequestBody @Valid LoginReq loginReq) {
         UsernamePasswordAuthenticationToken authType = new UsernamePasswordAuthenticationToken(
             loginReq.getEmail(),
             loginReq.getPassword()
@@ -54,9 +55,12 @@ public class UserController {
             .map(item -> item.getAuthority())
             .collect(Collectors.toList());
 
-        return ResponseEntity.ok(
-            new JwtRes(jwt, userDetails.getId(), roles)
-        );
+        return Response.ok().setPayload(new JwtRes(jwt, userDetails.getId(), roles));
+    }
+
+    @PutMapping("/update")
+    public Response<User> update(@RequestBody @Valid UpdateUserReq updateUserReq) {
+        return Response.ok().setPayload(userService.updateUser(updateUserReq));
     }
 
 }
