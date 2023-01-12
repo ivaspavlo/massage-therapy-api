@@ -43,7 +43,6 @@ public class ProductServiceImpl implements ProductService {
             throw exception(PRODUCT, ENTITY_NOT_FOUND, id);
         }
         Product product = productOptional.get();
-        // Confirm that empty values mapped to null and try to iterate :)
         if (updateProductReq.getTitle() != null) {
             product.setDesc(updateProductReq.getTitle());
         }

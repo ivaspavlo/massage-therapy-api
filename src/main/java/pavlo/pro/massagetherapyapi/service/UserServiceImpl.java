@@ -66,11 +66,6 @@ public class UserServiceImpl implements UserService {
             throw exception(USER, ExceptionType.ENTITY_NOT_FOUND, updateUserReq.getId());
         }
         User user = userOptional.get();
-//        Start from here :) https://stackoverflow.com/questions/17095628/loop-over-all-fields-in-a-java-class
-//        Field[] fields = user.getClass().getFields();
-//        for(Field f: fields) {
-//            Class t = f.getType();
-//        }
         if (updateUserReq.getFirstName() != null) {
             user.setFirstName(updateUserReq.getFirstName());
         }

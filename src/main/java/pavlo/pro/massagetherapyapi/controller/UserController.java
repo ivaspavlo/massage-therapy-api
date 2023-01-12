@@ -7,7 +7,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import pavlo.pro.massagetherapyapi.model.User;
 import pavlo.pro.massagetherapyapi.payload.request.LoginReq;
 import pavlo.pro.massagetherapyapi.payload.request.UpdateUserReq;
 import pavlo.pro.massagetherapyapi.payload.request.SignupReq;
@@ -59,7 +58,7 @@ public class UserController {
     }
 
     @PutMapping("/update")
-    public Response<User> update(@RequestBody @Valid UpdateUserReq updateUserReq) {
+    public Response<?> update(@RequestBody @Valid UpdateUserReq updateUserReq) {
         return Response.ok().setPayload(userService.updateUser(updateUserReq));
     }
 
