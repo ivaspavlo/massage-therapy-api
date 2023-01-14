@@ -1,4 +1,4 @@
-package pavlo.pro.massagetherapyapi.config;
+package pavlo.pro.massagetherapyapi.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
