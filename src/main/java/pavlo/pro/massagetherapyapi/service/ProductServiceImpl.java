@@ -44,16 +44,16 @@ public class ProductServiceImpl implements ProductService {
         }
         Product product = productOptional.get();
         if (updateProductReq.getTitle() != null) {
-            product.setDesc(updateProductReq.getTitle());
+            product.setTitle(updateProductReq.getTitle());
         }
         if (updateProductReq.getSubtitle() != null) {
-            product.setDesc(updateProductReq.getSubtitle());
+            product.setSubtitle(updateProductReq.getSubtitle());
         }
         if (updateProductReq.getDesc() != null) {
             product.setDesc(updateProductReq.getDesc());
         }
         if (updateProductReq.getPrice() != null) {
-            product.setDesc(updateProductReq.getPrice());
+            product.setPrice(updateProductReq.getPrice());
         }
         return productRepository.save(product);
     }
