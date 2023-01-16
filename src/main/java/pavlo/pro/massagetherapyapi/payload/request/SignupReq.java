@@ -23,4 +23,7 @@ public class SignupReq {
 
     @NotEmpty
     private String lastName;
+
+    @NotEmpty
+    private String phone;
 }

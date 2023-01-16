@@ -40,6 +40,10 @@ public class User {
     @Size(max = 50)
     private String password;
 
+    @NotBlank
+    @Size(max = 50)
+    private String phone;
+
     @DBRef
     private HashSet<Role> roles = new HashSet<>();
 }
