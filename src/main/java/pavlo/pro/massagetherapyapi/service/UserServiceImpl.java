@@ -43,6 +43,7 @@ public class UserServiceImpl implements UserService {
                 .setEmail(signupRequest.getEmail())
                 .setFirstName(signupRequest.getFirstName())
                 .setLastName(signupRequest.getFirstName())
+                .setPhone(signupRequest.getPhone())
                 .setPassword(passwordEncoder.encode(signupRequest.getPassword()))
                 .setRoles(new HashSet<>(Arrays.asList(userRole)));
             return userRepository.save(user);
@@ -71,6 +72,9 @@ public class UserServiceImpl implements UserService {
         }
         if (updateUserReq.getLastName() != null) {
             user.setLastName(user.getLastName());
+        }
+        if (updateUserReq.getPhone() != null) {
+            user.setPhone(user.getPhone());
         }
         return userRepository.save(user);
     }

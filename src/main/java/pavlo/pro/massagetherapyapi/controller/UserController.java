@@ -1,5 +1,6 @@
 package pavlo.pro.massagetherapyapi.controller;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -7,6 +8,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import pavlo.pro.massagetherapyapi.dto.UserDto;
+import pavlo.pro.massagetherapyapi.model.User;
 import pavlo.pro.massagetherapyapi.payload.request.LoginReq;
 import pavlo.pro.massagetherapyapi.payload.request.UpdateUserReq;
 import pavlo.pro.massagetherapyapi.payload.request.SignupReq;
@@ -25,6 +28,9 @@ import java.util.stream.Collectors;
 public class UserController {
 
     @Autowired
+    private ModelMapper modelMapper;
+
+    @Autowired
     private UserService userService;
 
     @Autowired
@@ -35,11 +41,13 @@ public class UserController {
 
     @PostMapping("/auth/signup")
     public Response signup(@RequestBody @Valid SignupReq signupRequest) {
-        return Response.ok().setPayload(userService.signup(signupRequest));
+        UserDto userDto = convertToDto(userService.signup(signupRequest));
+        // TODO: clarify the generics type
+        return Response.ok().setPayload(userDto);
     }
 
     @PostMapping("/auth/signin")
-    public Response<?> signin(@RequestBody @Valid LoginReq loginReq) {
+    public Response signin(@RequestBody @Valid LoginReq loginReq) {
         UsernamePasswordAuthenticationToken authType = new UsernamePasswordAuthenticationToken(
             loginReq.getEmail(),
             loginReq.getPassword()
@@ -60,6 +68,10 @@ public class UserController {
     @PutMapping("/update")
     public Response<?> update(@RequestBody @Valid UpdateUserReq updateUserReq) {
         return Response.ok().setPayload(userService.updateUser(updateUserReq));
+    }
+
+    private UserDto convertToDto(User user) {
+        return modelMapper.map(user, UserDto.class);
     }
 
 }

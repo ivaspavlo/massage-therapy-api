@@ -1,23 +1,24 @@
 package pavlo.pro.massagetherapyapi.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-import lombok.experimental.Accessors;
+import pavlo.pro.massagetherapyapi.model.ERole;
+import pavlo.pro.massagetherapyapi.model.Role;
+import java.util.HashSet;
 
 @Data
-@Accessors(chain = true)
-@NoArgsConstructor
-@ToString
-@JsonInclude(value = JsonInclude.Include.NON_NULL)
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class UserDto {
     private String email;
     private String firstName;
     private String lastName;
-    private String mobileNumber;
+    private String phone;
     private boolean isAdmin;
-//    private Set<RoleDto> roles;
+    public Boolean getIsAdmin() {
+        return this.isAdmin;
+    }
+    public void setIsAdmin(HashSet<Role> roles) {
+        // TODO: to test
+        this.isAdmin = roles.stream().anyMatch(
+            role -> role.getName().equals(ERole.ROLE_ADMIN)
+        );
+    }
 }

@@ -2,7 +2,7 @@ package pavlo.pro.massagetherapyapi.exception;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pavlo.pro.massagetherapyapi.utils.PropertiesConfig;
+import pavlo.pro.massagetherapyapi.config.PropertiesConfig;
 import java.text.MessageFormat;
 import java.util.Optional;
 
