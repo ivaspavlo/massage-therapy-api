@@ -1,11 +1,13 @@
 package pavlo.pro.massagetherapyapi.controller;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pavlo.pro.massagetherapyapi.payload.request.CreateProductReq;
-import pavlo.pro.massagetherapyapi.payload.request.UpdateProductReq;
-import pavlo.pro.massagetherapyapi.payload.response.Response;
-import pavlo.pro.massagetherapyapi.service.ProductService;
+import pavlo.pro.massagetherapyapi.dto.ProductDto;
+import pavlo.pro.massagetherapyapi.dto.request.CreateProductReq;
+import pavlo.pro.massagetherapyapi.dto.request.UpdateProductReq;
+import pavlo.pro.massagetherapyapi.dto.response.Response;
+import pavlo.pro.massagetherapyapi.service.interfaces.ProductService;
 
 import javax.validation.Valid;
 
@@ -16,9 +18,13 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     @PostMapping("/create")
     public Response addProduct(@RequestBody @Valid CreateProductReq createProductReq) {
-        return Response.ok().setPayload(productService.createProduct(createProductReq));
+        ProductDto productDto = modelMapper.map(productService.createProduct(createProductReq), ProductDto.class);
+        return Response.ok().setPayload(productDto);
     }
 
     @PutMapping ("/update/{id}")
@@ -26,7 +32,8 @@ public class ProductController {
         @PathVariable("id") String productId,
         @RequestBody @Valid UpdateProductReq updateProductReq
     ) {
-        return Response.ok().setPayload(productService.updateProduct(productId, updateProductReq));
+        ProductDto productDto = modelMapper.map(productService.updateProduct(productId, updateProductReq), ProductDto.class);
+        return Response.ok().setPayload(productDto);
     }
 
 }

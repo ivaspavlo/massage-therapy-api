@@ -1,4 +1,4 @@
-package pavlo.pro.massagetherapyapi.payload.response;
+package pavlo.pro.massagetherapyapi.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;

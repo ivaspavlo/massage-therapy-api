@@ -1,8 +1,8 @@
-package pavlo.pro.massagetherapyapi.service;
+package pavlo.pro.massagetherapyapi.service.interfaces;
 
 import pavlo.pro.massagetherapyapi.model.Product;
-import pavlo.pro.massagetherapyapi.payload.request.CreateProductReq;
-import pavlo.pro.massagetherapyapi.payload.request.UpdateProductReq;
+import pavlo.pro.massagetherapyapi.dto.request.CreateProductReq;
+import pavlo.pro.massagetherapyapi.dto.request.UpdateProductReq;
 
 public interface ProductService {
     public Product createProduct(CreateProductReq createProductReq);

@@ -1,4 +1,4 @@
-package pavlo.pro.massagetherapyapi.payload.request;
+package pavlo.pro.massagetherapyapi.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
@@ -14,16 +14,12 @@ import javax.validation.constraints.NotEmpty;
 public class SignupReq {
     @NotEmpty
     private String email;
-
     @NotEmpty
     private String password;
-
     @NotEmpty
     private String firstName;
-
     @NotEmpty
     private String lastName;
-
     @NotEmpty
     private String phone;
 }

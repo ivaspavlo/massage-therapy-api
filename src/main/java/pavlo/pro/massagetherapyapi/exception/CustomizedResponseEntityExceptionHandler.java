@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import pavlo.pro.massagetherapyapi.payload.response.Response;
+import pavlo.pro.massagetherapyapi.dto.response.Response;
 
 @ControllerAdvice
 @RestController

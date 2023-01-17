@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import pavlo.pro.massagetherapyapi.model.enums.ERole;
 
 @Data
 @NoArgsConstructor
