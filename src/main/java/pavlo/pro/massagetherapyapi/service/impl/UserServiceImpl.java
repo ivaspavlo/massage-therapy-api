@@ -1,4 +1,4 @@
-package pavlo.pro.massagetherapyapi.service;
+package pavlo.pro.massagetherapyapi.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -8,15 +8,15 @@ import org.springframework.web.server.ResponseStatusException;
 import pavlo.pro.massagetherapyapi.exception.AppException;
 import pavlo.pro.massagetherapyapi.exception.EntityType;
 import pavlo.pro.massagetherapyapi.exception.ExceptionType;
-import pavlo.pro.massagetherapyapi.model.ERole;
+import pavlo.pro.massagetherapyapi.model.enums.ERole;
 import pavlo.pro.massagetherapyapi.model.Role;
 import pavlo.pro.massagetherapyapi.model.User;
-import pavlo.pro.massagetherapyapi.payload.request.SignupReq;
-import pavlo.pro.massagetherapyapi.payload.request.UpdateUserReq;
+import pavlo.pro.massagetherapyapi.dto.request.SignupReq;
+import pavlo.pro.massagetherapyapi.dto.request.UpdateUserReq;
 import pavlo.pro.massagetherapyapi.repository.RoleRepository;
 import pavlo.pro.massagetherapyapi.repository.UserRepository;
+import pavlo.pro.massagetherapyapi.service.interfaces.UserService;
 
-import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Optional;
@@ -61,8 +61,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User updateUser(UpdateUserReq updateUserReq) throws RuntimeException {
-        Optional<User> userOptional = userRepository.findById(updateUserReq.getId());
+    public User updateUser(String userId, UpdateUserReq updateUserReq) throws RuntimeException {
+        Optional<User> userOptional = userRepository.findById(userId);
         if (userOptional.isEmpty()) {
             throw exception(USER, ExceptionType.ENTITY_NOT_FOUND, updateUserReq.getId());
         }

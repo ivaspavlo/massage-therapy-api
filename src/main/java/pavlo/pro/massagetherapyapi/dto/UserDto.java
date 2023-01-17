@@ -1,7 +1,7 @@
 package pavlo.pro.massagetherapyapi.dto;
 
 import lombok.Data;
-import pavlo.pro.massagetherapyapi.model.ERole;
+import pavlo.pro.massagetherapyapi.model.enums.ERole;
 import pavlo.pro.massagetherapyapi.model.Role;
 import java.util.HashSet;
 

@@ -13,7 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import pavlo.pro.massagetherapyapi.model.ERole;
+import pavlo.pro.massagetherapyapi.model.enums.ERole;
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)

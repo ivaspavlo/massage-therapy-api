@@ -1,4 +1,4 @@
-package pavlo.pro.massagetherapyapi.service;
+package pavlo.pro.massagetherapyapi.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -6,9 +6,10 @@ import pavlo.pro.massagetherapyapi.exception.AppException;
 import pavlo.pro.massagetherapyapi.exception.EntityType;
 import pavlo.pro.massagetherapyapi.exception.ExceptionType;
 import pavlo.pro.massagetherapyapi.model.Product;
-import pavlo.pro.massagetherapyapi.payload.request.CreateProductReq;
-import pavlo.pro.massagetherapyapi.payload.request.UpdateProductReq;
+import pavlo.pro.massagetherapyapi.dto.request.CreateProductReq;
+import pavlo.pro.massagetherapyapi.dto.request.UpdateProductReq;
 import pavlo.pro.massagetherapyapi.repository.ProductRepository;
+import pavlo.pro.massagetherapyapi.service.interfaces.ProductService;
 
 import java.util.Optional;
 

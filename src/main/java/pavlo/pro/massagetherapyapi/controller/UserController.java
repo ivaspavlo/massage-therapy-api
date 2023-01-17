@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.*;
 
 import pavlo.pro.massagetherapyapi.dto.UserDto;
 import pavlo.pro.massagetherapyapi.model.User;
-import pavlo.pro.massagetherapyapi.payload.request.LoginReq;
-import pavlo.pro.massagetherapyapi.payload.request.UpdateUserReq;
-import pavlo.pro.massagetherapyapi.payload.request.SignupReq;
-import pavlo.pro.massagetherapyapi.payload.response.JwtRes;
-import pavlo.pro.massagetherapyapi.payload.response.Response;
+import pavlo.pro.massagetherapyapi.dto.request.LoginReq;
+import pavlo.pro.massagetherapyapi.dto.request.UpdateUserReq;
+import pavlo.pro.massagetherapyapi.dto.request.SignupReq;
+import pavlo.pro.massagetherapyapi.dto.JwtDto;
+import pavlo.pro.massagetherapyapi.dto.response.Response;
 import pavlo.pro.massagetherapyapi.security.CustomUserDetails;
 import pavlo.pro.massagetherapyapi.security.JwtUtils;
-import pavlo.pro.massagetherapyapi.service.UserService;
+import pavlo.pro.massagetherapyapi.service.interfaces.UserService;
 
 import javax.validation.Valid;
 import java.util.*;
@@ -42,7 +42,6 @@ public class UserController {
     @PostMapping("/auth/signup")
     public Response signup(@RequestBody @Valid SignupReq signupRequest) {
         UserDto userDto = convertToDto(userService.signup(signupRequest));
-        // TODO: clarify the generics type
         return Response.ok().setPayload(userDto);
     }
 
@@ -62,12 +61,16 @@ public class UserController {
             .map(item -> item.getAuthority())
             .collect(Collectors.toList());
 
-        return Response.ok().setPayload(new JwtRes(jwt, userDetails.getId(), roles));
+        return Response.ok().setPayload(new JwtDto(jwt, userDetails.getId(), roles));
     }
 
-    @PutMapping("/update")
-    public Response<?> update(@RequestBody @Valid UpdateUserReq updateUserReq) {
-        return Response.ok().setPayload(userService.updateUser(updateUserReq));
+    @PutMapping("/update/{id}")
+    public Response update(
+        @PathVariable("id") String userId,
+        @RequestBody @Valid UpdateUserReq updateUserReq
+    ) {
+        UserDto userDto = convertToDto(userService.updateUser(userId, updateUserReq));
+        return Response.ok().setPayload(userDto);
     }
 
     private UserDto convertToDto(User user) {
