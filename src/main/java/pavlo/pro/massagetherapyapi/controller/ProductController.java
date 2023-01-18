@@ -2,14 +2,20 @@ package pavlo.pro.massagetherapyapi.controller;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 import pavlo.pro.massagetherapyapi.dto.ProductDto;
 import pavlo.pro.massagetherapyapi.dto.request.CreateProductReq;
 import pavlo.pro.massagetherapyapi.dto.request.UpdateProductReq;
 import pavlo.pro.massagetherapyapi.dto.response.Response;
+import pavlo.pro.massagetherapyapi.model.Product;
 import pavlo.pro.massagetherapyapi.service.interfaces.ProductService;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/product")
@@ -27,13 +33,25 @@ public class ProductController {
         return Response.ok().setPayload(productDto);
     }
 
-    @PutMapping ("/update/{id}")
+    @PutMapping("/update/{id}")
     public Response updateProduct(
         @PathVariable("id") String productId,
         @RequestBody @Valid UpdateProductReq updateProductReq
     ) {
         ProductDto productDto = modelMapper.map(productService.updateProduct(productId, updateProductReq), ProductDto.class);
         return Response.ok().setPayload(productDto);
+    }
+
+    @GetMapping("/")
+    public Response getProducts(
+        @RequestParam(defaultValue = "0") int page,
+        @RequestParam(defaultValue = "3") int size
+    ) {
+        List<Product> products = new ArrayList<Product>();
+        Pageable paging = PageRequest.of(page, size);
+        Page<Product> pageProducts = productService.getProducts(paging);
+        products = pageProducts.getContent();
+        return Response.ok();
     }
 
 }
