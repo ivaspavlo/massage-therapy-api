@@ -1,6 +1,8 @@
 package pavlo.pro.massagetherapyapi.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import pavlo.pro.massagetherapyapi.exception.AppException;
 import pavlo.pro.massagetherapyapi.exception.EntityType;
@@ -57,6 +59,10 @@ public class ProductServiceImpl implements ProductService {
             product.setPrice(updateProductReq.getPrice());
         }
         return productRepository.save(product);
+    }
+
+    public Page<Product> getProducts(Pageable paging) {
+        return null;
     }
 
     private RuntimeException exception(EntityType entityType, ExceptionType exceptionType, String... args) {

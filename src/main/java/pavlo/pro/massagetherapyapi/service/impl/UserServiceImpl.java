@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
     public User updateUser(String userId, UpdateUserReq updateUserReq) throws RuntimeException {
         Optional<User> userOptional = userRepository.findById(userId);
         if (userOptional.isEmpty()) {
-            throw exception(USER, ExceptionType.ENTITY_NOT_FOUND, updateUserReq.getId());
+            throw exception(USER, ExceptionType.ENTITY_NOT_FOUND, userId);
         }
         User user = userOptional.get();
         if (updateUserReq.getFirstName() != null) {
