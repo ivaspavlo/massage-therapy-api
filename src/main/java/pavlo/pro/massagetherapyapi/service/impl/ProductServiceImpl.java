@@ -40,10 +40,10 @@ public class ProductServiceImpl implements ProductService {
         throw exception(PRODUCT, DUPLICATE_ENTITY, createProductReq.getTitle());
     }
 
-    public Product updateProduct(String id, UpdateProductReq updateProductReq) throws RuntimeException {
-        Optional<Product> productOptional = productRepository.findById(id);
+    public Product updateProduct(String productId, UpdateProductReq updateProductReq) throws RuntimeException {
+        Optional<Product> productOptional = productRepository.findById(productId);
         if (productOptional.isEmpty()) {
-            throw exception(PRODUCT, ENTITY_NOT_FOUND, id);
+            throw exception(PRODUCT, ENTITY_NOT_FOUND, productId);
         }
         Product product = productOptional.get();
         if (updateProductReq.getTitle() != null) {
@@ -63,6 +63,14 @@ public class ProductServiceImpl implements ProductService {
 
     public Page<Product> getProducts(Pageable paging) {
         return productRepository.findAll(paging);
+    }
+
+    public Product getProductById(String productId) {
+        Optional<Product> productOptional = productRepository.findById(productId);
+        if (productOptional.isEmpty()) {
+            throw exception(PRODUCT, ENTITY_NOT_FOUND, productId);
+        }
+        return productOptional.get();
     }
 
     private RuntimeException exception(EntityType entityType, ExceptionType exceptionType, String... args) {
