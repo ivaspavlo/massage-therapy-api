@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.*;
 import pavlo.pro.massagetherapyapi.dto.ProductDto;
 import pavlo.pro.massagetherapyapi.dto.request.CreateProductReq;
 import pavlo.pro.massagetherapyapi.dto.request.UpdateProductReq;
+import pavlo.pro.massagetherapyapi.dto.response.PaginationRes;
 import pavlo.pro.massagetherapyapi.dto.response.Response;
 import pavlo.pro.massagetherapyapi.model.Product;
 import pavlo.pro.massagetherapyapi.service.interfaces.ProductService;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/product")
@@ -37,21 +39,38 @@ public class ProductController {
         @PathVariable("id") String productId,
         @RequestBody @Valid UpdateProductReq updateProductReq
     ) {
-        ProductDto productDto = modelMapper.map(productService.updateProduct(productId, updateProductReq), ProductDto.class);
+        ProductDto productDto = modelMapper.map(
+            productService.updateProduct(productId, updateProductReq),
+            ProductDto.class
+        );
         return Response.ok().setPayload(productDto);
     }
 
-    @GetMapping("")
+    @GetMapping("/{id}")
+    public Response getProductById(
+        @PathVariable("id") String productId
+    ) {
+        ProductDto productDto = modelMapper.map(
+            productService.getProductById(productId),
+            ProductDto.class
+        );
+        return Response.ok().setPayload(productDto);
+    }
+
+    @GetMapping()
     public Response getProducts(
         @RequestParam(defaultValue = "0") int page,
         @RequestParam(defaultValue = "3") int size
     ) {
         Pageable paging = PageRequest.of(page, size);
         Page<Product> pageProducts = productService.getProducts(paging);
-        List<Product> products = pageProducts.getContent();
-        return Response.ok().setPayload(
-            products.stream().map(p -> modelMapper.map(p, ProductDto.class))
+        List<ProductDto> productsDto = pageProducts.getContent()
+            .stream().map(p -> modelMapper.map(p, ProductDto.class))
+            .collect(Collectors.toList());
+        PaginationRes<ProductDto> payload = new PaginationRes(
+            productsDto, pageProducts.getTotalElements(), pageProducts.getNumber(), pageProducts.getTotalPages()
         );
+        return Response.ok().setPayload(payload);
     }
 
 }

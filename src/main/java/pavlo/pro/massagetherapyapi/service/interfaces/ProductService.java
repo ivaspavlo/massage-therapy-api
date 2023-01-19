@@ -10,4 +10,5 @@ public interface ProductService {
     public Product createProduct(CreateProductReq createProductReq);
     public Product updateProduct(String productId, UpdateProductReq updateProductReq);
     public Page<Product> getProducts(Pageable paging);
+    public Product getProductById(String productId);
 }
