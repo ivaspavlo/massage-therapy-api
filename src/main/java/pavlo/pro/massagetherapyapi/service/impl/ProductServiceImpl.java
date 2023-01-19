@@ -62,7 +62,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     public Page<Product> getProducts(Pageable paging) {
-        return null;
+        return productRepository.findAll(paging);
     }
 
     private RuntimeException exception(EntityType entityType, ExceptionType exceptionType, String... args) {

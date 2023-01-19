@@ -14,7 +14,6 @@ import pavlo.pro.massagetherapyapi.model.Product;
 import pavlo.pro.massagetherapyapi.service.interfaces.ProductService;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -42,16 +41,17 @@ public class ProductController {
         return Response.ok().setPayload(productDto);
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public Response getProducts(
         @RequestParam(defaultValue = "0") int page,
         @RequestParam(defaultValue = "3") int size
     ) {
-        List<Product> products = new ArrayList<Product>();
         Pageable paging = PageRequest.of(page, size);
         Page<Product> pageProducts = productService.getProducts(paging);
-        products = pageProducts.getContent();
-        return Response.ok();
+        List<Product> products = pageProducts.getContent();
+        return Response.ok().setPayload(
+            products.stream().map(p -> modelMapper.map(p, ProductDto.class))
+        );
     }
 
 }
