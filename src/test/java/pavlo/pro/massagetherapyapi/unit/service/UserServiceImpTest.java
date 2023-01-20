@@ -1,7 +1,7 @@
 package pavlo.pro.massagetherapyapi.unit.service;
 
-import org.junit.runner.RunWith;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -17,6 +17,10 @@ import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceImpTest {
+
+    // https://blog.devgenius.io/how-to-code-in-java-spring-like-a-pro-dependency-injection-69249fdb68
+    // https://spring.io/guides/gs/testing-web/
+    // https://reflectoring.io/spring-boot-test/
 
     @Mock
     private UserRepository userRepository;
