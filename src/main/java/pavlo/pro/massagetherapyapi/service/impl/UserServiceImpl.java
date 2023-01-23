@@ -1,6 +1,6 @@
 package pavlo.pro.massagetherapyapi.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
@@ -24,14 +24,10 @@ import java.util.Optional;
 import static pavlo.pro.massagetherapyapi.exception.EntityType.USER;
 
 @Component
+@AllArgsConstructor
 public class UserServiceImpl implements UserService {
-    @Autowired
     private PasswordEncoder passwordEncoder;
-
-    @Autowired
     private RoleRepository roleRepository;
-
-    @Autowired
     private UserRepository userRepository;
 
     @Override
