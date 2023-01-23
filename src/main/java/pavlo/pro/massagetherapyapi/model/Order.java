@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import javax.validation.constraints.NotBlank;
 import java.util.HashSet;
 
-public class MassageOrder {
+public class Order {
     @Id
     private String id;
 
@@ -19,5 +19,5 @@ public class MassageOrder {
     String userId;
 
     @DBRef
-    HashSet<MassageBookingSlot> items;
+    HashSet<BookingSlot> items;
 }
