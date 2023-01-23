@@ -8,13 +8,12 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotBlank;
-import java.util.HashSet;
 
 @Data
 @NoArgsConstructor
 @Accessors(chain = true)
 @Document("massageBookingSlot")
-public class MassageBookingSlot {
+public class BookingSlot {
     @Id
     private String id;
 
