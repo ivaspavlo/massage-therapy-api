@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.server.ResponseStatusException;
@@ -21,39 +22,44 @@ import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
 public class UserServiceImpTest {
+
+    static final String testEmail = "testEmail@mail.com";
+    static final String testPwd = "testPwd";
+    static final SignupReq mockSignupReq = new SignupReq(
+            testEmail,
+            testPwd,
+            "testFirstName",
+            "testLastName",
+            "+43111222333444"
+    );
+
     @Mock
     private PasswordEncoder mockPasswordEncoder;
     @Mock
     private RoleRepository mockRoleRepository;
     @Mock
     private UserRepository mockUserRepository;
+
     private UserServiceImpl userServiceIpml;
-    private String testEmail = "testEmail@mail.com";
-    private String testPwd = "testPwd";
-    private SignupReq mockSignupReq = new SignupReq(
-        testEmail,
-        testPwd,
-        "testFirstName",
-        "testLastName",
-        "+43111222333444"
-    );
+    private User mockUser;
 
     @BeforeEach
     public void setupTestData() {
+        MockitoAnnotations.openMocks(this);
+
         userServiceIpml = new UserServiceImpl(
             mockPasswordEncoder,
             mockRoleRepository,
             mockUserRepository
         );
 
-        User mockUser = new User();
+        mockUser = new User();
         mockUser.setEmail(testEmail);
 
         Role mockRole = new Role();
         mockRole.setName(ERole.ROLE_USER);
 
         when(mockUserRepository.save(ArgumentMatchers.any(User.class))).thenReturn(mockUser);
-        when(mockUserRepository.findByEmail(testEmail)).thenReturn(mockUser);
         when(mockRoleRepository.findByName(ERole.ROLE_USER.toString())).thenReturn(mockRole);
         when(mockPasswordEncoder.encode(testPwd)).thenReturn(testPwd);
     }
@@ -64,14 +70,28 @@ public class UserServiceImpTest {
         assertThat(created).isInstanceOf(User.class);
     }
 
-    @Test
+    @Test(expected = ResponseStatusException.class)
     public void whenSignupWithTheSameEmail_shouldThrowResponseStatusException() {
         userServiceIpml.signup(mockSignupReq);
-        try {
-            userServiceIpml.signup(mockSignupReq);
-        } catch (ResponseStatusException error) {
-            assertThat(error).isInstanceOf(ResponseStatusException.class);
-        }
+        // Mock the response from the repo
+        when(mockUserRepository.findByEmail(testEmail)).thenReturn(mockUser);
+
+        userServiceIpml.signup(mockSignupReq);
+    }
+
+    @Test()
+    public void whenFindUserByEmail_shouldReturnCorrectUser() {
+        // Mock the response from the repo
+        when(mockUserRepository.findByEmail(testEmail)).thenReturn(mockUser);
+
+        User foundUser = userServiceIpml.findUserByEmail(testEmail);
+        assertThat(foundUser).isInstanceOf(User.class);
+        assertThat(foundUser.getEmail()).isEqualTo(testEmail);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void whenUserByEmail_shouldThrowRuntimeException() {
+        User foundUser = userServiceIpml.findUserByEmail(testEmail);
     }
 
 }
