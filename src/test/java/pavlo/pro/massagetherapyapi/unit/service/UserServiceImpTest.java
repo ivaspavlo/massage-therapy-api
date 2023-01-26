@@ -90,8 +90,21 @@ public class UserServiceImpTest {
     }
 
     @Test(expected = RuntimeException.class)
-    public void whenUserByEmail_shouldThrowRuntimeException() {
+    public void whenFindUserByEmail_shouldThrowRuntimeException() {
         User foundUser = userServiceIpml.findUserByEmail(testEmail);
+    }
+
+    @Test()
+    public void whenChangePassword_shouldReturnUserWithNewPassword() {
+        User testUser = new User();
+        testUser.setEmail(testEmail);
+        String testNewPassword = "testNewPassword";
+
+        // Mock the response from the repo
+        mockUser.setPassword(testNewPassword);
+        when(mockUserRepository.save(ArgumentMatchers.any(User.class))).thenReturn(mockUser);
+
+        assertThat(userServiceIpml.changePassword(testUser, testNewPassword).getPassword()).isEqualTo(testNewPassword);
     }
 
 }
