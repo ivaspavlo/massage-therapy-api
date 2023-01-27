@@ -1,13 +1,13 @@
 package pavlo.pro.massagetherapyapi.unit.service;
 
-import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.server.ResponseStatusException;
 import pavlo.pro.massagetherapyapi.dto.request.SignupReq;
 import pavlo.pro.massagetherapyapi.model.Role;
@@ -18,14 +18,18 @@ import pavlo.pro.massagetherapyapi.repository.UserRepository;
 import pavlo.pro.massagetherapyapi.service.impl.UserServiceImpl;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class UserServiceImpTest {
 
-    static final String testEmail = "testEmail@mail.com";
-    static final String testPwd = "testPwd";
-    static final SignupReq mockSignupReq = new SignupReq(
+    // TODO: clarify with org.mockito.MockitoAnnotations and org.junit.runner.RunWith
+    // TODO: clarify with the issue with static fields
+
+    private String testEmail = "testEmail@mail.com";
+    private String testPwd = "testPwd";
+    private SignupReq mockSignupReq = new SignupReq(
             testEmail,
             testPwd,
             "testFirstName",
@@ -44,9 +48,7 @@ public class UserServiceImpTest {
     private User mockUser;
 
     @BeforeEach
-    public void setupTestData() {
-        MockitoAnnotations.openMocks(this);
-
+    private void setupTestData() {
         userServiceIpml = new UserServiceImpl(
             mockPasswordEncoder,
             mockRoleRepository,
@@ -58,30 +60,35 @@ public class UserServiceImpTest {
 
         Role mockRole = new Role();
         mockRole.setName(ERole.ROLE_USER);
-
-        when(mockUserRepository.save(ArgumentMatchers.any(User.class))).thenReturn(mockUser);
-        when(mockRoleRepository.findByName(ERole.ROLE_USER.toString())).thenReturn(mockRole);
-        when(mockPasswordEncoder.encode(testPwd)).thenReturn(testPwd);
     }
 
+    @DisplayName("When signup is triggered it should return a User")
     @Test
     public void whenSignup_shouldReturnUser() {
+        when(mockUserRepository.save(ArgumentMatchers.any(User.class))).thenReturn(mockUser);
         User created = userServiceIpml.signup(mockSignupReq);
         assertThat(created).isInstanceOf(User.class);
     }
 
-    @Test(expected = ResponseStatusException.class)
-    public void whenSignupWithTheSameEmail_shouldThrowResponseStatusException() {
-        userServiceIpml.signup(mockSignupReq);
-        // Mock the response from the repo
-        when(mockUserRepository.findByEmail(testEmail)).thenReturn(mockUser);
-
-        userServiceIpml.signup(mockSignupReq);
+    @DisplayName("When user with the same email already exists should throw ResponseStatusException.")
+    @Test()
+    public void whenSignupWithTheSameEmail_Failure_shouldThrowResponseStatusException() {
+        ResponseStatusException thrown = assertThrows(
+            ResponseStatusException.class,
+            () -> {
+                when(mockUserRepository.save(ArgumentMatchers.any(User.class))).thenReturn(mockUser);
+                userServiceIpml.signup(mockSignupReq);
+                when(mockUserRepository.findByEmail(mockSignupReq.getEmail())).thenReturn(mockUser);
+                userServiceIpml.signup(mockSignupReq);
+            },
+    "Should throw when user with the same email already exists."
+        );
+        assertThat(thrown).isInstanceOf(ResponseStatusException.class);
     }
 
+    @DisplayName("When user with the email exists it should return a user with the correct email.")
     @Test()
-    public void whenFindUserByEmail_shouldReturnCorrectUser() {
-        // Mock the response from the repo
+    public void whenFindUserByEmail_Successful_shouldReturnUser() {
         when(mockUserRepository.findByEmail(testEmail)).thenReturn(mockUser);
 
         User foundUser = userServiceIpml.findUserByEmail(testEmail);
@@ -89,22 +96,27 @@ public class UserServiceImpTest {
         assertThat(foundUser.getEmail()).isEqualTo(testEmail);
     }
 
-    @Test(expected = RuntimeException.class)
-    public void whenFindUserByEmail_shouldThrowRuntimeException() {
-        User foundUser = userServiceIpml.findUserByEmail(testEmail);
+    @DisplayName("When user with the email doesn't exist it should throw RuntimeException.")
+    @Test()
+    public void whenFindUserByEmail_Failure_shouldThrowRuntimeException() {
+        RuntimeException thrown = assertThrows(
+            RuntimeException.class,
+            () -> { userServiceIpml.findUserByEmail(testEmail); },
+    "Expected to throw when email was not found."
+        );
+        assertThat(thrown).isInstanceOf(RuntimeException.class);
     }
 
+    @DisplayName("When changePassword is triggered it should return a User with the new Password.")
     @Test()
-    public void whenChangePassword_shouldReturnUserWithNewPassword() {
-        User testUser = new User();
-        testUser.setEmail(testEmail);
+    public void whenChangePassword_Successful_shouldReturnUserWithTheNewPassword() {
         String testNewPassword = "testNewPassword";
 
-        // Mock the response from the repo
-        mockUser.setPassword(testNewPassword);
+        when(mockUserRepository.findByEmail(testEmail)).thenReturn(mockUser);
+        when(mockPasswordEncoder.encode(testNewPassword)).thenReturn(testNewPassword);
         when(mockUserRepository.save(ArgumentMatchers.any(User.class))).thenReturn(mockUser);
 
-        assertThat(userServiceIpml.changePassword(testUser, testNewPassword).getPassword()).isEqualTo(testNewPassword);
+        assertThat(userServiceIpml.changePassword(mockUser, testNewPassword).getPassword()).isEqualTo(testNewPassword);
     }
 
 }
