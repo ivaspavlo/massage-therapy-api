@@ -32,9 +32,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User signup(SignupReq signupRequest) throws ResponseStatusException {
-        Role userRole = roleRepository.findByName(ERole.ROLE_USER.toString());
         User user = userRepository.findByEmail(signupRequest.getEmail());
         if (user == null) {
+            Role userRole = roleRepository.findByName(ERole.ROLE_USER.toString());
             user = new User()
                 .setEmail(signupRequest.getEmail())
                 .setFirstName(signupRequest.getFirstName())

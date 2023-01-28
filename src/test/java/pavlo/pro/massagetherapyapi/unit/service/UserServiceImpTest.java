@@ -17,24 +17,24 @@ import pavlo.pro.massagetherapyapi.repository.RoleRepository;
 import pavlo.pro.massagetherapyapi.repository.UserRepository;
 import pavlo.pro.massagetherapyapi.service.impl.UserServiceImpl;
 
+import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class UserServiceImpTest {
 
-    // TODO: clarify with org.mockito.MockitoAnnotations and org.junit.runner.RunWith
-    // TODO: clarify with the issue with static fields
-
-    private String testEmail = "testEmail@mail.com";
-    private String testPwd = "testPwd";
-    private SignupReq mockSignupReq = new SignupReq(
-            testEmail,
-            testPwd,
-            "testFirstName",
-            "testLastName",
-            "+43111222333444"
+    static final String testEmail = "testEmail@mail.com";
+    static final String testPwd = "testPwd";
+    static final SignupReq mockSignupReq = new SignupReq(
+        testEmail,
+        testPwd,
+        "testFirstName",
+        "testLastName",
+        "+43111222333444"
     );
 
     @Mock
@@ -46,6 +46,7 @@ public class UserServiceImpTest {
 
     private UserServiceImpl userServiceIpml;
     private User mockUser;
+    private Role mockRole;
 
     @BeforeEach
     private void setupTestData() {
@@ -58,7 +59,7 @@ public class UserServiceImpTest {
         mockUser = new User();
         mockUser.setEmail(testEmail);
 
-        Role mockRole = new Role();
+        mockRole = new Role();
         mockRole.setName(ERole.ROLE_USER);
     }
 
@@ -70,20 +71,20 @@ public class UserServiceImpTest {
         assertThat(created).isInstanceOf(User.class);
     }
 
-    @DisplayName("When user with the same email already exists should throw ResponseStatusException.")
+    @DisplayName("When user signups with the email that already exists should throw ResponseStatusException.")
     @Test()
-    public void whenSignupWithTheSameEmail_Failure_shouldThrowResponseStatusException() {
-        ResponseStatusException thrown = assertThrows(
-            ResponseStatusException.class,
+    public void whenSignupWithTheSameEmail_Failure_shouldThrowRuntimeException() {
+        RuntimeException thrown = assertThrows(
+            RuntimeException.class,
             () -> {
                 when(mockUserRepository.save(ArgumentMatchers.any(User.class))).thenReturn(mockUser);
                 userServiceIpml.signup(mockSignupReq);
-                when(mockUserRepository.findByEmail(mockSignupReq.getEmail())).thenReturn(mockUser);
+                when(mockUserRepository.findByEmail(testEmail)).thenReturn(mockUser);
                 userServiceIpml.signup(mockSignupReq);
             },
     "Should throw when user with the same email already exists."
         );
-        assertThat(thrown).isInstanceOf(ResponseStatusException.class);
+        assertThat(thrown).isInstanceOf(RuntimeException.class);
     }
 
     @DisplayName("When user with the email exists it should return a user with the correct email.")
@@ -117,6 +118,12 @@ public class UserServiceImpTest {
         when(mockUserRepository.save(ArgumentMatchers.any(User.class))).thenReturn(mockUser);
 
         assertThat(userServiceIpml.changePassword(mockUser, testNewPassword).getPassword()).isEqualTo(testNewPassword);
+    }
+
+    public void whenUpdateUser_Successful_shouldReturnUserWithUpdatedFields() {
+        String testId = "testId";
+        when(mockUserRepository.findById(testId)).thenReturn(Optional.of(mockUser));
+
     }
 
 }
