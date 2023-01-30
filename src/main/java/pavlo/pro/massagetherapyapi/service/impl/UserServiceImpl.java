@@ -67,16 +67,16 @@ public class UserServiceImpl implements UserService {
             user.setFirstName(updateUserReq.getFirstName());
         }
         if (updateUserReq.getLastName() != null) {
-            user.setLastName(user.getLastName());
+            user.setLastName(updateUserReq.getLastName());
         }
         if (updateUserReq.getPhone() != null) {
-            user.setPhone(user.getPhone());
+            user.setPhone(updateUserReq.getPhone());
         }
         return userRepository.save(user);
     }
 
     @Override
-    public User changePassword(User userData, String newPassword) {
+    public User changePassword(User userData, String newPassword) throws RuntimeException {
         User user = findUserByEmail(userData.getEmail());
         user.setPassword(passwordEncoder.encode(newPassword));
         return userRepository.save(user);
