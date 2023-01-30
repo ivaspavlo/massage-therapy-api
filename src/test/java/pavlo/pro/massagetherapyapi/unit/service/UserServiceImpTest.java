@@ -8,8 +8,8 @@ import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.server.ResponseStatusException;
 import pavlo.pro.massagetherapyapi.dto.request.SignupReq;
+import pavlo.pro.massagetherapyapi.dto.request.UpdateUserReq;
 import pavlo.pro.massagetherapyapi.model.Role;
 import pavlo.pro.massagetherapyapi.model.User;
 import pavlo.pro.massagetherapyapi.model.enums.ERole;
@@ -21,7 +21,6 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -63,7 +62,7 @@ public class UserServiceImpTest {
         mockRole.setName(ERole.ROLE_USER);
     }
 
-    @DisplayName("When signup is triggered it should return a User")
+    @DisplayName("When signup is triggered it should return a User.")
     @Test
     public void whenSignup_shouldReturnUser() {
         when(mockUserRepository.save(ArgumentMatchers.any(User.class))).thenReturn(mockUser);
@@ -87,12 +86,13 @@ public class UserServiceImpTest {
         assertThat(thrown).isInstanceOf(RuntimeException.class);
     }
 
-    @DisplayName("When user with the email exists it should return a user with the correct email.")
+    @DisplayName("When user with the email exists it should return a User with the correct email.")
     @Test()
     public void whenFindUserByEmail_Successful_shouldReturnUser() {
         when(mockUserRepository.findByEmail(testEmail)).thenReturn(mockUser);
 
         User foundUser = userServiceIpml.findUserByEmail(testEmail);
+
         assertThat(foundUser).isInstanceOf(User.class);
         assertThat(foundUser.getEmail()).isEqualTo(testEmail);
     }
@@ -108,7 +108,7 @@ public class UserServiceImpTest {
         assertThat(thrown).isInstanceOf(RuntimeException.class);
     }
 
-    @DisplayName("When changePassword is triggered it should return a User with the new Password.")
+    @DisplayName("When changePassword is triggered it should return a User with the new password.")
     @Test()
     public void whenChangePassword_Successful_shouldReturnUserWithTheNewPassword() {
         String testNewPassword = "testNewPassword";
@@ -117,13 +117,43 @@ public class UserServiceImpTest {
         when(mockPasswordEncoder.encode(testNewPassword)).thenReturn(testNewPassword);
         when(mockUserRepository.save(ArgumentMatchers.any(User.class))).thenReturn(mockUser);
 
-        assertThat(userServiceIpml.changePassword(mockUser, testNewPassword).getPassword()).isEqualTo(testNewPassword);
+        User updated = userServiceIpml.changePassword(mockUser, testNewPassword);
+
+        assertThat(updated).isInstanceOf(User.class);
+        assertThat(updated.getPassword()).isEqualTo(testNewPassword);
     }
 
-    public void whenUpdateUser_Successful_shouldReturnUserWithUpdatedFields() {
-        String testId = "testId";
-        when(mockUserRepository.findById(testId)).thenReturn(Optional.of(mockUser));
+    @DisplayName("When updateUser is triggered it should return a User with the new phone number")
+    @Test()
+    public void whenUpdateUser_Successful_shouldReturnUser() {
+        String testUserId = "testId";
+        String testUserPhone = "+380777888999";
+        UpdateUserReq mockUpdateUserReq = new UpdateUserReq();
+        mockUpdateUserReq.setPhone(testUserPhone);
 
+        when(mockUserRepository.findById(testUserId)).thenReturn(Optional.of(mockUser));
+        when(mockUserRepository.save(ArgumentMatchers.any(User.class))).thenReturn(mockUser);
+
+        User updatedUser = userServiceIpml.updateUser(testUserId, mockUpdateUserReq);
+        assertThat(updatedUser).isInstanceOf(User.class);
+        assertThat(updatedUser.getPhone()).isEqualTo(testUserPhone);
+    }
+
+    @DisplayName("When updateUser is triggered with incorrect Id it should throw RuntimeException.")
+    @Test()
+    public void whenUpdateUser_Failure_shouldThrowRuntimeException() {
+        String testUserId = "testId";
+        UpdateUserReq mockUpdateUserReq = new UpdateUserReq();
+
+        RuntimeException thrown = assertThrows(
+            RuntimeException.class,
+            () -> {
+                when(mockUserRepository.findById(testUserId)).thenReturn(Optional.empty());
+                userServiceIpml.updateUser(testUserId, mockUpdateUserReq);
+            },
+    "Should throw RuntimeException when user with provided Id not found."
+        );
+        assertThat(thrown).isInstanceOf(RuntimeException.class);
     }
 
 }
