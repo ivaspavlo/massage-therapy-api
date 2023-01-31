@@ -9,13 +9,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
-
-//https://stackoverflow.com/questions/53870484/ideal-way-to-pass-date-from-angular-datepicker-to-java-backend
 @Data
 @NoArgsConstructor
 @Accessors(chain = true)
 @Document("massageBookingSlot")
-public class MassageBookingSlot {
+public class BookingSlot {
     @Id
     private String id;
 

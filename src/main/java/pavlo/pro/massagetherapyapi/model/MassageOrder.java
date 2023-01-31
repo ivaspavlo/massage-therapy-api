@@ -14,7 +14,7 @@ import java.util.HashSet;
 @NoArgsConstructor
 @Accessors(chain = true)
 @Document("massageOrders")
-public class MassageOrder {
+public class Order {
     @Id
     private String id;
 
@@ -27,5 +27,5 @@ public class MassageOrder {
     String userId;
 
     @DBRef
-    HashSet<MassageBookingSlot> items;
+    HashSet<BookingSlot> items;
 }
