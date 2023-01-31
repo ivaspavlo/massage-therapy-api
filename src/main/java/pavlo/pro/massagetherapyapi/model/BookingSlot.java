@@ -4,28 +4,24 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotBlank;
-import java.util.HashSet;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
 @Accessors(chain = true)
-@Document("massageOrders")
-public class MassageOrder {
+@Document("massageBookingSlot")
+public class BookingSlot {
     @Id
     private String id;
 
     @NotBlank
-    @DBRef
-    String massageId;
+    LocalDateTime start;
 
     @NotBlank
-    @DBRef
-    String userId;
+    LocalDateTime end;
 
-    @DBRef
-    HashSet<MassageBookingSlot> items;
+    String massageId;
 }
