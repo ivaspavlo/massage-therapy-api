@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @Accessors(chain = true)
-@Document("massageBookingSlot")
+@Document("bookingSlots")
 public class BookingSlot {
     @Id
     private String id;
