@@ -15,3 +15,4 @@ public class MassageTherapyApiApplication {
 
 // Jasypt instruction
 // https://medium.com/developervisits/hiding-encrypting-database-password-in-the-application-properties-34d59fe104eb
+// https://www.devglan.com/online-tools/jasypt-online-encryption-decryption
