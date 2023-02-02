@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+@EnableEncryptableProperties
 public class MassageTherapyApiApplication {
 
 	public static void main(String[] args) {
@@ -12,5 +13,5 @@ public class MassageTherapyApiApplication {
 
 }
 
-// https://github.com/khandelwal-arpit/springboot-starterkit
-// https://github.com/bezkoder/spring-boot-security-jwt-auth-mongodb
+// Jasypt instruction
+// https://medium.com/developervisits/hiding-encrypting-database-password-in-the-application-properties-34d59fe104eb
