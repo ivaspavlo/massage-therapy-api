@@ -24,6 +24,7 @@ public class BookingController {
     ) {
         Pageable paging = PageRequest.of(page, size);
 
+
         return Response.ok().setPayload(new ArrayList());
     }
 
