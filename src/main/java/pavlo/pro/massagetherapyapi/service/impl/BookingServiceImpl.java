@@ -15,9 +15,8 @@ public class BookingServiceImpl implements BookingService {
     @Autowired
     BookingSlotRepository bookingSlotRepository;
 
-    public Page<BookingSlot> getBookingSlotsForMassageId() {
-//        https://www.baeldung.com/queries-in-spring-data-mongodb
-
-    }
+//    public Page<BookingSlot> getBookingSlotsForMassageId() {
+//        return bookingSlotRepository.findAll();
+//    }
 
 }
