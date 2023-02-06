@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import pavlo.pro.massagetherapyapi.dto.response.Response;
 import pavlo.pro.massagetherapyapi.service.interfaces.BookingService;
 
-import java.util.ArrayList;
-
 @RestController
 @RequestMapping("/api/v1/booking")
 public class BookingController {
@@ -27,9 +25,9 @@ public class BookingController {
         @RequestParam(defaultValue = "20") int size
     ) {
         Pageable paging = PageRequest.of(page, size);
-
-
-        return Response.ok().setPayload(new ArrayList());
+        return Response.ok().setPayload(
+            this.bookingService.getBookingSlotsForMassageId(paging, massageId)
+        );
     }
 
 }

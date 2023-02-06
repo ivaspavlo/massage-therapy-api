@@ -3,6 +3,7 @@ package pavlo.pro.massagetherapyapi.service.impl;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import pavlo.pro.massagetherapyapi.model.BookingSlot;
 import pavlo.pro.massagetherapyapi.repository.BookingSlotRepository;
@@ -15,8 +16,8 @@ public class BookingServiceImpl implements BookingService {
     @Autowired
     BookingSlotRepository bookingSlotRepository;
 
-//    public Page<BookingSlot> getBookingSlotsForMassageId() {
-//        return bookingSlotRepository.findAll();
-//    }
+    public Page<BookingSlot> getBookingSlotsForMassageId(Pageable paging, String massageId) {
+        return bookingSlotRepository.getBookingSlotsByMassageId(paging, massageId);
+    }
 
 }
