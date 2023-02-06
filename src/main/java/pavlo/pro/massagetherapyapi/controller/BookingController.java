@@ -6,12 +6,16 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import pavlo.pro.massagetherapyapi.dto.response.Response;
+import pavlo.pro.massagetherapyapi.service.interfaces.BookingService;
 
 import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/api/v1/booking")
 public class BookingController {
+
+    @Autowired
+    private BookingService bookingService;
 
     @Autowired
     private ModelMapper modelMapper;
