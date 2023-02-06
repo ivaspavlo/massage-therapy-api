@@ -1,5 +1,9 @@
 package pavlo.pro.massagetherapyapi.service.interfaces;
 
-public interface BookingService {
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import pavlo.pro.massagetherapyapi.model.BookingSlot;
 
+public interface BookingService {
+    Page<BookingSlot> getBookingSlotsForMassageId(Pageable paging, String massageId);
 }

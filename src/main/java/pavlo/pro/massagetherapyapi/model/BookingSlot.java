@@ -18,10 +18,10 @@ public class BookingSlot {
     private String id;
 
     @NotBlank
-    LocalDateTime start;
+    long start;
 
     @NotBlank
-    LocalDateTime end;
+    long end;
 
     String massageId;
 }
