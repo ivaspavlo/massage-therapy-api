@@ -6,7 +6,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import pavlo.pro.massagetherapyapi.dto.response.Response;
+import pavlo.pro.massagetherapyapi.model.BookingSlot;
 import pavlo.pro.massagetherapyapi.service.interfaces.BookingService;
+
+import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/booking")
@@ -28,6 +32,15 @@ public class BookingController {
         return Response.ok().setPayload(
             this.bookingService.getBookingSlotsForMassageId(paging, massageId)
         );
+    }
+
+    @PostMapping("/addBookingSlots")
+    public Response addBookingSlots(
+        @PathVariable("id") String massageId,
+        @RequestBody @Valid List<BookingSlot> bookingSlots
+    ) {
+        Boolean result = this.bookingService.addMany(bookingSlots);
+        return Response.ok().setPayload(result);
     }
 
 }
