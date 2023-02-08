@@ -39,7 +39,7 @@ public class BookingController {
         @PathVariable("id") String massageId,
         @RequestBody @Valid List<BookingSlot> bookingSlots
     ) {
-        Boolean result = this.bookingService.addMany(bookingSlots);
+        Boolean result = this.bookingService.addBookingSlots(bookingSlots);
         return Response.ok().setPayload(result);
     }
 
