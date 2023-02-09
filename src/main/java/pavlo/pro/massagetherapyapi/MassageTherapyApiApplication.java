@@ -8,14 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @EnableEncryptableProperties
 public class MassageTherapyApiApplication {
-
-	@Value("${spring.profiles.active}")
-	private String activeProfile;
-
 	public static void main(String[] args) {
 		SpringApplication.run(MassageTherapyApiApplication.class, args);
 	}
-
 }
 
 // Terminal command
