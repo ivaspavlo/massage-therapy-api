@@ -31,4 +31,13 @@ public class BookingServiceImpl implements BookingService {
         }
     }
 
+    public Boolean removeBookingSlot(BookingSlot bookingSlot) {
+        try {
+            bookingSlotRepository.delete(bookingSlot);
+            return true;
+        } catch (Exception error) {
+            return false;
+        }
+    }
+
 }
