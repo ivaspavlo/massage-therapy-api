@@ -18,7 +18,7 @@ public class BookingServiceImpl implements BookingService {
     @Autowired
     BookingSlotRepository bookingSlotRepository;
 
-    public Page<BookingSlot> getBookingSlotsForMassageId(Pageable paging, String massageId) {
+    public Page<BookingSlot> getAvailableSlotsPerMassageId(Pageable paging, String massageId) {
         return bookingSlotRepository.getBookingSlotsByMassageId(paging, massageId);
     }
 

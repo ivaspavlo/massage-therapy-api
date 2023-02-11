@@ -7,7 +7,7 @@ import pavlo.pro.massagetherapyapi.model.BookingSlot;
 import java.util.List;
 
 public interface BookingService {
-    Page<BookingSlot> getBookingSlotsForMassageId(Pageable paging, String massageId);
+    Page<BookingSlot> getAvailableSlotsPerMassageId(Pageable paging, String massageId);
     Boolean addBookingSlots(List<BookingSlot> bookingSlots);
     Boolean removeBookingSlot(BookingSlot bookingSlot);
 }
