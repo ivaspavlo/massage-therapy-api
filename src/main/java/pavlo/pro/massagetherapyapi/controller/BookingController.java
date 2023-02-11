@@ -4,13 +4,20 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
+import pavlo.pro.massagetherapyapi.dto.BookingSlotDto;
 import pavlo.pro.massagetherapyapi.dto.response.Response;
 import pavlo.pro.massagetherapyapi.model.BookingSlot;
 import pavlo.pro.massagetherapyapi.service.interfaces.BookingService;
 
 import javax.validation.Valid;
+import java.text.ParseException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/booking")
@@ -30,17 +37,29 @@ public class BookingController {
     ) {
         Pageable paging = PageRequest.of(page, size);
         return Response.ok().setPayload(
-            this.bookingService.getBookingSlotsForMassageId(paging, massageId)
+            this.bookingService.getAvailableSlotsPerMassageId(paging, massageId)
         );
     }
 
     @PostMapping("/addBookingSlots")
     public Response addBookingSlots(
         @PathVariable("id") String massageId,
-        @RequestBody @Valid List<BookingSlot> bookingSlots
+        @RequestBody @Valid List<BookingSlotDto> bookingSlotsDto
     ) {
-        Boolean result = this.bookingService.addBookingSlots(bookingSlots);
+        List<BookingSlot> newBookingSlots = bookingSlotsDto.stream().map((slot) -> {
+            return new BookingSlot().setStart();
+        }).collect(Collectors.toList());
+
+        Boolean result = this.bookingService.addBookingSlots(bookingSlotsDto);
         return Response.ok().setPayload(result);
+
+        // https://stackoverflow.com/questions/63289518/spring-mvc-convert-string-date-into-date-over-rest-endpoint
+    }
+
+    private LocalDateTime covertDate(String date) throws ParseException {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS", Locale.ENGLISH);
+        LocalDateTime dateTime = LocalDateTime.parse(date,formatter);
+        return dateTime;
     }
 
 }
