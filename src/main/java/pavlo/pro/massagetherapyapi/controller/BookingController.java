@@ -46,8 +46,19 @@ public class BookingController {
         @PathVariable("id") String massageId,
         @RequestBody @Valid List<BookingSlotDto> bookingSlotsDto
     ) {
-        List<BookingSlot> newBookingSlots = bookingSlotsDto.stream().map((slot) -> {
-            return new BookingSlot().setStart();
+        List<BookingSlot> newBookingSlots = bookingSlotsDto.stream().map((BookingSlotDto slot) -> {
+            LocalDateTime startDate;
+            LocalDateTime endDate;
+            try {
+                startDate = convertDate(slot.getStart());
+                endDate = convertDate(slot.getEnd());
+                return new BookingSlot()
+                    .setStart(startDate)
+                    .setEnd(endDate)
+                    .setMassageId(massageId);
+            } catch (ParseException exception) {
+
+            }
         }).collect(Collectors.toList());
 
         Boolean result = this.bookingService.addBookingSlots(bookingSlotsDto);
@@ -56,7 +67,7 @@ public class BookingController {
         // https://stackoverflow.com/questions/63289518/spring-mvc-convert-string-date-into-date-over-rest-endpoint
     }
 
-    private LocalDateTime covertDate(String date) throws ParseException {
+    private LocalDateTime convertDate(String date) throws ParseException {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS", Locale.ENGLISH);
         LocalDateTime dateTime = LocalDateTime.parse(date,formatter);
         return dateTime;

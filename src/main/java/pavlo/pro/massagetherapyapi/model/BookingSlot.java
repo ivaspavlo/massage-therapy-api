@@ -16,12 +16,9 @@ import java.time.LocalDateTime;
 public class BookingSlot {
     @Id
     private String id;
-
     @NotBlank
     LocalDateTime start;
-
     @NotBlank
     LocalDateTime end;
-
     String massageId;
 }
