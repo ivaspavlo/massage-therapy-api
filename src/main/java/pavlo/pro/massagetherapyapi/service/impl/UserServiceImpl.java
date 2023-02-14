@@ -33,18 +33,23 @@ public class UserServiceImpl implements UserService {
     @Override
     public User signup(SignupReq signupRequest) throws ResponseStatusException {
         User user = userRepository.findByEmail(signupRequest.getEmail());
-        if (user == null) {
-            Role userRole = roleRepository.findByName(ERole.ROLE_USER.toString());
-            user = new User()
-                .setEmail(signupRequest.getEmail())
-                .setFirstName(signupRequest.getFirstName())
-                .setLastName(signupRequest.getFirstName())
-                .setPhone(signupRequest.getPhone())
-                .setPassword(passwordEncoder.encode(signupRequest.getPassword()))
-                .setRoles(new HashSet<>(Arrays.asList(userRole)));
-            return userRepository.save(user);
+        if (user != null) {
+            throw exception(USER, ExceptionType.DUPLICATE_ENTITY, signupRequest.getEmail());
         }
-        throw exception(USER, ExceptionType.DUPLICATE_ENTITY, signupRequest.getEmail());
+        Role userRole = roleRepository.findByName(ERole.ROLE_USER.toString());
+        user = new User()
+            .setEmail(signupRequest.getEmail())
+            .setFirstName(signupRequest.getFirstName())
+            .setLastName(signupRequest.getFirstName())
+            .setPhone(signupRequest.getPhone())
+            .setPassword(passwordEncoder.encode(signupRequest.getPassword()))
+            .setRoles(new HashSet<>(Arrays.asList(userRole)));
+        try {
+            return userRepository.save(user);
+        } catch (Exception exception) {
+            // TODO: implement logging functionality
+            throw exception(USER, ExceptionType.ENTITY_EXCEPTION);
+        }
     }
 
     @Override

@@ -64,6 +64,7 @@ public class WebSecurityConfig {
             .antMatchers("/api/v1/user/auth/**").permitAll()
             .antMatchers("/api/test/**").permitAll()
             .antMatchers("/api/v1/product/**").hasAuthority(ERole.ROLE_ADMIN.toString())
+            .antMatchers("/api/v1/role/**").hasAuthority(ERole.ROLE_ADMIN.toString())
             // All other endpoints are private
             .anyRequest().authenticated();
 
