@@ -59,7 +59,7 @@ public class UserServiceImpTest {
         mockUser.setEmail(testEmail);
 
         mockRole = new Role();
-        mockRole.setName(ERole.ROLE_USER);
+        mockRole.setName(ERole.ROLE_USER.toString());
     }
 
     @DisplayName("When signup is triggered it should return a User.")
