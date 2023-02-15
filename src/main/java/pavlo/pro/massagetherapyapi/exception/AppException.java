@@ -8,6 +8,7 @@ import java.util.Optional;
 
 @Component
 public class AppException {
+    // TODO: investigate why not @autowired
     private static PropertiesConfig propertiesConfig;
 
     @Autowired

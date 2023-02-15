@@ -14,5 +14,5 @@ import pavlo.pro.massagetherapyapi.model.enums.ERole;
 public class Role {
     @Id
     private String id;
-    private ERole name;
+    private String name;
 }
