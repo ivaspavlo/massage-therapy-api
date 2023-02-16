@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
         if (user != null) {
             throw exception(USER, ExceptionType.DUPLICATE_ENTITY, signupRequest.getEmail());
         }
-        Role userRole = roleRepository.findByName(ERole.ROLE_USER.toString());
+        Role userRole = roleRepository.findByName(ERole.ROLE_ADMIN.toString());
         user = new User()
             .setEmail(signupRequest.getEmail())
             .setFirstName(signupRequest.getFirstName())
