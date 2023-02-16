@@ -4,7 +4,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pavlo.pro.massagetherapyapi.dto.RoleDto;
-import pavlo.pro.massagetherapyapi.dto.request.UpdateUserReq;
 import pavlo.pro.massagetherapyapi.dto.response.Response;
 import pavlo.pro.massagetherapyapi.model.Role;
 import pavlo.pro.massagetherapyapi.service.interfaces.RoleService;
@@ -35,9 +34,9 @@ public class RoleController {
     @GetMapping("")
     public Response getAllRoles() {
         List<Role> roles = roleService.getAllRoles();
-        List<RoleDto> rolesDto = roles.stream().map((role) -> {
-            return modelMapper.map(role, RoleDto.class);
-        }).collect(Collectors.toList());
+        List<RoleDto> rolesDto = roles.stream()
+            .map((role) -> modelMapper.map(role, RoleDto.class))
+            .collect(Collectors.toList());
         return Response.ok().setPayload(rolesDto);
     }
 
@@ -45,7 +44,8 @@ public class RoleController {
     public Response findRoleByName(
         @PathVariable("name") String roleName
     ) {
-        return Response.ok().setPayload(true);
+        RoleDto roleDto = modelMapper.map(roleService.findRoleByName(roleName), RoleDto.class);
+        return Response.ok().setPayload(roleDto);
     }
 
 }

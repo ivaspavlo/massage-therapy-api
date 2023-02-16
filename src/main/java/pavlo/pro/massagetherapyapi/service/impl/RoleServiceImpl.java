@@ -23,8 +23,10 @@ public class RoleServiceImpl implements RoleService {
     @Autowired
     private PropertiesConfig propertiesConfig;
 
+    private String roleNamePrefix = "role.name.prefix";
+
     public Role createRole(RoleDto newRole) throws RuntimeException {
-        String roleName = propertiesConfig.getConfigValue("role.name.prefix") + newRole.getName().toUpperCase();
+        String roleName = propertiesConfig.getConfigValue(roleNamePrefix) + newRole.getName().toUpperCase();
         Role existingRole = roleRepository.findByName(roleName);
         if (existingRole != null) {
             throw exception(ROLE, ExceptionType.DUPLICATE_ENTITY, newRole.getName());
@@ -37,7 +39,7 @@ public class RoleServiceImpl implements RoleService {
         }
     }
 
-    public List<Role> getAllRoles() {
+    public List<Role> getAllRoles() throws RuntimeException {
         try {
             return roleRepository.findAll();
         } catch(Exception exception) {
@@ -45,14 +47,15 @@ public class RoleServiceImpl implements RoleService {
         }
     }
 
-    public Role findRoleByName(String name) {
+    public Role findRoleByName(String roleName) throws RuntimeException {
         try {
-            return roleRepository.findByName(name);
+            return roleRepository.findByName(roleName);
         } catch(Exception exception) {
-            throw exception(ROLE, ExceptionType.ENTITY_EXCEPTION);
+            throw exception(ROLE, ExceptionType.ENTITY_NOT_FOUND, roleName);
         }
     }
 
+    // TODO: move to utils
     private RuntimeException exception(EntityType entityType, ExceptionType exceptionType, String... args) {
         return AppException.throwException(entityType, exceptionType, args);
     }
