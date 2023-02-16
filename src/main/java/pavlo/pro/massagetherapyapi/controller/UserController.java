@@ -1,6 +1,7 @@
 package pavlo.pro.massagetherapyapi.controller;
 
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -74,6 +75,10 @@ public class UserController {
     }
 
     private UserDto convertToDto(User user) {
+        if (modelMapper.getTypeMap(User.class, UserDto.class) == null) {
+            TypeMap<User, UserDto> propertyMapper = modelMapper.createTypeMap(User.class, UserDto.class);
+            propertyMapper.addMapping(User::getRoles, UserDto::setIsAdmin);
+        }
         return modelMapper.map(user, UserDto.class);
     }
 
