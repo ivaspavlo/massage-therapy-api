@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import pavlo.pro.massagetherapyapi.model.Role;
 import pavlo.pro.massagetherapyapi.model.User;
-import pavlo.pro.massagetherapyapi.repository.UserRepository;
+import pavlo.pro.massagetherapyapi.repository.interfaces.UserRepository;
 
 import java.util.ArrayList;
 import java.util.HashSet;

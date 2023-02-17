@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import pavlo.pro.massagetherapyapi.dto.BookingSlotDto;
 import pavlo.pro.massagetherapyapi.model.BookingSlot;
-import pavlo.pro.massagetherapyapi.repository.BookingSlotRepository;
+import pavlo.pro.massagetherapyapi.repository.interfaces.BookingSlotRepository;
 import pavlo.pro.massagetherapyapi.service.interfaces.BookingService;
 
 import java.text.ParseException;

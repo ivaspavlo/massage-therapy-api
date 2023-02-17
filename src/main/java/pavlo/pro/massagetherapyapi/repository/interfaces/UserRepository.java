@@ -1,4 +1,4 @@
-package pavlo.pro.massagetherapyapi.repository;
+package pavlo.pro.massagetherapyapi.repository.interfaces;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import pavlo.pro.massagetherapyapi.model.User;
