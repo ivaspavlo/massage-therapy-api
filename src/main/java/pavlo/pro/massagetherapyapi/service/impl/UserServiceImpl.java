@@ -13,8 +13,8 @@ import pavlo.pro.massagetherapyapi.model.Role;
 import pavlo.pro.massagetherapyapi.model.User;
 import pavlo.pro.massagetherapyapi.dto.request.SignupReq;
 import pavlo.pro.massagetherapyapi.dto.request.UpdateUserReq;
-import pavlo.pro.massagetherapyapi.repository.RoleRepository;
-import pavlo.pro.massagetherapyapi.repository.UserRepository;
+import pavlo.pro.massagetherapyapi.repository.interfaces.RoleRepository;
+import pavlo.pro.massagetherapyapi.repository.interfaces.UserRepository;
 import pavlo.pro.massagetherapyapi.service.interfaces.UserService;
 
 import java.util.Arrays;
