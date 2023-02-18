@@ -21,4 +21,5 @@ public class BookingSlot {
     @NotBlank
     LocalDateTime end;
     String massageId;
+    String userId;
 }
