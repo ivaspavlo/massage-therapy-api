@@ -5,10 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import pavlo.pro.massagetherapyapi.dto.BookingSlotDto;
 import pavlo.pro.massagetherapyapi.dto.response.Response;
 import pavlo.pro.massagetherapyapi.model.BookingSlot;
+import pavlo.pro.massagetherapyapi.security.CustomUserDetails;
 import pavlo.pro.massagetherapyapi.service.interfaces.BookingService;
 
 import javax.validation.Valid;
@@ -41,12 +43,12 @@ public class BookingController {
         );
     }
 
-    @PostMapping("/addBookingSlots")
+    @PostMapping("/add/{id}")
     public Response addBookingSlots(
-        @PathVariable("id") String massageId,
-        @RequestBody @Valid List<BookingSlotDto> bookingSlotsDto
+        @PathVariable("id") String productId,
+        @RequestBody @Valid BookingSlotDto bookingSlotsDto
     ) {
-        Boolean result = this.bookingService.addBookingSlots(bookingSlotsDto, massageId);
+        Boolean result = this.bookingService.addBookingSlot(bookingSlotsDto, productId);
         return Response.ok().setPayload(result);
     }
 
