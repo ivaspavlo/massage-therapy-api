@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface BookingService {
     Page<BookingSlot> getAvailableSlotsPerMassageId(Pageable paging, String massageId);
-    Boolean addBookingSlot(BookingSlotDto bookingSlotsDto, String massageId);
+    BookingSlot addBookingSlot(BookingSlotDto bookingSlotsDto, String massageId);
     Boolean removeBookingSlot(BookingSlot bookingSlot);
 }
