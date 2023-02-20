@@ -16,8 +16,10 @@ import pavlo.pro.massagetherapyapi.security.CustomUserDetails;
 import pavlo.pro.massagetherapyapi.service.interfaces.BookingService;
 
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
@@ -33,18 +35,21 @@ public class BookingServiceImpl implements BookingService {
         return bookingSlotRepository.getBookingSlotsByMassageId(paging, massageId);
     }
 
-    public Boolean addBookingSlot(BookingSlotDto bookingSlotsDto, String massageId) {
-        CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (userDetails == null) {
-//            throw exception(EntityType.BOOKING_SLOT, ExceptionType.)
-        }
-        String userId = userDetails.getId();
-        BookingSlot newBookingSlot = mapFromDto(bookingSlotsDto, massageId, userId);
+    public BookingSlot addBookingSlot(BookingSlotDto bookingSlotsDto, String massageId) throws RuntimeException {
+        CustomUserDetails userDetails;
+        String userId;
         try {
-            bookingSlotRepository.insert(newBookingSlot);
-            return true;
+            userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            userId = userDetails.getId();
+        } catch (Exception exception) {
+            // TODO: add corresponding error enum types and use exception method
+            throw new RuntimeException();
+        }
+        try {
+            return bookingSlotRepository.insert(mapFromDto(bookingSlotsDto, massageId, userId));
         } catch (Exception error) {
-            return false;
+            // TODO: add corresponding error enum types and use exception method
+            throw new RuntimeException();
         }
     }
 
@@ -58,8 +63,9 @@ public class BookingServiceImpl implements BookingService {
     }
 
     private LocalDateTime convertDate(String date) throws ParseException {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS", Locale.ENGLISH);
-        LocalDateTime dateTime = LocalDateTime.parse(date, formatter);
+        // https://www.baeldung.com/java-datetimeformatter
+        // TODO: add zone parameter
+        LocalDateTime dateTime = LocalDateTime.from(DateTimeFormatter.ISO_DATE_TIME.parse(date));
         return dateTime;
     }
 
