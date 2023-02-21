@@ -22,4 +22,5 @@ public class BookingSlot {
     LocalDateTime end;
     String massageId;
     String userId;
+    String timeZone;
 }
