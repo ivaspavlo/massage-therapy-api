@@ -4,23 +4,16 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import pavlo.pro.massagetherapyapi.dto.BookingSlotDto;
 import pavlo.pro.massagetherapyapi.dto.response.Response;
 import pavlo.pro.massagetherapyapi.model.BookingSlot;
-import pavlo.pro.massagetherapyapi.security.CustomUserDetails;
 import pavlo.pro.massagetherapyapi.service.interfaces.BookingService;
 
 import javax.validation.Valid;
-import java.text.ParseException;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
-import java.util.List;
-import java.util.Locale;
-import java.util.stream.Collectors;
+import java.util.TimeZone;
 
 @RestController
 @RequestMapping("/api/v1/booking")
@@ -46,14 +39,13 @@ public class BookingController {
 
     @PostMapping("/add/{id}")
     public Response addBookingSlots(
+        TimeZone timeZone,
         @PathVariable("id") String productId,
         @RequestBody @Valid BookingSlotDto bookingSlotsDto
     ) {
-        BookingSlot result = this.bookingService.addBookingSlot(bookingSlotsDto, productId);
+        BookingSlot result = this.bookingService.addBookingSlot(timeZone, bookingSlotsDto, productId);
         // TODO: add proper logging for booking slot creation
-        System.out.println("Created booking slot with id: " + result.getId());
-        System.out.println("Start: " + DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL).format(result.getStart()));
-        System.out.println("End: " + DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL).format(result.getEnd()));
+        System.out.println("Created instance of BookingSlot with id: " + result.getId());
         return Response.ok().setPayload(result);
     }
 

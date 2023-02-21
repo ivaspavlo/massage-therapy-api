@@ -20,8 +20,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.TimeZone;
 import java.util.stream.Collectors;
 
 @Component
@@ -35,7 +37,11 @@ public class BookingServiceImpl implements BookingService {
         return bookingSlotRepository.getBookingSlotsByMassageId(paging, massageId);
     }
 
-    public BookingSlot addBookingSlot(BookingSlotDto bookingSlotsDto, String massageId) throws RuntimeException {
+    public BookingSlot addBookingSlot(
+        TimeZone timeZone,
+        BookingSlotDto bookingSlotsDto,
+        String massageId
+    ) throws RuntimeException {
         CustomUserDetails userDetails;
         String userId;
         try {
@@ -46,7 +52,8 @@ public class BookingServiceImpl implements BookingService {
             throw new RuntimeException();
         }
         try {
-            return bookingSlotRepository.insert(mapFromDto(bookingSlotsDto, massageId, userId));
+            BookingSlot newBookingSlot = mapFromDto(bookingSlotsDto, massageId, userId, timeZone.getID());
+            return bookingSlotRepository.insert(newBookingSlot);
         } catch (Exception error) {
             // TODO: add corresponding error enum types and use exception method
             throw new RuntimeException();
@@ -63,23 +70,21 @@ public class BookingServiceImpl implements BookingService {
     }
 
     private LocalDateTime convertDate(String date) throws ParseException {
-        // https://www.baeldung.com/java-datetimeformatter
-        // TODO: add zone parameter
-        LocalDateTime dateTime = LocalDateTime.from(DateTimeFormatter.ISO_DATE_TIME.parse(date));
-        return dateTime;
+        return LocalDateTime.from(DateTimeFormatter.ISO_DATE_TIME.parse(date));
     }
 
-    private BookingSlot mapFromDto(BookingSlotDto slotDto, String massageId, String userId) {
+    private BookingSlot mapFromDto(BookingSlotDto slotDto, String massageId, String userId, String timeZone) {
         LocalDateTime startDate;
         LocalDateTime endDate;
         try {
             startDate = convertDate(slotDto.getStart());
             endDate = convertDate(slotDto.getEnd());
             return new BookingSlot()
-                    .setStart(startDate)
-                    .setEnd(endDate)
-                    .setMassageId(massageId)
-                    .setUserId(userId);
+                .setStart(startDate)
+                .setEnd(endDate)
+                .setMassageId(massageId)
+                .setUserId(userId)
+                .setTimeZone(timeZone);
         } catch (ParseException exception) {
             throw new RuntimeException();
         }
