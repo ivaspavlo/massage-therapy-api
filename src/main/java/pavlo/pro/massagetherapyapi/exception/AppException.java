@@ -8,13 +8,9 @@ import java.util.Optional;
 
 @Component
 public class AppException {
-    // TODO: investigate why not @autowired
-    private static PropertiesConfig propertiesConfig;
 
     @Autowired
-    public AppException(PropertiesConfig propertiesConfig) {
-        AppException.propertiesConfig = propertiesConfig;
-    }
+    private static PropertiesConfig propertiesConfig;
 
     /**
      * Returns new RuntimeException based on template and args

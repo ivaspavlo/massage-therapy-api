@@ -11,8 +11,6 @@ import pavlo.pro.massagetherapyapi.model.BookingSlot;
 import pavlo.pro.massagetherapyapi.service.interfaces.BookingService;
 
 import javax.validation.Valid;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 import java.util.TimeZone;
 
 @RestController

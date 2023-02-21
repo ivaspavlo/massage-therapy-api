@@ -42,22 +42,10 @@ public class BookingServiceImpl implements BookingService {
         BookingSlotDto bookingSlotsDto,
         String massageId
     ) throws RuntimeException {
-        CustomUserDetails userDetails;
-        String userId;
-        try {
-            userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            userId = userDetails.getId();
-        } catch (Exception exception) {
-            // TODO: add corresponding error enum types and use exception method
-            throw new RuntimeException();
-        }
-        try {
-            BookingSlot newBookingSlot = mapFromDto(bookingSlotsDto, massageId, userId, timeZone.getID());
-            return bookingSlotRepository.insert(newBookingSlot);
-        } catch (Exception error) {
-            // TODO: add corresponding error enum types and use exception method
-            throw new RuntimeException();
-        }
+        CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String userId = userDetails.getId();
+        BookingSlot newBookingSlot = mapFromDto(bookingSlotsDto, massageId, userId, timeZone.getID());
+        return bookingSlotRepository.insert(newBookingSlot);
     }
 
     public Boolean removeBookingSlot(BookingSlot bookingSlot) {
@@ -86,7 +74,7 @@ public class BookingServiceImpl implements BookingService {
                 .setUserId(userId)
                 .setTimeZone(timeZone);
         } catch (ParseException exception) {
-            throw new RuntimeException();
+            throw exception(EntityType.BOOKING_SLOT, ExceptionType.PARSE_EXCEPTION);
         }
     }
 

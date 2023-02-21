@@ -4,4 +4,5 @@ public enum EntityType {
     USER,
     ROLE,
     PRODUCT,
+    BOOKING_SLOT
 }

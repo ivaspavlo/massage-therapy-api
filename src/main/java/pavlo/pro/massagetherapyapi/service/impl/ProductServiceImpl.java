@@ -28,7 +28,7 @@ public class ProductServiceImpl implements ProductService {
     public Product createProduct(CreateProductReq createProductReq) throws RuntimeException {
         Product product = productRepository.findByTitle(createProductReq.getTitle());
         if (product == null) {
-            return productRepository.save(
+            return productRepository.insert(
                 new Product(
                     createProductReq.getTitle(),
                     createProductReq.getSubtitle(),
