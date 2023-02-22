@@ -11,9 +11,11 @@ import pavlo.pro.massagetherapyapi.exception.AppException;
 import pavlo.pro.massagetherapyapi.exception.EntityType;
 import pavlo.pro.massagetherapyapi.exception.ExceptionType;
 import pavlo.pro.massagetherapyapi.model.BookingSlot;
+import pavlo.pro.massagetherapyapi.model.Product;
 import pavlo.pro.massagetherapyapi.repository.interfaces.BookingSlotRepository;
 import pavlo.pro.massagetherapyapi.security.CustomUserDetails;
 import pavlo.pro.massagetherapyapi.service.interfaces.BookingService;
+import pavlo.pro.massagetherapyapi.service.interfaces.ProductService;
 
 import java.text.ParseException;
 import java.time.LocalDate;
@@ -33,8 +35,13 @@ public class BookingServiceImpl implements BookingService {
     @Autowired
     BookingSlotRepository bookingSlotRepository;
 
-    public Page<BookingSlot> getAvailableSlotsPerMassageId(Pageable paging, String massageId) {
-        return bookingSlotRepository.getBookingSlotsByMassageId(paging, massageId);
+    @Autowired
+    ProductService productService;
+
+    public List<BookingSlot> getBookingSlotsPerMassageId(String massageId) {
+        LocalDateTime dateFrom = LocalDateTime.now();
+        LocalDateTime dateTo = dateFrom.plusMonths(1);
+        return bookingSlotRepository.getBookingSlotsPerMassageId(dateFrom, dateTo, massageId);
     }
 
     public BookingSlot addBookingSlot(
@@ -42,9 +49,13 @@ public class BookingServiceImpl implements BookingService {
         BookingSlotDto bookingSlotsDto,
         String massageId
     ) throws RuntimeException {
+        Product massage = productService.getProductById(massageId);
+        if (massage == null) {
+            throw exception(EntityType.PRODUCT, ExceptionType.ENTITY_NOT_FOUND, massageId);
+        }
         CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String userId = userDetails.getId();
-        BookingSlot newBookingSlot = mapFromDto(bookingSlotsDto, massageId, userId, timeZone.getID());
+        BookingSlot newBookingSlot = mapBookingSlotFromDto(bookingSlotsDto, massageId, userId, timeZone.getID());
         return bookingSlotRepository.insert(newBookingSlot);
     }
 
@@ -61,7 +72,7 @@ public class BookingServiceImpl implements BookingService {
         return LocalDateTime.from(DateTimeFormatter.ISO_DATE_TIME.parse(date));
     }
 
-    private BookingSlot mapFromDto(BookingSlotDto slotDto, String massageId, String userId, String timeZone) {
+    private BookingSlot mapBookingSlotFromDto(BookingSlotDto slotDto, String massageId, String userId, String timeZone) {
         LocalDateTime startDate;
         LocalDateTime endDate;
         try {
