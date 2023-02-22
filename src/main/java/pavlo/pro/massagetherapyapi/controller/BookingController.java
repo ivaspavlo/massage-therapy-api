@@ -1,6 +1,5 @@
 package pavlo.pro.massagetherapyapi.controller;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -20,8 +19,17 @@ public class BookingController {
     @Autowired
     private BookingService bookingService;
 
-    @Autowired
-    private ModelMapper modelMapper;
+    @PostMapping("/add/{massageId}")
+    public Response addBookingSlots(
+        TimeZone timeZone,
+        @PathVariable("massageId") String massageId,
+        @RequestBody @Valid BookingSlotDto bookingSlotsDto
+    ) {
+        BookingSlot result = this.bookingService.addBookingSlot(timeZone, bookingSlotsDto, massageId);
+        // TODO: add proper logging for booking slot creation
+        System.out.println("Created instance of BookingSlot with id: " + result.getId());
+        return Response.ok().setPayload(result);
+    }
 
     @GetMapping("/{id}")
     public Response getAvailableSlotsPerMassageId(
@@ -31,20 +39,8 @@ public class BookingController {
     ) {
         Pageable paging = PageRequest.of(page, size);
         return Response.ok().setPayload(
-            this.bookingService.getAvailableSlotsPerMassageId(paging, massageId)
+            this.bookingService.getBookingSlotsPerMassageId(massageId)
         );
-    }
-
-    @PostMapping("/add/{id}")
-    public Response addBookingSlots(
-        TimeZone timeZone,
-        @PathVariable("id") String productId,
-        @RequestBody @Valid BookingSlotDto bookingSlotsDto
-    ) {
-        BookingSlot result = this.bookingService.addBookingSlot(timeZone, bookingSlotsDto, productId);
-        // TODO: add proper logging for booking slot creation
-        System.out.println("Created instance of BookingSlot with id: " + result.getId());
-        return Response.ok().setPayload(result);
     }
 
 }
