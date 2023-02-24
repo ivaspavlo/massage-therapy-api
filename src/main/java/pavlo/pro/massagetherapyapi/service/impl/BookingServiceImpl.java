@@ -2,8 +2,6 @@ package pavlo.pro.massagetherapyapi.service.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import pavlo.pro.massagetherapyapi.dto.BookingSlotDto;
@@ -12,21 +10,16 @@ import pavlo.pro.massagetherapyapi.exception.EntityType;
 import pavlo.pro.massagetherapyapi.exception.ExceptionType;
 import pavlo.pro.massagetherapyapi.model.BookingSlot;
 import pavlo.pro.massagetherapyapi.model.Product;
-import pavlo.pro.massagetherapyapi.repository.interfaces.BookingSlotRepository;
+import pavlo.pro.massagetherapyapi.repository.BookingSlotRepository;
 import pavlo.pro.massagetherapyapi.security.CustomUserDetails;
 import pavlo.pro.massagetherapyapi.service.interfaces.BookingService;
 import pavlo.pro.massagetherapyapi.service.interfaces.ProductService;
 
 import java.text.ParseException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.TimeZone;
-import java.util.stream.Collectors;
 
 @Component
 @AllArgsConstructor
@@ -40,7 +33,7 @@ public class BookingServiceImpl implements BookingService {
 
     public List<BookingSlot> getBookingSlotsPerMassageId(String massageId) {
         LocalDateTime dateFrom = LocalDateTime.now();
-        LocalDateTime dateTo = dateFrom.plusMonths(1);
+        LocalDateTime dateTo = dateFrom.plusMonths(3);
         return bookingSlotRepository.getBookingSlotsPerMassageId(dateFrom, dateTo, massageId);
     }
 
@@ -56,7 +49,7 @@ public class BookingServiceImpl implements BookingService {
         CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String userId = userDetails.getId();
         BookingSlot newBookingSlot = mapBookingSlotFromDto(bookingSlotsDto, massageId, userId, timeZone.getID());
-        return bookingSlotRepository.insert(newBookingSlot);
+        return bookingSlotRepository.save(newBookingSlot);
     }
 
     public Boolean removeBookingSlot(BookingSlot bookingSlot) {
