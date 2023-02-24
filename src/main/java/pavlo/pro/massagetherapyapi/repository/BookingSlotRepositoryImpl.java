@@ -1,4 +1,4 @@
-package pavlo.pro.massagetherapyapi.repository.impl;
+package pavlo.pro.massagetherapyapi.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -9,7 +9,7 @@ import pavlo.pro.massagetherapyapi.model.BookingSlot;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class BookingSlotRepository {
+public class BookingSlotRepositoryImpl implements BookingSlotRepositoryCustom {
 
     @Autowired
     MongoTemplate mongoTemplate;
@@ -19,10 +19,10 @@ public class BookingSlotRepository {
         LocalDateTime dateTo,
         String massageId
     ) {
+        // @Query("{ 'age' : { $gt: ?0, $lt: ?1 } }")
         Query query = new Query();
         query.addCriteria(Criteria.where("massageId").is(massageId));
-        query.addCriteria(Criteria.where("start").gte(dateFrom));
-        query.addCriteria(Criteria.where("end").lte(dateTo));
+        query.addCriteria(Criteria.where("end").gte(dateFrom).lte(dateTo));
         List<BookingSlot> bookingSlotsPerMassageId = mongoTemplate.find(query, BookingSlot.class);
         return bookingSlotsPerMassageId;
     }
