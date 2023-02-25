@@ -1,14 +1,21 @@
 package pavlo.pro.massagetherapyapi.config;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.core.env.Environment;
 
-public class AppEnvironmentAware implements EnvironmentAware {
-    private static Environment env = null;
+import java.util.Arrays;
 
+public class AppEnvironmentAware implements EnvironmentAware {
+    private static final Logger logger = LogManager.getLogger(AppEnvironmentAware.class);
     @Override
     public void setEnvironment(Environment environment) {
-        System.out.println("**** APPLICATION ACTIVE PROFILE ****");
-        System.out.println(environment.getActiveProfiles());
+        String activeProfile = Arrays
+            .stream(environment.getActiveProfiles())
+            .filter(p -> p != null)
+            .findAny()
+            .orElse("dev");
+        logger.info("Application active profile -- {}", activeProfile);
     }
 }

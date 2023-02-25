@@ -1,9 +1,12 @@
 package pavlo.pro.massagetherapyapi.service.impl;
 
 import lombok.AllArgsConstructor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
+import pavlo.pro.massagetherapyapi.controller.BookingController;
 import pavlo.pro.massagetherapyapi.dto.BookingSlotDto;
 import pavlo.pro.massagetherapyapi.exception.AppException;
 import pavlo.pro.massagetherapyapi.exception.EntityType;
@@ -24,6 +27,8 @@ import java.util.TimeZone;
 @Component
 @AllArgsConstructor
 public class BookingServiceImpl implements BookingService {
+
+    private static final Logger logger = LogManager.getLogger(BookingController.class);
 
     @Autowired
     BookingSlotRepository bookingSlotRepository;
@@ -53,7 +58,9 @@ public class BookingServiceImpl implements BookingService {
         String userId = userDetails.getId();
         BookingSlot newBookingSlot = mapBookingSlotFromDto(bookingSlotsDto, massageId, userId, timeZone.getID());
         try {
-            return bookingSlotRepository.insert(newBookingSlot);
+            BookingSlot created = bookingSlotRepository.insert(newBookingSlot);
+            logger.info("Created instance of BookingSlot with id: {}", created.getId());
+            return created;
         } catch (Exception exception) {
             throw exception(EntityType.PRODUCT, ExceptionType.DATABASE_EXCEPTION);
         }

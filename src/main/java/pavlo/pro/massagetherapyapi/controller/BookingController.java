@@ -1,10 +1,11 @@
 package pavlo.pro.massagetherapyapi.controller;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pavlo.pro.massagetherapyapi.dto.BookingSlotDto;
 import pavlo.pro.massagetherapyapi.dto.response.Response;
-import pavlo.pro.massagetherapyapi.model.BookingSlot;
 import pavlo.pro.massagetherapyapi.service.interfaces.BookingService;
 
 import javax.validation.Valid;
@@ -23,10 +24,9 @@ public class BookingController {
         @PathVariable("massageId") String massageId,
         @RequestBody @Valid BookingSlotDto bookingSlotsDto
     ) {
-        BookingSlot result = this.bookingService.addBookingSlot(timeZone, bookingSlotsDto, massageId);
-        // TODO: add proper logging for booking slot creation
-        System.out.println("Created instance of BookingSlot with id: " + result.getId());
-        return Response.ok().setPayload(result);
+        return Response.ok().setPayload(
+            this.bookingService.addBookingSlot(timeZone, bookingSlotsDto, massageId)
+        );
     }
 
     @GetMapping("/{id}")

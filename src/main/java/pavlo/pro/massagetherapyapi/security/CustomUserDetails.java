@@ -11,12 +11,9 @@ public class CustomUserDetails implements UserDetails {
 
     private static final long serialVersionUID = 1L;
     private String id;
-
     private String username;
-
     @JsonIgnore
     private String password;
-
     private Collection<? extends GrantedAuthority> authorities;
 
     public CustomUserDetails(
