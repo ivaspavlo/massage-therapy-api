@@ -31,7 +31,10 @@ public class BookingServiceImpl implements BookingService {
     @Autowired
     ProductService productService;
 
-    public List<BookingSlot> getBookingSlotsPerMassageId(String massageId, Integer monthQty) {
+    public List<BookingSlot> getBookingSlotsPerMassageId(
+        String massageId,
+        Integer monthQty
+    ) {
         LocalDateTime dateFrom = LocalDateTime.now();
         LocalDateTime dateTo = dateFrom.plusMonths(monthQty);
         return bookingSlotRepository.getBookingSlotsPerMassageId(dateFrom, dateTo, massageId);
@@ -49,15 +52,21 @@ public class BookingServiceImpl implements BookingService {
         CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String userId = userDetails.getId();
         BookingSlot newBookingSlot = mapBookingSlotFromDto(bookingSlotsDto, massageId, userId, timeZone.getID());
-        return bookingSlotRepository.save(newBookingSlot);
+        try {
+            return bookingSlotRepository.insert(newBookingSlot);
+        } catch (Exception exception) {
+            throw exception(EntityType.PRODUCT, ExceptionType.DATABASE_EXCEPTION);
+        }
     }
 
-    public Boolean removeBookingSlot(BookingSlot bookingSlot) {
+    public Boolean removeBookingSlot(
+        String bookingSlotId
+    ) throws RuntimeException {
         try {
-            bookingSlotRepository.delete(bookingSlot);
+            bookingSlotRepository.deleteById(bookingSlotId);
             return true;
         } catch (Exception error) {
-            return false;
+            throw exception(EntityType.PRODUCT, ExceptionType.DATABASE_EXCEPTION);
         }
     }
 
@@ -65,7 +74,12 @@ public class BookingServiceImpl implements BookingService {
         return LocalDateTime.from(DateTimeFormatter.ISO_DATE_TIME.parse(date));
     }
 
-    private BookingSlot mapBookingSlotFromDto(BookingSlotDto slotDto, String massageId, String userId, String timeZone) {
+    private BookingSlot mapBookingSlotFromDto(
+        BookingSlotDto slotDto,
+        String massageId,
+        String userId,
+        String timeZone
+    ) {
         LocalDateTime startDate;
         LocalDateTime endDate;
         try {
@@ -82,7 +96,11 @@ public class BookingServiceImpl implements BookingService {
         }
     }
 
-    private RuntimeException exception(EntityType entityType, ExceptionType exceptionType, String... args) {
+    private RuntimeException exception(
+        EntityType entityType,
+        ExceptionType exceptionType,
+        String... args
+    ) {
         return AppException.throwException(entityType, exceptionType, args);
     }
 
