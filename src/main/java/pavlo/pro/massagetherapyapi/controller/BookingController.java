@@ -34,12 +34,10 @@ public class BookingController {
     @GetMapping("/{id}")
     public Response getAvailableSlotsPerMassageId(
         @PathVariable("id") String massageId,
-        @RequestParam(defaultValue = "0") int page,
-        @RequestParam(defaultValue = "20") int size
+        @RequestParam(defaultValue = "2") int monthQty
     ) {
-        Pageable paging = PageRequest.of(page, size);
         return Response.ok().setPayload(
-            this.bookingService.getBookingSlotsPerMassageId(massageId)
+            this.bookingService.getBookingSlotsPerMassageId(massageId, monthQty)
         );
     }
 

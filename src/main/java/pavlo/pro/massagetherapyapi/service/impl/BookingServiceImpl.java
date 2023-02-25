@@ -31,9 +31,9 @@ public class BookingServiceImpl implements BookingService {
     @Autowired
     ProductService productService;
 
-    public List<BookingSlot> getBookingSlotsPerMassageId(String massageId) {
+    public List<BookingSlot> getBookingSlotsPerMassageId(String massageId, Integer monthQty) {
         LocalDateTime dateFrom = LocalDateTime.now();
-        LocalDateTime dateTo = dateFrom.plusMonths(3);
+        LocalDateTime dateTo = dateFrom.plusMonths(monthQty);
         return bookingSlotRepository.getBookingSlotsPerMassageId(dateFrom, dateTo, massageId);
     }
 
