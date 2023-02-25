@@ -1,8 +1,6 @@
 package pavlo.pro.massagetherapyapi.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import pavlo.pro.massagetherapyapi.dto.BookingSlotDto;
 import pavlo.pro.massagetherapyapi.dto.response.Response;
@@ -38,6 +36,15 @@ public class BookingController {
     ) {
         return Response.ok().setPayload(
             this.bookingService.getBookingSlotsPerMassageId(massageId, monthQty)
+        );
+    }
+
+    @DeleteMapping("/{id}")
+    public Response removeBookingSlot(
+        @PathVariable("id") String bookingSlotId
+    ) {
+        return Response.ok().setPayload(
+            this.bookingService.removeBookingSlot(bookingSlotId)
         );
     }
 
