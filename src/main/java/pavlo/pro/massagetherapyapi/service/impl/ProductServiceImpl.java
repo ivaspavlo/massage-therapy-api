@@ -1,5 +1,6 @@
 package pavlo.pro.massagetherapyapi.service.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,6 +20,7 @@ import static pavlo.pro.massagetherapyapi.exception.EntityType.PRODUCT;
 import static pavlo.pro.massagetherapyapi.exception.ExceptionType.DUPLICATE_ENTITY;
 import static pavlo.pro.massagetherapyapi.exception.ExceptionType.ENTITY_NOT_FOUND;
 
+@Slf4j
 @Component
 public class ProductServiceImpl implements ProductService {
 
@@ -28,7 +30,7 @@ public class ProductServiceImpl implements ProductService {
     public Product createProduct(CreateProductReq createProductReq) throws RuntimeException {
         Product product = productRepository.findByTitle(createProductReq.getTitle());
         if (product == null) {
-            return productRepository.insert(
+            Product created = productRepository.insert(
                 new Product(
                     createProductReq.getTitle(),
                     createProductReq.getSubtitle(),
@@ -36,6 +38,8 @@ public class ProductServiceImpl implements ProductService {
                     createProductReq.getPrice()
                 )
             );
+            log.info("Created product with title: {}; and id: {}", created.getTitle(), created.getId());
+            return created;
         }
         throw exception(PRODUCT, DUPLICATE_ENTITY, createProductReq.getTitle());
     }
