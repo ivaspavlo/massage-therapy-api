@@ -3,6 +3,7 @@ package pavlo.pro.massagetherapyapi.exception;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pavlo.pro.massagetherapyapi.config.PropertiesConfig;
+
 import java.text.MessageFormat;
 import java.util.Optional;
 
@@ -50,6 +51,10 @@ public class AppException {
             return new EntityNotFoundException(format(messageTemplate, args));
         } else if (ExceptionType.DUPLICATE_ENTITY.equals(exceptionType)) {
             return new DuplicateEntityException(format(messageTemplate, args));
+        } else if (ExceptionType.ENTITY_EXCEPTION.equals(exceptionType)) {
+            return new EntityException(format(messageTemplate, args));
+        } else if (ExceptionType.DATABASE_EXCEPTION.equals(exceptionType)) {
+            return new DatabaseException(format(messageTemplate, args));
         }
         return new RuntimeException(format(messageTemplate, args));
     }
@@ -74,6 +79,18 @@ public class AppException {
 
     public static class DuplicateEntityException extends RuntimeException {
         public DuplicateEntityException(String message) {
+            super(message);
+        }
+    }
+
+    public static class DatabaseException extends RuntimeException {
+        public DatabaseException(String message) {
+            super(message);
+        }
+    }
+
+    public static class EntityException extends RuntimeException {
+        public EntityException(String message) {
             super(message);
         }
     }

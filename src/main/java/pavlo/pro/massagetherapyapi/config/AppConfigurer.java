@@ -1,12 +1,13 @@
 package pavlo.pro.massagetherapyapi.config;
 
-
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class AppConfig {
+public class AppConfigurer implements WebMvcConfigurer {
 
     @Bean
     public ModelMapper modelMapper() {
@@ -16,6 +17,11 @@ public class AppConfig {
     @Bean
     public AppEnvironmentAware myEnvironmentAware() {
         return new AppEnvironmentAware();
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new LoggingInterceptor());
     }
 
 }
