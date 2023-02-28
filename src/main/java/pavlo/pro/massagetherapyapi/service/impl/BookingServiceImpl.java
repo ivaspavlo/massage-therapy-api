@@ -16,7 +16,6 @@ import pavlo.pro.massagetherapyapi.security.CustomUserDetails;
 import pavlo.pro.massagetherapyapi.service.interfaces.BookingService;
 import pavlo.pro.massagetherapyapi.service.interfaces.ProductService;
 
-import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -81,7 +80,7 @@ public class BookingServiceImpl implements BookingService {
         }
     }
 
-    private LocalDateTime convertDate(String date) throws ParseException {
+    private LocalDateTime convertDate(String date) throws Exception {
         return LocalDateTime.from(DateTimeFormatter.ISO_DATE_TIME.parse(date));
     }
 
@@ -102,8 +101,8 @@ public class BookingServiceImpl implements BookingService {
                 .setMassageId(massageId)
                 .setUserId(userId)
                 .setTimeZone(timeZone);
-        } catch (ParseException exception) {
-            throw exception(EntityType.BOOKING_SLOT, ExceptionType.PARSE_EXCEPTION);
+        } catch (Exception exception) {
+            throw exception(EntityType.BOOKING_SLOT, ExceptionType.ENTITY_EXCEPTION);
         }
     }
 
