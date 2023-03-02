@@ -15,7 +15,7 @@ public class AppEnvironmentAware implements EnvironmentAware {
             .stream(environment.getActiveProfiles())
             .filter(p -> p != null)
             .findAny()
-            .orElse("dev");
+            .orElse("default");
         logger.info("Application active profile -- {}", activeProfile);
     }
 }
