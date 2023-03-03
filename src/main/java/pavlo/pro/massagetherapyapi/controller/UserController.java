@@ -18,7 +18,7 @@ import pavlo.pro.massagetherapyapi.dto.JwtDto;
 import pavlo.pro.massagetherapyapi.dto.response.Response;
 import pavlo.pro.massagetherapyapi.security.CustomUserDetails;
 import pavlo.pro.massagetherapyapi.security.JwtUtils;
-import pavlo.pro.massagetherapyapi.service.interfaces.UserService;
+import pavlo.pro.massagetherapyapi.service.UserService;
 
 import javax.validation.Valid;
 import java.util.*;

@@ -1,4 +1,4 @@
-package pavlo.pro.massagetherapyapi.service.interfaces;
+package pavlo.pro.massagetherapyapi.service;
 
 import org.springframework.web.server.ResponseStatusException;
 import pavlo.pro.massagetherapyapi.model.User;

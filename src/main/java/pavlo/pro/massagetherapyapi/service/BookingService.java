@@ -1,4 +1,4 @@
-package pavlo.pro.massagetherapyapi.service.interfaces;
+package pavlo.pro.massagetherapyapi.service;
 
 import pavlo.pro.massagetherapyapi.dto.BookingSlotDto;
 import pavlo.pro.massagetherapyapi.model.BookingSlot;

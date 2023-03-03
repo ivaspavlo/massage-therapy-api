@@ -12,7 +12,7 @@ import pavlo.pro.massagetherapyapi.model.Product;
 import pavlo.pro.massagetherapyapi.dto.request.CreateProductReq;
 import pavlo.pro.massagetherapyapi.dto.request.UpdateProductReq;
 import pavlo.pro.massagetherapyapi.repository.ProductRepository;
-import pavlo.pro.massagetherapyapi.service.interfaces.ProductService;
+import pavlo.pro.massagetherapyapi.service.ProductService;
 
 import java.util.Optional;
 

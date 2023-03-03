@@ -13,8 +13,8 @@ import pavlo.pro.massagetherapyapi.model.BookingSlot;
 import pavlo.pro.massagetherapyapi.model.Product;
 import pavlo.pro.massagetherapyapi.repository.BookingSlotRepository;
 import pavlo.pro.massagetherapyapi.security.CustomUserDetails;
-import pavlo.pro.massagetherapyapi.service.interfaces.BookingService;
-import pavlo.pro.massagetherapyapi.service.interfaces.ProductService;
+import pavlo.pro.massagetherapyapi.service.BookingService;
+import pavlo.pro.massagetherapyapi.service.ProductService;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

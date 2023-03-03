@@ -1,10 +1,11 @@
-package pavlo.pro.massagetherapyapi.repository;
+package pavlo.pro.massagetherapyapi.repository.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import pavlo.pro.massagetherapyapi.model.BookingSlot;
+import pavlo.pro.massagetherapyapi.repository.BookingSlotRepositoryCustom;
 
 import java.time.LocalDateTime;
 import java.util.List;
