@@ -1,4 +1,4 @@
-package pavlo.pro.massagetherapyapi.service.interfaces;
+package pavlo.pro.massagetherapyapi.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

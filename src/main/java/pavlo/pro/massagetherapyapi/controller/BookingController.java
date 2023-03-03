@@ -1,12 +1,10 @@
 package pavlo.pro.massagetherapyapi.controller;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pavlo.pro.massagetherapyapi.dto.BookingSlotDto;
 import pavlo.pro.massagetherapyapi.dto.response.Response;
-import pavlo.pro.massagetherapyapi.service.interfaces.BookingService;
+import pavlo.pro.massagetherapyapi.service.BookingService;
 
 import javax.validation.Valid;
 import java.util.TimeZone;

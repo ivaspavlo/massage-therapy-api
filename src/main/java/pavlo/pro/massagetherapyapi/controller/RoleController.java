@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import pavlo.pro.massagetherapyapi.dto.RoleDto;
 import pavlo.pro.massagetherapyapi.dto.response.Response;
 import pavlo.pro.massagetherapyapi.model.Role;
-import pavlo.pro.massagetherapyapi.service.interfaces.RoleService;
+import pavlo.pro.massagetherapyapi.service.RoleService;
 
 import javax.validation.Valid;
 import java.util.List;

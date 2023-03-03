@@ -10,7 +10,7 @@ import pavlo.pro.massagetherapyapi.exception.EntityType;
 import pavlo.pro.massagetherapyapi.exception.ExceptionType;
 import pavlo.pro.massagetherapyapi.model.Role;
 import pavlo.pro.massagetherapyapi.repository.RoleRepository;
-import pavlo.pro.massagetherapyapi.service.interfaces.RoleService;
+import pavlo.pro.massagetherapyapi.service.RoleService;
 
 import static pavlo.pro.massagetherapyapi.exception.EntityType.ROLE;
 
