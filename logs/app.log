@@ -1,46 +1,575 @@
-INFO -- 2023-03-06 12:08:07.305 [background-preinit] org.hibernate.validator.internal.util.Version -- HV000001: Hibernate Validator 6.2.5.Final
-INFO -- 2023-03-06 12:08:07.375 [main] pavlo.pro.massagetherapyapi.MassageTherapyApiApplication -- Starting MassageTherapyApiApplication using Java 11.0.16.1 on Pavels-MacBook-Pro.local with PID 24329 (/Users/pavelivashchenko/Developer/massage-therapy-api/target/classes started by pavelivashchenko in /Users/pavelivashchenko/Developer/massage-therapy-api)
-INFO -- 2023-03-06 12:08:07.380 [main] pavlo.pro.massagetherapyapi.MassageTherapyApiApplication -- The following 1 profile is active: "prod"
-INFO -- 2023-03-06 12:08:08.336 [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate -- Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-INFO -- 2023-03-06 12:08:08.431 [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate -- Finished Spring Data repository scanning in 88 ms. Found 4 MongoDB repository interfaces.
-INFO -- 2023-03-06 12:08:08.705 [main] com.ulisesbocchio.jasyptspringboot.configuration.EnableEncryptablePropertiesBeanFactoryPostProcessor -- Post-processing PropertySource instances
-INFO -- 2023-03-06 12:08:08.804 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource configurationProperties [org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource] to AOP Proxy
-INFO -- 2023-03-06 12:08:08.804 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource servletConfigInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
-INFO -- 2023-03-06 12:08:08.804 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource servletContextInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
-INFO -- 2023-03-06 12:08:08.805 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource systemProperties [org.springframework.core.env.PropertiesPropertySource] to EncryptableMapPropertySourceWrapper
-INFO -- 2023-03-06 12:08:08.805 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource systemEnvironment [org.springframework.boot.env.SystemEnvironmentPropertySourceEnvironmentPostProcessor$OriginAwareSystemEnvironmentPropertySource] to EncryptableMapPropertySourceWrapper
-INFO -- 2023-03-06 12:08:08.805 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource random [org.springframework.boot.env.RandomValuePropertySource] to EncryptablePropertySourceWrapper
-INFO -- 2023-03-06 12:08:08.805 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource Config resource 'class path resource [application-prod.properties]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
-INFO -- 2023-03-06 12:08:08.805 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource Config resource 'class path resource [application.properties]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
-INFO -- 2023-03-06 12:08:08.805 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource class path resource [custom.properties] [org.springframework.core.io.support.ResourcePropertySource] to EncryptableMapPropertySourceWrapper
-INFO -- 2023-03-06 12:08:08.897 [main] com.ulisesbocchio.jasyptspringboot.filter.DefaultLazyPropertyFilter -- Property Filter custom Bean not found with name 'encryptablePropertyFilter'. Initializing Default Property Filter
-INFO -- 2023-03-06 12:08:09.420 [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer -- Tomcat initialized with port(s): 8080 (http)
-INFO -- 2023-03-06 12:08:09.440 [main] org.apache.coyote.http11.Http11NioProtocol -- Initializing ProtocolHandler ["http-nio-8080"]
-INFO -- 2023-03-06 12:08:09.441 [main] org.apache.catalina.core.StandardService -- Starting service [Tomcat]
-INFO -- 2023-03-06 12:08:09.441 [main] org.apache.catalina.core.StandardEngine -- Starting Servlet engine: [Apache Tomcat/9.0.69]
-INFO -- 2023-03-06 12:08:09.602 [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -- Initializing Spring embedded WebApplicationContext
-INFO -- 2023-03-06 12:08:09.602 [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext -- Root WebApplicationContext: initialization completed in 2163 ms
-INFO -- 2023-03-06 12:08:09.690 [main] com.ulisesbocchio.jasyptspringboot.resolver.DefaultLazyPropertyResolver -- Property Resolver custom Bean not found with name 'encryptablePropertyResolver'. Initializing Default Property Resolver
-INFO -- 2023-03-06 12:08:09.693 [main] com.ulisesbocchio.jasyptspringboot.detector.DefaultLazyPropertyDetector -- Property Detector custom Bean not found with name 'encryptablePropertyDetector'. Initializing Default Property Detector
-INFO -- 2023-03-06 12:08:09.951 [cluster-ClusterId{value='6405c9998a69c02e72e8deba', description='null'}-srv-cluster0.4cxev.mongodb.net] org.mongodb.driver.cluster -- Adding discovered server cluster0-shard-00-01.4cxev.mongodb.net:27017 to client view of cluster
-INFO -- 2023-03-06 12:08:09.958 [main] org.mongodb.driver.client -- MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "4.6.1"}, "os": {"type": "Darwin", "name": "Mac OS X", "architecture": "x86_64", "version": "10.15.7"}, "platform": "Java/Homebrew/11.0.16.1+0"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=majority, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=MongoCredential{mechanism=null, userName='stkachuk', source='admin', password=<hidden>, mechanismProperties=<hidden>}, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.Jep395RecordCodecProvider@43a4a9e5]}, clusterSettings={hosts=[127.0.0.1:27017], srvHost=cluster0.4cxev.mongodb.net, srvServiceName=mongodb, mode=MULTIPLE, requiredClusterType=REPLICA_SET, requiredReplicaSetName='atlas-fo286n-shard-0', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='30000 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, sendBufferSize=0}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, sendBufferSize=0}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=true, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, contextProvider=null}
-INFO -- 2023-03-06 12:08:09.988 [cluster-ClusterId{value='6405c9998a69c02e72e8deba', description='null'}-srv-cluster0.4cxev.mongodb.net] org.mongodb.driver.cluster -- Adding discovered server cluster0-shard-00-02.4cxev.mongodb.net:27017 to client view of cluster
-INFO -- 2023-03-06 12:08:09.989 [cluster-ClusterId{value='6405c9998a69c02e72e8deba', description='null'}-srv-cluster0.4cxev.mongodb.net] org.mongodb.driver.cluster -- Adding discovered server cluster0-shard-00-00.4cxev.mongodb.net:27017 to client view of cluster
-INFO -- 2023-03-06 12:08:10.788 [cluster-rtt-ClusterId{value='6405c9998a69c02e72e8deba', description='null'}-cluster0-shard-00-01.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:4, serverValue:33765}] to cluster0-shard-00-01.4cxev.mongodb.net:27017
-INFO -- 2023-03-06 12:08:10.788 [cluster-ClusterId{value='6405c9998a69c02e72e8deba', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:2, serverValue:35624}] to cluster0-shard-00-02.4cxev.mongodb.net:27017
-INFO -- 2023-03-06 12:08:10.788 [cluster-ClusterId{value='6405c9998a69c02e72e8deba', description='null'}-cluster0-shard-00-00.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:6, serverValue:34497}] to cluster0-shard-00-00.4cxev.mongodb.net:27017
-INFO -- 2023-03-06 12:08:10.788 [cluster-rtt-ClusterId{value='6405c9998a69c02e72e8deba', description='null'}-cluster0-shard-00-00.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:1, serverValue:34497}] to cluster0-shard-00-00.4cxev.mongodb.net:27017
-INFO -- 2023-03-06 12:08:10.788 [cluster-ClusterId{value='6405c9998a69c02e72e8deba', description='null'}-cluster0-shard-00-01.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:5, serverValue:33765}] to cluster0-shard-00-01.4cxev.mongodb.net:27017
-INFO -- 2023-03-06 12:08:10.789 [cluster-rtt-ClusterId{value='6405c9998a69c02e72e8deba', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:3, serverValue:35624}] to cluster0-shard-00-02.4cxev.mongodb.net:27017
-INFO -- 2023-03-06 12:08:10.790 [cluster-ClusterId{value='6405c9998a69c02e72e8deba', description='null'}-cluster0-shard-00-01.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Monitor thread successfully connected to server with description ServerDescription{address=cluster0-shard-00-01.4cxev.mongodb.net:27017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=462497883, setName='atlas-fo286n-shard-0', canonicalAddress=cluster0-shard-00-01.4cxev.mongodb.net:27017, hosts=[cluster0-shard-00-00.4cxev.mongodb.net:27017, cluster0-shard-00-02.4cxev.mongodb.net:27017, cluster0-shard-00-01.4cxev.mongodb.net:27017], passives=[], arbiters=[], primary='cluster0-shard-00-02.4cxev.mongodb.net:27017', tagSet=TagSet{[Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='EU_CENTRAL_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=null, setVersion=7, topologyVersion=TopologyVersion{processId=6404b7e2b8273e3294cc4fb3, counter=3}, lastWriteDate=Mon Mar 06 12:08:10 CET 2023, lastUpdateTimeNanos=87164285437025}
-INFO -- 2023-03-06 12:08:10.790 [cluster-ClusterId{value='6405c9998a69c02e72e8deba', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Monitor thread successfully connected to server with description ServerDescription{address=cluster0-shard-00-02.4cxev.mongodb.net:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=462466772, setName='atlas-fo286n-shard-0', canonicalAddress=cluster0-shard-00-02.4cxev.mongodb.net:27017, hosts=[cluster0-shard-00-00.4cxev.mongodb.net:27017, cluster0-shard-00-02.4cxev.mongodb.net:27017, cluster0-shard-00-01.4cxev.mongodb.net:27017], passives=[], arbiters=[], primary='cluster0-shard-00-02.4cxev.mongodb.net:27017', tagSet=TagSet{[Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='EU_CENTRAL_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=7fffffff0000000000000272, setVersion=7, topologyVersion=TopologyVersion{processId=6404b6f65faecdfdaa373fbd, counter=6}, lastWriteDate=Mon Mar 06 12:08:10 CET 2023, lastUpdateTimeNanos=87164285409218}
-INFO -- 2023-03-06 12:08:10.790 [cluster-ClusterId{value='6405c9998a69c02e72e8deba', description='null'}-cluster0-shard-00-00.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Monitor thread successfully connected to server with description ServerDescription{address=cluster0-shard-00-00.4cxev.mongodb.net:27017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=463751672, setName='atlas-fo286n-shard-0', canonicalAddress=cluster0-shard-00-00.4cxev.mongodb.net:27017, hosts=[cluster0-shard-00-00.4cxev.mongodb.net:27017, cluster0-shard-00-02.4cxev.mongodb.net:27017, cluster0-shard-00-01.4cxev.mongodb.net:27017], passives=[], arbiters=[], primary='cluster0-shard-00-02.4cxev.mongodb.net:27017', tagSet=TagSet{[Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='EU_CENTRAL_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=null, setVersion=7, topologyVersion=TopologyVersion{processId=6404b5f5e9b6011f69dbd34c, counter=4}, lastWriteDate=Mon Mar 06 12:08:10 CET 2023, lastUpdateTimeNanos=87164285409125}
-INFO -- 2023-03-06 12:08:10.795 [cluster-ClusterId{value='6405c9998a69c02e72e8deba', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Setting max election id to 7fffffff0000000000000272 from replica set primary cluster0-shard-00-02.4cxev.mongodb.net:27017
-INFO -- 2023-03-06 12:08:10.796 [cluster-ClusterId{value='6405c9998a69c02e72e8deba', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Setting max set version to 7 from replica set primary cluster0-shard-00-02.4cxev.mongodb.net:27017
-INFO -- 2023-03-06 12:08:10.796 [cluster-ClusterId{value='6405c9998a69c02e72e8deba', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Discovered replica set primary cluster0-shard-00-02.4cxev.mongodb.net:27017
-INFO -- 2023-03-06 12:08:10.868 [main] org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor -- Autowired annotation is not supported on static fields: private static pavlo.pro.massagetherapyapi.config.PropertiesConfig pavlo.pro.massagetherapyapi.exception.AppException.propertiesConfig
-INFO -- 2023-03-06 12:08:10.882 [main] pavlo.pro.massagetherapyapi.config.AppEnvironmentAware -- Application active profile -- prod
-INFO -- 2023-03-06 12:08:11.361 [main] org.springframework.security.web.DefaultSecurityFilterChain -- Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@55c03e4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@14df5253, org.springframework.security.web.context.SecurityContextPersistenceFilter@4a04ca74, org.springframework.security.web.header.HeaderWriterFilter@6451a288, org.springframework.web.filter.CorsFilter@605eb072, org.springframework.security.web.authentication.logout.LogoutFilter@1f71e024, pavlo.pro.massagetherapyapi.security.AuthTokenFilter@53bb71e5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@24aedcc5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@74ebd159, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7a0f06ad, org.springframework.security.web.session.SessionManagementFilter@734f8317, org.springframework.security.web.access.ExceptionTranslationFilter@1d7c9811, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@704c3bdf]
-INFO -- 2023-03-06 12:08:11.607 [main] org.apache.coyote.http11.Http11NioProtocol -- Starting ProtocolHandler ["http-nio-8080"]
-INFO -- 2023-03-06 12:08:11.635 [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer -- Tomcat started on port(s): 8080 (http) with context path ''
-INFO -- 2023-03-06 12:08:11.646 [main] pavlo.pro.massagetherapyapi.MassageTherapyApiApplication -- Started MassageTherapyApiApplication in 4.874 seconds (JVM running for 11.278)
+INFO -- 2023-03-09 20:43:28.705 [background-preinit] org.hibernate.validator.internal.util.Version -- HV000001: Hibernate Validator 6.2.5.Final
+INFO -- 2023-03-09 20:43:28.774 [main] pavlo.pro.massagetherapyapi.MassageTherapyApiApplication -- Starting MassageTherapyApiApplication using Java 11.0.16.1 on Pavels-MacBook-Pro.local with PID 26470 (/Users/pavelivashchenko/Developer/massage-therapy-api/target/classes started by pavelivashchenko in /Users/pavelivashchenko/Developer/massage-therapy-api)
+INFO -- 2023-03-09 20:43:28.779 [main] pavlo.pro.massagetherapyapi.MassageTherapyApiApplication -- The following 1 profile is active: "prod"
+INFO -- 2023-03-09 20:43:29.558 [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate -- Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+INFO -- 2023-03-09 20:43:29.632 [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate -- Finished Spring Data repository scanning in 68 ms. Found 5 MongoDB repository interfaces.
+INFO -- 2023-03-09 20:43:29.875 [main] com.ulisesbocchio.jasyptspringboot.configuration.EnableEncryptablePropertiesBeanFactoryPostProcessor -- Post-processing PropertySource instances
+INFO -- 2023-03-09 20:43:29.878 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Skipping PropertySource configurationProperties [class org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource
+INFO -- 2023-03-09 20:43:29.878 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Skipping PropertySource servletConfigInitParams [class org.springframework.core.env.PropertySource$StubPropertySource
+INFO -- 2023-03-09 20:43:29.878 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Skipping PropertySource servletContextInitParams [class org.springframework.core.env.PropertySource$StubPropertySource
+INFO -- 2023-03-09 20:43:29.879 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource systemProperties [org.springframework.core.env.PropertiesPropertySource] to EncryptableMapPropertySourceWrapper
+INFO -- 2023-03-09 20:43:29.880 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource systemEnvironment [org.springframework.boot.env.SystemEnvironmentPropertySourceEnvironmentPostProcessor$OriginAwareSystemEnvironmentPropertySource] to EncryptableSystemEnvironmentPropertySourceWrapper
+INFO -- 2023-03-09 20:43:29.880 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource random [org.springframework.boot.env.RandomValuePropertySource] to EncryptablePropertySourceWrapper
+INFO -- 2023-03-09 20:43:29.880 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource Config resource 'class path resource [application-prod.properties]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+INFO -- 2023-03-09 20:43:29.880 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource Config resource 'class path resource [application.properties]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+INFO -- 2023-03-09 20:43:29.880 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource class path resource [custom.properties] [org.springframework.core.io.support.ResourcePropertySource] to EncryptableMapPropertySourceWrapper
+INFO -- 2023-03-09 20:43:30.276 [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer -- Tomcat initialized with port(s): 8080 (http)
+INFO -- 2023-03-09 20:43:30.289 [main] org.apache.coyote.http11.Http11NioProtocol -- Initializing ProtocolHandler ["http-nio-8080"]
+INFO -- 2023-03-09 20:43:30.289 [main] org.apache.catalina.core.StandardService -- Starting service [Tomcat]
+INFO -- 2023-03-09 20:43:30.290 [main] org.apache.catalina.core.StandardEngine -- Starting Servlet engine: [Apache Tomcat/9.0.69]
+INFO -- 2023-03-09 20:43:30.397 [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -- Initializing Spring embedded WebApplicationContext
+INFO -- 2023-03-09 20:43:30.398 [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext -- Root WebApplicationContext: initialization completed in 1567 ms
+INFO -- 2023-03-09 20:43:30.461 [main] com.ulisesbocchio.jasyptspringboot.filter.DefaultLazyPropertyFilter -- Property Filter custom Bean not found with name 'encryptablePropertyFilter'. Initializing Default Property Filter
+INFO -- 2023-03-09 20:43:30.471 [main] com.ulisesbocchio.jasyptspringboot.resolver.DefaultLazyPropertyResolver -- Property Resolver custom Bean not found with name 'encryptablePropertyResolver'. Initializing Default Property Resolver
+INFO -- 2023-03-09 20:43:30.474 [main] com.ulisesbocchio.jasyptspringboot.detector.DefaultLazyPropertyDetector -- Property Detector custom Bean not found with name 'encryptablePropertyDetector'. Initializing Default Property Detector
+INFO -- 2023-03-09 20:43:30.482 [main] com.ulisesbocchio.jasyptspringboot.encryptor.DefaultLazyEncryptor -- String Encryptor custom Bean not found with name 'jasyptStringEncryptor'. Initializing Default String Encryptor
+INFO -- 2023-03-09 20:43:30.497 [main] com.ulisesbocchio.jasyptspringboot.configuration.StringEncryptorBuilder -- Encryptor config not found for property jasypt.encryptor.algorithm, using default value: PBEWITHHMACSHA512ANDAES_256
+INFO -- 2023-03-09 20:43:30.498 [main] com.ulisesbocchio.jasyptspringboot.configuration.StringEncryptorBuilder -- Encryptor config not found for property jasypt.encryptor.key-obtention-iterations, using default value: 1000
+INFO -- 2023-03-09 20:43:30.499 [main] com.ulisesbocchio.jasyptspringboot.configuration.StringEncryptorBuilder -- Encryptor config not found for property jasypt.encryptor.pool-size, using default value: 1
+INFO -- 2023-03-09 20:43:30.499 [main] com.ulisesbocchio.jasyptspringboot.configuration.StringEncryptorBuilder -- Encryptor config not found for property jasypt.encryptor.provider-name, using default value: null
+INFO -- 2023-03-09 20:43:30.500 [main] com.ulisesbocchio.jasyptspringboot.configuration.StringEncryptorBuilder -- Encryptor config not found for property jasypt.encryptor.provider-class-name, using default value: null
+INFO -- 2023-03-09 20:43:30.501 [main] com.ulisesbocchio.jasyptspringboot.configuration.StringEncryptorBuilder -- Encryptor config not found for property jasypt.encryptor.salt-generator-classname, using default value: org.jasypt.salt.RandomSaltGenerator
+INFO -- 2023-03-09 20:43:30.503 [main] com.ulisesbocchio.jasyptspringboot.configuration.StringEncryptorBuilder -- Encryptor config not found for property jasypt.encryptor.iv-generator-classname, using default value: org.jasypt.iv.RandomIvGenerator
+INFO -- 2023-03-09 20:43:30.505 [main] com.ulisesbocchio.jasyptspringboot.configuration.StringEncryptorBuilder -- Encryptor config not found for property jasypt.encryptor.string-output-type, using default value: base64
+INFO -- 2023-03-09 20:43:30.912 [main] org.mongodb.driver.client -- MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "4.6.1"}, "os": {"type": "Darwin", "name": "Mac OS X", "architecture": "x86_64", "version": "10.15.7"}, "platform": "Java/Homebrew/11.0.16.1+0"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=majority, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=MongoCredential{mechanism=null, userName='stkachuk', source='admin', password=<hidden>, mechanismProperties=<hidden>}, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.Jep395RecordCodecProvider@7abeabe9]}, clusterSettings={hosts=[127.0.0.1:27017], srvHost=cluster0.4cxev.mongodb.net, srvServiceName=mongodb, mode=MULTIPLE, requiredClusterType=REPLICA_SET, requiredReplicaSetName='atlas-fo286n-shard-0', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='30000 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, sendBufferSize=0}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, sendBufferSize=0}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=true, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, contextProvider=null}
+INFO -- 2023-03-09 20:43:30.948 [cluster-ClusterId{value='640a36e256649414f81a407d', description='null'}-srv-cluster0.4cxev.mongodb.net] org.mongodb.driver.cluster -- Adding discovered server cluster0-shard-00-01.4cxev.mongodb.net:27017 to client view of cluster
+INFO -- 2023-03-09 20:43:30.974 [cluster-ClusterId{value='640a36e256649414f81a407d', description='null'}-srv-cluster0.4cxev.mongodb.net] org.mongodb.driver.cluster -- Adding discovered server cluster0-shard-00-02.4cxev.mongodb.net:27017 to client view of cluster
+INFO -- 2023-03-09 20:43:30.975 [cluster-ClusterId{value='640a36e256649414f81a407d', description='null'}-srv-cluster0.4cxev.mongodb.net] org.mongodb.driver.cluster -- Adding discovered server cluster0-shard-00-00.4cxev.mongodb.net:27017 to client view of cluster
+ERROR-- 2023-03-09 20:43:31.457 [main] org.springframework.boot.web.embedded.tomcat.TomcatStarter -- Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'authenticationJwtTokenFilter': Unsatisfied dependency expressed through field 'jwtUtils'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jwtUtils': Injection of autowired dependencies failed; nested exception is com.ulisesbocchio.jasyptspringboot.exception.DecryptionException: Unable to decrypt property: ENC(0puHOZAwnDXAJZI+h1QToC8EFGgH6EeDwZpkkQdHTbtG2syxEdKK8bt5WRc7+CjW)J@Nc1) resolved to: ENC(0puHOZAwnDXAJZI+h1QToC8EFGgH6EeDwZpkkQdHTbtG2syxEdKK8bt5WRc7+CjW)J@Nc1). Decryption of Properties failed,  make sure encryption/decryption passwords match
+INFO -- 2023-03-09 20:43:31.502 [main] org.apache.catalina.core.StandardService -- Stopping service [Tomcat]
+WARN -- 2023-03-09 20:43:31.517 [main] org.apache.catalina.loader.WebappClassLoaderBase -- The web application [ROOT] appears to have started a thread named [BufferPoolPruner-1-thread-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.16.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.16.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+ java.base@11.0.16.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
+ java.base@11.0.16.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@11.0.16.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@11.0.16.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.16.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.16.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.16.1/java.lang.Thread.run(Thread.java:829)
+WARN -- 2023-03-09 20:43:31.522 [main] org.apache.catalina.loader.WebappClassLoaderBase -- The web application [ROOT] appears to have started a thread named [cluster-ClusterId{value='640a36e256649414f81a407d', description='null'}-srv-cluster0.4cxev.mongodb.net] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.16.1/java.lang.Thread.sleep(Native Method)
+ app//com.mongodb.internal.connection.DefaultDnsSrvRecordMonitor$DnsSrvRecordMonitorRunnable.run(DefaultDnsSrvRecordMonitor.java:108)
+ java.base@11.0.16.1/java.lang.Thread.run(Thread.java:829)
+WARN -- 2023-03-09 20:43:31.523 [main] org.apache.catalina.loader.WebappClassLoaderBase -- The web application [ROOT] appears to have started a thread named [cluster-ClusterId{value='640a36e256649414f81a407d', description='null'}-cluster0-shard-00-01.4cxev.mongodb.net:27017] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.16.1/java.math.BigInteger.implMulAdd(BigInteger.java:3188)
+ java.base@11.0.16.1/java.math.BigInteger.mulAdd(BigInteger.java:3158)
+ java.base@11.0.16.1/java.math.BigInteger.montReduce(BigInteger.java:3107)
+ java.base@11.0.16.1/java.math.BigInteger.implMontgomerySquare(BigInteger.java:2854)
+ java.base@11.0.16.1/java.math.BigInteger.montgomerySquare(BigInteger.java:2810)
+ java.base@11.0.16.1/java.math.BigInteger.oddModPow(BigInteger.java:3080)
+ java.base@11.0.16.1/java.math.BigInteger.modPow(BigInteger.java:2741)
+ java.base@11.0.16.1/sun.security.rsa.RSACore.crypt(RSACore.java:134)
+ java.base@11.0.16.1/sun.security.rsa.RSACore.rsa(RSACore.java:100)
+ java.base@11.0.16.1/sun.security.rsa.RSAPSSSignature.engineVerify(RSAPSSSignature.java:444)
+ java.base@11.0.16.1/java.security.Signature$Delegate.engineVerify(Signature.java:1416)
+ java.base@11.0.16.1/java.security.Signature.verify(Signature.java:790)
+ java.base@11.0.16.1/sun.security.ssl.CertificateVerify$T13CertificateVerifyMessage.<init>(CertificateVerify.java:1008)
+ java.base@11.0.16.1/sun.security.ssl.CertificateVerify$T13CertificateVerifyConsumer.consume(CertificateVerify.java:1160)
+ java.base@11.0.16.1/sun.security.ssl.SSLHandshake.consume(SSLHandshake.java:392)
+ java.base@11.0.16.1/sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:443)
+ java.base@11.0.16.1/sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:421)
+ java.base@11.0.16.1/sun.security.ssl.TransportContext.dispatch(TransportContext.java:183)
+ java.base@11.0.16.1/sun.security.ssl.SSLTransport.decode(SSLTransport.java:172)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl.decode(SSLSocketImpl.java:1506)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl.readHandshakeRecord(SSLSocketImpl.java:1416)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:456)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl.ensureNegotiated(SSLSocketImpl.java:921)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl$AppOutputStream.write(SSLSocketImpl.java:1291)
+ app//com.mongodb.internal.connection.SocketStream.write(SocketStream.java:99)
+ app//com.mongodb.internal.connection.InternalStreamConnection.sendMessage(InternalStreamConnection.java:552)
+ app//com.mongodb.internal.connection.InternalStreamConnection.sendCommandMessage(InternalStreamConnection.java:381)
+ app//com.mongodb.internal.connection.InternalStreamConnection.sendAndReceive(InternalStreamConnection.java:329)
+ app//com.mongodb.internal.connection.CommandHelper.sendAndReceive(CommandHelper.java:101)
+ app//com.mongodb.internal.connection.CommandHelper.executeCommand(CommandHelper.java:45)
+ app//com.mongodb.internal.connection.InternalStreamConnectionInitializer.initializeConnectionDescription(InternalStreamConnectionInitializer.java:131)
+ app//com.mongodb.internal.connection.InternalStreamConnectionInitializer.startHandshake(InternalStreamConnectionInitializer.java:73)
+ app//com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:182)
+ app//com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:193)
+ app//com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:157)
+ java.base@11.0.16.1/java.lang.Thread.run(Thread.java:829)
+WARN -- 2023-03-09 20:43:31.526 [main] org.apache.catalina.loader.WebappClassLoaderBase -- The web application [ROOT] appears to have started a thread named [cluster-rtt-ClusterId{value='640a36e256649414f81a407d', description='null'}-cluster0-shard-00-01.4cxev.mongodb.net:27017] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.16.1/java.math.BigInteger.implMulAdd(BigInteger.java:3188)
+ java.base@11.0.16.1/java.math.BigInteger.mulAdd(BigInteger.java:3158)
+ java.base@11.0.16.1/java.math.BigInteger.montReduce(BigInteger.java:3107)
+ java.base@11.0.16.1/java.math.BigInteger.implMontgomerySquare(BigInteger.java:2854)
+ java.base@11.0.16.1/java.math.BigInteger.montgomerySquare(BigInteger.java:2810)
+ java.base@11.0.16.1/java.math.BigInteger.oddModPow(BigInteger.java:3080)
+ java.base@11.0.16.1/java.math.BigInteger.modPow(BigInteger.java:2741)
+ java.base@11.0.16.1/sun.security.rsa.RSACore.crypt(RSACore.java:134)
+ java.base@11.0.16.1/sun.security.rsa.RSACore.rsa(RSACore.java:100)
+ java.base@11.0.16.1/sun.security.rsa.RSAPSSSignature.engineVerify(RSAPSSSignature.java:444)
+ java.base@11.0.16.1/java.security.Signature$Delegate.engineVerify(Signature.java:1416)
+ java.base@11.0.16.1/java.security.Signature.verify(Signature.java:790)
+ java.base@11.0.16.1/sun.security.ssl.CertificateVerify$T13CertificateVerifyMessage.<init>(CertificateVerify.java:1008)
+ java.base@11.0.16.1/sun.security.ssl.CertificateVerify$T13CertificateVerifyConsumer.consume(CertificateVerify.java:1160)
+ java.base@11.0.16.1/sun.security.ssl.SSLHandshake.consume(SSLHandshake.java:392)
+ java.base@11.0.16.1/sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:443)
+ java.base@11.0.16.1/sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:421)
+ java.base@11.0.16.1/sun.security.ssl.TransportContext.dispatch(TransportContext.java:183)
+ java.base@11.0.16.1/sun.security.ssl.SSLTransport.decode(SSLTransport.java:172)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl.decode(SSLSocketImpl.java:1506)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl.readHandshakeRecord(SSLSocketImpl.java:1416)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:456)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl.ensureNegotiated(SSLSocketImpl.java:921)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl$AppOutputStream.write(SSLSocketImpl.java:1291)
+ app//com.mongodb.internal.connection.SocketStream.write(SocketStream.java:99)
+ app//com.mongodb.internal.connection.InternalStreamConnection.sendMessage(InternalStreamConnection.java:552)
+ app//com.mongodb.internal.connection.InternalStreamConnection.sendCommandMessage(InternalStreamConnection.java:381)
+ app//com.mongodb.internal.connection.InternalStreamConnection.sendAndReceive(InternalStreamConnection.java:329)
+ app//com.mongodb.internal.connection.CommandHelper.sendAndReceive(CommandHelper.java:101)
+ app//com.mongodb.internal.connection.CommandHelper.executeCommand(CommandHelper.java:45)
+ app//com.mongodb.internal.connection.InternalStreamConnectionInitializer.initializeConnectionDescription(InternalStreamConnectionInitializer.java:131)
+ app//com.mongodb.internal.connection.InternalStreamConnectionInitializer.startHandshake(InternalStreamConnectionInitializer.java:73)
+ app//com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:182)
+ app//com.mongodb.internal.connection.DefaultServerMonitor$RoundTripTimeRunnable.initialize(DefaultServerMonitor.java:427)
+ app//com.mongodb.internal.connection.DefaultServerMonitor$RoundTripTimeRunnable.run(DefaultServerMonitor.java:405)
+ java.base@11.0.16.1/java.lang.Thread.run(Thread.java:829)
+WARN -- 2023-03-09 20:43:31.533 [main] org.apache.catalina.loader.WebappClassLoaderBase -- The web application [ROOT] appears to have started a thread named [cluster-ClusterId{value='640a36e256649414f81a407d', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.16.1/java.math.BigInteger.implMulAdd(BigInteger.java:3188)
+ java.base@11.0.16.1/java.math.BigInteger.mulAdd(BigInteger.java:3158)
+ java.base@11.0.16.1/java.math.BigInteger.montReduce(BigInteger.java:3107)
+ java.base@11.0.16.1/java.math.BigInteger.implMontgomerySquare(BigInteger.java:2854)
+ java.base@11.0.16.1/java.math.BigInteger.montgomerySquare(BigInteger.java:2810)
+ java.base@11.0.16.1/java.math.BigInteger.oddModPow(BigInteger.java:3080)
+ java.base@11.0.16.1/java.math.BigInteger.modPow(BigInteger.java:2741)
+ java.base@11.0.16.1/sun.security.rsa.RSACore.crypt(RSACore.java:134)
+ java.base@11.0.16.1/sun.security.rsa.RSACore.rsa(RSACore.java:100)
+ java.base@11.0.16.1/sun.security.rsa.RSAPSSSignature.engineVerify(RSAPSSSignature.java:444)
+ java.base@11.0.16.1/java.security.Signature$Delegate.engineVerify(Signature.java:1416)
+ java.base@11.0.16.1/java.security.Signature.verify(Signature.java:790)
+ java.base@11.0.16.1/sun.security.ssl.CertificateVerify$T13CertificateVerifyMessage.<init>(CertificateVerify.java:1008)
+ java.base@11.0.16.1/sun.security.ssl.CertificateVerify$T13CertificateVerifyConsumer.consume(CertificateVerify.java:1160)
+ java.base@11.0.16.1/sun.security.ssl.SSLHandshake.consume(SSLHandshake.java:392)
+ java.base@11.0.16.1/sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:443)
+ java.base@11.0.16.1/sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:421)
+ java.base@11.0.16.1/sun.security.ssl.TransportContext.dispatch(TransportContext.java:183)
+ java.base@11.0.16.1/sun.security.ssl.SSLTransport.decode(SSLTransport.java:172)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl.decode(SSLSocketImpl.java:1506)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl.readHandshakeRecord(SSLSocketImpl.java:1416)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:456)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl.ensureNegotiated(SSLSocketImpl.java:921)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl$AppOutputStream.write(SSLSocketImpl.java:1291)
+ app//com.mongodb.internal.connection.SocketStream.write(SocketStream.java:99)
+ app//com.mongodb.internal.connection.InternalStreamConnection.sendMessage(InternalStreamConnection.java:552)
+ app//com.mongodb.internal.connection.InternalStreamConnection.sendCommandMessage(InternalStreamConnection.java:381)
+ app//com.mongodb.internal.connection.InternalStreamConnection.sendAndReceive(InternalStreamConnection.java:329)
+ app//com.mongodb.internal.connection.CommandHelper.sendAndReceive(CommandHelper.java:101)
+ app//com.mongodb.internal.connection.CommandHelper.executeCommand(CommandHelper.java:45)
+ app//com.mongodb.internal.connection.InternalStreamConnectionInitializer.initializeConnectionDescription(InternalStreamConnectionInitializer.java:131)
+ app//com.mongodb.internal.connection.InternalStreamConnectionInitializer.startHandshake(InternalStreamConnectionInitializer.java:73)
+ app//com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:182)
+ app//com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:193)
+ app//com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:157)
+ java.base@11.0.16.1/java.lang.Thread.run(Thread.java:829)
+WARN -- 2023-03-09 20:43:31.536 [main] org.apache.catalina.loader.WebappClassLoaderBase -- The web application [ROOT] appears to have started a thread named [cluster-rtt-ClusterId{value='640a36e256649414f81a407d', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.16.1/sun.security.ssl.Finished$VerifyDataScheme.<clinit>(Finished.java:170)
+ java.base@11.0.16.1/sun.security.ssl.Finished$FinishedMessage.<init>(Finished.java:114)
+ java.base@11.0.16.1/sun.security.ssl.Finished$T13FinishedConsumer.onConsumeFinished(Finished.java:896)
+ java.base@11.0.16.1/sun.security.ssl.Finished$T13FinishedConsumer.consume(Finished.java:874)
+ java.base@11.0.16.1/sun.security.ssl.SSLHandshake.consume(SSLHandshake.java:392)
+ java.base@11.0.16.1/sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:443)
+ java.base@11.0.16.1/sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:421)
+ java.base@11.0.16.1/sun.security.ssl.TransportContext.dispatch(TransportContext.java:183)
+ java.base@11.0.16.1/sun.security.ssl.SSLTransport.decode(SSLTransport.java:172)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl.decode(SSLSocketImpl.java:1506)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl.readHandshakeRecord(SSLSocketImpl.java:1416)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:456)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl.ensureNegotiated(SSLSocketImpl.java:921)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl$AppOutputStream.write(SSLSocketImpl.java:1291)
+ app//com.mongodb.internal.connection.SocketStream.write(SocketStream.java:99)
+ app//com.mongodb.internal.connection.InternalStreamConnection.sendMessage(InternalStreamConnection.java:552)
+ app//com.mongodb.internal.connection.InternalStreamConnection.sendCommandMessage(InternalStreamConnection.java:381)
+ app//com.mongodb.internal.connection.InternalStreamConnection.sendAndReceive(InternalStreamConnection.java:329)
+ app//com.mongodb.internal.connection.CommandHelper.sendAndReceive(CommandHelper.java:101)
+ app//com.mongodb.internal.connection.CommandHelper.executeCommand(CommandHelper.java:45)
+ app//com.mongodb.internal.connection.InternalStreamConnectionInitializer.initializeConnectionDescription(InternalStreamConnectionInitializer.java:131)
+ app//com.mongodb.internal.connection.InternalStreamConnectionInitializer.startHandshake(InternalStreamConnectionInitializer.java:73)
+ app//com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:182)
+ app//com.mongodb.internal.connection.DefaultServerMonitor$RoundTripTimeRunnable.initialize(DefaultServerMonitor.java:427)
+ app//com.mongodb.internal.connection.DefaultServerMonitor$RoundTripTimeRunnable.run(DefaultServerMonitor.java:405)
+ java.base@11.0.16.1/java.lang.Thread.run(Thread.java:829)
+WARN -- 2023-03-09 20:43:31.539 [main] org.apache.catalina.loader.WebappClassLoaderBase -- The web application [ROOT] appears to have started a thread named [cluster-ClusterId{value='640a36e256649414f81a407d', description='null'}-cluster0-shard-00-00.4cxev.mongodb.net:27017] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.16.1/sun.security.util.MemoryCache.put(Cache.java:372)
+ java.base@11.0.16.1/sun.security.ssl.SSLSessionContextImpl.put(SSLSessionContextImpl.java:192)
+ java.base@11.0.16.1/sun.security.ssl.Finished$T13FinishedConsumer.onConsumeFinished(Finished.java:942)
+ java.base@11.0.16.1/sun.security.ssl.Finished$T13FinishedConsumer.consume(Finished.java:874)
+ java.base@11.0.16.1/sun.security.ssl.SSLHandshake.consume(SSLHandshake.java:392)
+ java.base@11.0.16.1/sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:443)
+ java.base@11.0.16.1/sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:421)
+ java.base@11.0.16.1/sun.security.ssl.TransportContext.dispatch(TransportContext.java:183)
+ java.base@11.0.16.1/sun.security.ssl.SSLTransport.decode(SSLTransport.java:172)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl.decode(SSLSocketImpl.java:1506)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl.readHandshakeRecord(SSLSocketImpl.java:1416)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:456)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl.ensureNegotiated(SSLSocketImpl.java:921)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl$AppOutputStream.write(SSLSocketImpl.java:1291)
+ app//com.mongodb.internal.connection.SocketStream.write(SocketStream.java:99)
+ app//com.mongodb.internal.connection.InternalStreamConnection.sendMessage(InternalStreamConnection.java:552)
+ app//com.mongodb.internal.connection.InternalStreamConnection.sendCommandMessage(InternalStreamConnection.java:381)
+ app//com.mongodb.internal.connection.InternalStreamConnection.sendAndReceive(InternalStreamConnection.java:329)
+ app//com.mongodb.internal.connection.CommandHelper.sendAndReceive(CommandHelper.java:101)
+ app//com.mongodb.internal.connection.CommandHelper.executeCommand(CommandHelper.java:45)
+ app//com.mongodb.internal.connection.InternalStreamConnectionInitializer.initializeConnectionDescription(InternalStreamConnectionInitializer.java:131)
+ app//com.mongodb.internal.connection.InternalStreamConnectionInitializer.startHandshake(InternalStreamConnectionInitializer.java:73)
+ app//com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:182)
+ app//com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:193)
+ app//com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:157)
+ java.base@11.0.16.1/java.lang.Thread.run(Thread.java:829)
+WARN -- 2023-03-09 20:43:31.540 [main] org.apache.catalina.loader.WebappClassLoaderBase -- The web application [ROOT] appears to have started a thread named [cluster-rtt-ClusterId{value='640a36e256649414f81a407d', description='null'}-cluster0-shard-00-00.4cxev.mongodb.net:27017] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.16.1/sun.security.ssl.SunX509KeyManagerImpl.getAliases(SunX509KeyManagerImpl.java:339)
+ java.base@11.0.16.1/sun.security.ssl.SunX509KeyManagerImpl.getClientAliases(SunX509KeyManagerImpl.java:314)
+ java.base@11.0.16.1/sun.security.ssl.SunX509KeyManagerImpl.chooseClientAlias(SunX509KeyManagerImpl.java:224)
+ java.base@11.0.16.1/sun.security.ssl.X509Authentication$X509PossessionGenerator.createClientPossession(X509Authentication.java:231)
+ java.base@11.0.16.1/sun.security.ssl.X509Authentication$X509PossessionGenerator.createPossession(X509Authentication.java:206)
+ java.base@11.0.16.1/sun.security.ssl.X509Authentication.createPossession(X509Authentication.java:90)
+ java.base@11.0.16.1/sun.security.ssl.CertificateMessage$T13CertificateProducer.choosePossession(CertificateMessage.java:1081)
+ java.base@11.0.16.1/sun.security.ssl.CertificateMessage$T13CertificateProducer.onProduceCertificate(CertificateMessage.java:1102)
+ java.base@11.0.16.1/sun.security.ssl.CertificateMessage$T13CertificateProducer.produce(CertificateMessage.java:958)
+ java.base@11.0.16.1/sun.security.ssl.SSLHandshake.produce(SSLHandshake.java:436)
+ java.base@11.0.16.1/sun.security.ssl.Finished$T13FinishedConsumer.onConsumeFinished(Finished.java:1011)
+ java.base@11.0.16.1/sun.security.ssl.Finished$T13FinishedConsumer.consume(Finished.java:874)
+ java.base@11.0.16.1/sun.security.ssl.SSLHandshake.consume(SSLHandshake.java:392)
+ java.base@11.0.16.1/sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:443)
+ java.base@11.0.16.1/sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:421)
+ java.base@11.0.16.1/sun.security.ssl.TransportContext.dispatch(TransportContext.java:183)
+ java.base@11.0.16.1/sun.security.ssl.SSLTransport.decode(SSLTransport.java:172)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl.decode(SSLSocketImpl.java:1506)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl.readHandshakeRecord(SSLSocketImpl.java:1416)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:456)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl.ensureNegotiated(SSLSocketImpl.java:921)
+ java.base@11.0.16.1/sun.security.ssl.SSLSocketImpl$AppOutputStream.write(SSLSocketImpl.java:1291)
+ app//com.mongodb.internal.connection.SocketStream.write(SocketStream.java:99)
+ app//com.mongodb.internal.connection.InternalStreamConnection.sendMessage(InternalStreamConnection.java:552)
+ app//com.mongodb.internal.connection.InternalStreamConnection.sendCommandMessage(InternalStreamConnection.java:381)
+ app//com.mongodb.internal.connection.InternalStreamConnection.sendAndReceive(InternalStreamConnection.java:329)
+ app//com.mongodb.internal.connection.CommandHelper.sendAndReceive(CommandHelper.java:101)
+ app//com.mongodb.internal.connection.CommandHelper.executeCommand(CommandHelper.java:45)
+ app//com.mongodb.internal.connection.InternalStreamConnectionInitializer.initializeConnectionDescription(InternalStreamConnectionInitializer.java:131)
+ app//com.mongodb.internal.connection.InternalStreamConnectionInitializer.startHandshake(InternalStreamConnectionInitializer.java:73)
+ app//com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:182)
+ app//com.mongodb.internal.connection.DefaultServerMonitor$RoundTripTimeRunnable.initialize(DefaultServerMonitor.java:427)
+ app//com.mongodb.internal.connection.DefaultServerMonitor$RoundTripTimeRunnable.run(DefaultServerMonitor.java:405)
+ java.base@11.0.16.1/java.lang.Thread.run(Thread.java:829)
+WARN -- 2023-03-09 20:43:31.543 [main] org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext -- Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server; nested exception is org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+INFO -- 2023-03-09 20:43:31.561 [main] org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener -- 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+ERROR-- 2023-03-09 20:43:31.591 [main] org.springframework.boot.SpringApplication -- Application run failed
+org.springframework.context.ApplicationContextException: Unable to start web server; nested exception is org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:165) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:577) ~[spring-context-5.3.24.jar:5.3.24]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.7.6.jar:2.7.6]
+	at pavlo.pro.massagetherapyapi.MassageTherapyApiApplication.main(MassageTherapyApiApplication.java:9) ~[classes/:?]
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:142) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:104) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:479) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:211) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:184) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:162) ~[spring-boot-2.7.6.jar:2.7.6]
+	... 8 more
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authenticationJwtTokenFilter': Unsatisfied dependency expressed through field 'jwtUtils'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jwtUtils': Injection of autowired dependencies failed; nested exception is com.ulisesbocchio.jasyptspringboot.exception.DecryptionException: Unable to decrypt property: ENC(0puHOZAwnDXAJZI+h1QToC8EFGgH6EeDwZpkkQdHTbtG2syxEdKK8bt5WRc7+CjW)J@Nc1) resolved to: ENC(0puHOZAwnDXAJZI+h1QToC8EFGgH6EeDwZpkkQdHTbtG2syxEdKK8bt5WRc7+CjW)J@Nc1). Decryption of Properties failed,  make sure encryption/decryption passwords match
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:660) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:213) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:212) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:175) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:170) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:155) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:87) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:262) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:236) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:53) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5211) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1393) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1383) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264) ~[?:?]
+	at java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140) ~[?:?]
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:916) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:835) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1393) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1383) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264) ~[?:?]
+	at java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140) ~[?:?]
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:916) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:265) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:430) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:930) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:486) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:123) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:104) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:479) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:211) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:184) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:162) ~[spring-boot-2.7.6.jar:2.7.6]
+	... 8 more
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jwtUtils': Injection of autowired dependencies failed; nested exception is com.ulisesbocchio.jasyptspringboot.exception.DecryptionException: Unable to decrypt property: ENC(0puHOZAwnDXAJZI+h1QToC8EFGgH6EeDwZpkkQdHTbtG2syxEdKK8bt5WRc7+CjW)J@Nc1) resolved to: ENC(0puHOZAwnDXAJZI+h1QToC8EFGgH6EeDwZpkkQdHTbtG2syxEdKK8bt5WRc7+CjW)J@Nc1). Decryption of Properties failed,  make sure encryption/decryption passwords match
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:405) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:657) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:213) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:212) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:175) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:170) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:155) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:87) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:262) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:236) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:53) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5211) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1393) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1383) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264) ~[?:?]
+	at java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140) ~[?:?]
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:916) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:835) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1393) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1383) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264) ~[?:?]
+	at java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140) ~[?:?]
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:916) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:265) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:430) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:930) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:486) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:123) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:104) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:479) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:211) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:184) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:162) ~[spring-boot-2.7.6.jar:2.7.6]
+	... 8 more
+Caused by: com.ulisesbocchio.jasyptspringboot.exception.DecryptionException: Unable to decrypt property: ENC(0puHOZAwnDXAJZI+h1QToC8EFGgH6EeDwZpkkQdHTbtG2syxEdKK8bt5WRc7+CjW)J@Nc1) resolved to: ENC(0puHOZAwnDXAJZI+h1QToC8EFGgH6EeDwZpkkQdHTbtG2syxEdKK8bt5WRc7+CjW)J@Nc1). Decryption of Properties failed,  make sure encryption/decryption passwords match
+	at com.ulisesbocchio.jasyptspringboot.resolver.DefaultPropertyResolver.lambda$resolvePropertyValue$0(DefaultPropertyResolver.java:63) ~[jasypt-spring-boot-3.0.5.jar:?]
+	at java.util.Optional.map(Optional.java:265) ~[?:?]
+	at com.ulisesbocchio.jasyptspringboot.resolver.DefaultPropertyResolver.resolvePropertyValue(DefaultPropertyResolver.java:57) ~[jasypt-spring-boot-3.0.5.jar:?]
+	at com.ulisesbocchio.jasyptspringboot.resolver.DefaultLazyPropertyResolver.resolvePropertyValue(DefaultLazyPropertyResolver.java:69) ~[jasypt-spring-boot-3.0.5.jar:?]
+	at com.ulisesbocchio.jasyptspringboot.caching.CachingDelegateEncryptablePropertySource.getProperty(CachingDelegateEncryptablePropertySource.java:74) ~[jasypt-spring-boot-3.0.5.jar:?]
+	at com.ulisesbocchio.jasyptspringboot.wrapper.EncryptableMapPropertySourceWrapper.getProperty(EncryptableMapPropertySourceWrapper.java:40) ~[jasypt-spring-boot-3.0.5.jar:?]
+	at org.springframework.core.env.PropertySourcesPropertyResolver.getProperty(PropertySourcesPropertyResolver.java:85) ~[spring-core-5.3.24.jar:5.3.24]
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertyResolver$DefaultResolver.getProperty(ConfigurationPropertySourcesPropertyResolver.java:123) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertyResolver.findPropertyValue(ConfigurationPropertySourcesPropertyResolver.java:97) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertyResolver.getProperty(ConfigurationPropertySourcesPropertyResolver.java:74) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertyResolver.getProperty(ConfigurationPropertySourcesPropertyResolver.java:60) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.core.env.AbstractEnvironment.getProperty(AbstractEnvironment.java:594) ~[spring-core-5.3.24.jar:5.3.24]
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer$1.getProperty(PropertySourcesPlaceholderConfigurer.java:153) ~[spring-context-5.3.24.jar:5.3.24]
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer$1.getProperty(PropertySourcesPlaceholderConfigurer.java:149) ~[spring-context-5.3.24.jar:5.3.24]
+	at org.springframework.core.env.PropertySourcesPropertyResolver.getProperty(PropertySourcesPropertyResolver.java:85) ~[spring-core-5.3.24.jar:5.3.24]
+	at org.springframework.core.env.PropertySourcesPropertyResolver.getPropertyAsRawString(PropertySourcesPropertyResolver.java:74) ~[spring-core-5.3.24.jar:5.3.24]
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:153) ~[spring-core-5.3.24.jar:5.3.24]
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126) ~[spring-core-5.3.24.jar:5.3.24]
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:239) ~[spring-core-5.3.24.jar:5.3.24]
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:210) ~[spring-core-5.3.24.jar:5.3.24]
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:191) ~[spring-context-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:936) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1332) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:657) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:657) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:213) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:212) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:175) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:170) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:155) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:87) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:262) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:236) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:53) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5211) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1393) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1383) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264) ~[?:?]
+	at java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140) ~[?:?]
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:916) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:835) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1393) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1383) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264) ~[?:?]
+	at java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140) ~[?:?]
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:916) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:265) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:430) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:930) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:486) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:123) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:104) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:479) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:211) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:184) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:162) ~[spring-boot-2.7.6.jar:2.7.6]
+	... 8 more
+Caused by: org.jasypt.exceptions.EncryptionOperationNotPossibleException
+	at org.jasypt.encryption.pbe.StandardPBEByteEncryptor.decrypt(StandardPBEByteEncryptor.java:1169) ~[jasypt-1.9.3.jar:?]
+	at org.jasypt.encryption.pbe.StandardPBEStringEncryptor.decrypt(StandardPBEStringEncryptor.java:738) ~[jasypt-1.9.3.jar:?]
+	at org.jasypt.encryption.pbe.PooledPBEStringEncryptor.decrypt(PooledPBEStringEncryptor.java:511) ~[jasypt-1.9.3.jar:?]
+	at com.ulisesbocchio.jasyptspringboot.encryptor.DefaultLazyEncryptor.decrypt(DefaultLazyEncryptor.java:73) ~[jasypt-spring-boot-3.0.5.jar:?]
+	at com.ulisesbocchio.jasyptspringboot.resolver.DefaultPropertyResolver.lambda$resolvePropertyValue$0(DefaultPropertyResolver.java:61) ~[jasypt-spring-boot-3.0.5.jar:?]
+	at java.util.Optional.map(Optional.java:265) ~[?:?]
+	at com.ulisesbocchio.jasyptspringboot.resolver.DefaultPropertyResolver.resolvePropertyValue(DefaultPropertyResolver.java:57) ~[jasypt-spring-boot-3.0.5.jar:?]
+	at com.ulisesbocchio.jasyptspringboot.resolver.DefaultLazyPropertyResolver.resolvePropertyValue(DefaultLazyPropertyResolver.java:69) ~[jasypt-spring-boot-3.0.5.jar:?]
+	at com.ulisesbocchio.jasyptspringboot.caching.CachingDelegateEncryptablePropertySource.getProperty(CachingDelegateEncryptablePropertySource.java:74) ~[jasypt-spring-boot-3.0.5.jar:?]
+	at com.ulisesbocchio.jasyptspringboot.wrapper.EncryptableMapPropertySourceWrapper.getProperty(EncryptableMapPropertySourceWrapper.java:40) ~[jasypt-spring-boot-3.0.5.jar:?]
+	at org.springframework.core.env.PropertySourcesPropertyResolver.getProperty(PropertySourcesPropertyResolver.java:85) ~[spring-core-5.3.24.jar:5.3.24]
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertyResolver$DefaultResolver.getProperty(ConfigurationPropertySourcesPropertyResolver.java:123) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertyResolver.findPropertyValue(ConfigurationPropertySourcesPropertyResolver.java:97) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertyResolver.getProperty(ConfigurationPropertySourcesPropertyResolver.java:74) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertyResolver.getProperty(ConfigurationPropertySourcesPropertyResolver.java:60) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.core.env.AbstractEnvironment.getProperty(AbstractEnvironment.java:594) ~[spring-core-5.3.24.jar:5.3.24]
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer$1.getProperty(PropertySourcesPlaceholderConfigurer.java:153) ~[spring-context-5.3.24.jar:5.3.24]
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer$1.getProperty(PropertySourcesPlaceholderConfigurer.java:149) ~[spring-context-5.3.24.jar:5.3.24]
+	at org.springframework.core.env.PropertySourcesPropertyResolver.getProperty(PropertySourcesPropertyResolver.java:85) ~[spring-core-5.3.24.jar:5.3.24]
+	at org.springframework.core.env.PropertySourcesPropertyResolver.getPropertyAsRawString(PropertySourcesPropertyResolver.java:74) ~[spring-core-5.3.24.jar:5.3.24]
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:153) ~[spring-core-5.3.24.jar:5.3.24]
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126) ~[spring-core-5.3.24.jar:5.3.24]
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:239) ~[spring-core-5.3.24.jar:5.3.24]
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:210) ~[spring-core-5.3.24.jar:5.3.24]
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:191) ~[spring-context-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:936) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1332) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:657) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:657) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:213) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:212) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:175) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:170) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:155) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:87) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:262) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:236) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:53) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5211) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1393) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1383) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264) ~[?:?]
+	at java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140) ~[?:?]
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:916) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:835) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1393) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1383) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264) ~[?:?]
+	at java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140) ~[?:?]
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:916) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:265) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:430) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:930) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:486) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:123) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:104) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:479) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:211) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:184) ~[spring-boot-2.7.6.jar:2.7.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:162) ~[spring-boot-2.7.6.jar:2.7.6]
+	... 8 more
