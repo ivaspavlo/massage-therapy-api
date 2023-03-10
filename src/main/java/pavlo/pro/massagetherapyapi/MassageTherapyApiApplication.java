@@ -13,3 +13,4 @@ public class MassageTherapyApiApplication {
 // Terminal commands
 // mvn spring-boot:run -Dspring-boot.run.profiles=dev
 // mvn jasypt:encrypt -Djasypt.encryptor.password=...
+//  mvn jasypt:encrypt -Djasypt.encryptor.password=buzhenitsa -Djasypt.plugin.path="file:src/main/resources/application-prod.properties"
