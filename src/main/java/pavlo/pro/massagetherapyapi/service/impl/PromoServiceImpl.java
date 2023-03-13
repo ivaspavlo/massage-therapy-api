@@ -23,6 +23,10 @@ public class PromoServiceImpl implements PromoService {
         return promoRepository.insert(new Promo(generatePromoCode()));
     }
 
+    public Promo getPromo(String code) {
+        return promoRepository.findByCode(code);
+    }
+
     private String generatePromoCode() {
         char[] chars = "ABCDEFGHIJKLMNOPRQRSTUVWXYZ1234567890".toCharArray();
         StringBuilder sb = new StringBuilder();
