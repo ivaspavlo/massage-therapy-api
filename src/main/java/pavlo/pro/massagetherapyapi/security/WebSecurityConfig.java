@@ -63,6 +63,7 @@ public class WebSecurityConfig {
         http.authorizeRequests()
             .antMatchers("/api/v1/user/auth/**").permitAll()
             .antMatchers("/api/test/**").permitAll()
+            .antMatchers("/swagger-ui").permitAll()
             .antMatchers("/api/v1/product/**").hasAuthority(ERole.ROLE_ADMIN.toString())
             .antMatchers("/api/v1/role/**").hasAuthority(ERole.ROLE_ADMIN.toString())
             // All other endpoints are private
