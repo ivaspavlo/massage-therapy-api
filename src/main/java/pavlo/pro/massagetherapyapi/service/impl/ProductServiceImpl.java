@@ -62,10 +62,18 @@ public class ProductServiceImpl implements ProductService {
         if (updateProductReq.getPrice() != null) {
             product.setPrice(updateProductReq.getPrice());
         }
-        return productRepository.save(product);
+        Product updatedProduct = productRepository.save(product);
+        log.info(
+            "Updated product with title: {}; and id: {}; with value: {}",
+            updatedProduct.getTitle(),
+            updatedProduct.getId(),
+            updateProductReq
+        );
+        return updatedProduct;
     }
 
     public Page<Product> getProducts(Pageable paging) {
+        log.info("Get products with page size: {}; offset: {}", paging.getPageSize(), paging.getOffset());
         return productRepository.findAll(paging);
     }
 
@@ -74,6 +82,7 @@ public class ProductServiceImpl implements ProductService {
         if (productOptional.isEmpty()) {
             throw exception(PRODUCT, ENTITY_NOT_FOUND, productId);
         }
+        log.info("Get product by id: {}", productId);
         return productOptional.get();
     }
 
