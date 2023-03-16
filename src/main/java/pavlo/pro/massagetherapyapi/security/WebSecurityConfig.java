@@ -19,6 +19,14 @@ import pavlo.pro.massagetherapyapi.model.enums.ERole;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig {
 
+    private static final String[] AUTH_WHITELIST = {
+        "/authenticate",
+        "/swagger-resources/**",
+        "/swagger-ui/**",
+        "/v3/api-docs",
+        "/webjars/**"
+    };
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -59,11 +67,13 @@ public class WebSecurityConfig {
         // Set unauthorized requests exception handler
         http.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and();
 
+        // Authorize Swagger requests
+        http.authorizeRequests().antMatchers(AUTH_WHITELIST).permitAll();
+
         // Set permissions on endpoints
         http.authorizeRequests()
             .antMatchers("/api/v1/user/auth/**").permitAll()
             .antMatchers("/api/test/**").permitAll()
-            .antMatchers("/swagger-ui").permitAll()
             .antMatchers("/api/v1/product/**").hasAuthority(ERole.ROLE_ADMIN.toString())
             .antMatchers("/api/v1/role/**").hasAuthority(ERole.ROLE_ADMIN.toString())
             // All other endpoints are private
