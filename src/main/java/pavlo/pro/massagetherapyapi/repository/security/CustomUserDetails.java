@@ -1,4 +1,4 @@
-package pavlo.pro.massagetherapyapi.security;
+package pavlo.pro.massagetherapyapi.repository.security;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
