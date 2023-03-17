@@ -12,7 +12,7 @@ import pavlo.pro.massagetherapyapi.exception.ExceptionType;
 import pavlo.pro.massagetherapyapi.model.BookingSlot;
 import pavlo.pro.massagetherapyapi.model.Product;
 import pavlo.pro.massagetherapyapi.repository.BookingSlotRepository;
-import pavlo.pro.massagetherapyapi.security.CustomUserDetails;
+import pavlo.pro.massagetherapyapi.repository.security.CustomUserDetails;
 import pavlo.pro.massagetherapyapi.service.BookingService;
 import pavlo.pro.massagetherapyapi.service.ProductService;
 
@@ -40,7 +40,7 @@ public class BookingServiceImpl implements BookingService {
         LocalDateTime dateTo = dateFrom.plusMonths(monthQty);
         List<BookingSlot> foundSlots = bookingSlotRepository.getBookingSlotsPerMassageId(dateFrom, dateTo, massageId);
         log.info(
-            "Search for BookingSlot instances with a massage ID: {}, found instances: {}",
+            "Searched for BookingSlot instances with a massage ID: {}, found instances: {}",
             massageId,
             foundSlots.stream().map(s -> s.getId())
         );
@@ -61,7 +61,7 @@ public class BookingServiceImpl implements BookingService {
         BookingSlot newBookingSlot = mapBookingSlotFromDto(bookingSlotsDto, massageId, userId, timeZone.getID());
         try {
             BookingSlot created = bookingSlotRepository.insert(newBookingSlot);
-            log.info("Create instance of BookingSlot with id: {}", created.getId());
+            log.info("Created instance of BookingSlot with id: {}", created.getId());
             return created;
         } catch (Exception exception) {
             throw exception(EntityType.PRODUCT, ExceptionType.DATABASE_EXCEPTION);
@@ -73,7 +73,7 @@ public class BookingServiceImpl implements BookingService {
     ) throws RuntimeException {
         try {
             bookingSlotRepository.deleteById(bookingSlotId);
-            log.info("Delete instance of BookingSlot with id: {}", bookingSlotId);
+            log.info("Deleted instance of BookingSlot with id: {}", bookingSlotId);
             return true;
         } catch (Exception error) {
             throw exception(EntityType.PRODUCT, ExceptionType.DATABASE_EXCEPTION);

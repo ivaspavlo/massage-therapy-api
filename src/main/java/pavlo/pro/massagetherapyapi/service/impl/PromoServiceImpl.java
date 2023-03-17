@@ -20,10 +20,14 @@ public class PromoServiceImpl implements PromoService {
     private PromoRepository promoRepository;
 
     public Promo createPromo() {
-        return promoRepository.insert(new Promo(generatePromoCode()));
+        Promo created = promoRepository.insert(new Promo(generatePromoCode()));
+        log.info("Created instance of Promo with id: {}", created.getId());
+        return created;
     }
 
     public Promo getPromo(String code) {
+        Promo found = promoRepository.findByCode(code);
+        log.info("Found instance of Promo with id: {}", found.getId());
         return promoRepository.findByCode(code);
     }
 

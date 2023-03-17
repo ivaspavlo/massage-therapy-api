@@ -1,6 +1,7 @@
 package pavlo.pro.massagetherapyapi.service.impl;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
@@ -23,6 +24,7 @@ import java.util.Optional;
 
 import static pavlo.pro.massagetherapyapi.exception.EntityType.USER;
 
+@Slf4j
 @Component
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -45,9 +47,10 @@ public class UserServiceImpl implements UserService {
             .setPassword(passwordEncoder.encode(signupRequest.getPassword()))
             .setRoles(new HashSet<>(Arrays.asList(userRole)));
         try {
-            return userRepository.save(user);
+            User created = userRepository.save(user);
+            log.info("Created User with id: {}", created.getId());
+            return created;
         } catch (Exception exception) {
-            // TODO: implement logging functionality
             throw exception(USER, ExceptionType.ENTITY_EXCEPTION);
         }
     }
@@ -56,6 +59,7 @@ public class UserServiceImpl implements UserService {
     public User findUserByEmail(String email) throws RuntimeException {
         Optional<User> user = Optional.ofNullable(userRepository.findByEmail(email));
         if (user.isPresent()) {
+            log.info("Found User by email: {}; with id: {}", email, user.get().getId());
             return user.get();
         }
         throw exception(USER, ExceptionType.ENTITY_NOT_FOUND, email);
@@ -77,14 +81,18 @@ public class UserServiceImpl implements UserService {
         if (updateUserReq.getPhone() != null) {
             user.setPhone(updateUserReq.getPhone());
         }
-        return userRepository.save(user);
+        User updated = userRepository.save(user);
+        log.info("Updated User with id: {}; with value: {}", userId, updateUserReq);
+        return updated;
     }
 
     @Override
     public User changePassword(User userData, String newPassword) throws RuntimeException {
         User user = findUserByEmail(userData.getEmail());
         user.setPassword(passwordEncoder.encode(newPassword));
-        return userRepository.save(user);
+        User updated = userRepository.save(user);
+        log.info("Updated password for User with id: {}", userData.getId());
+        return updated;
     }
 
     private RuntimeException exception(EntityType entityType, ExceptionType exceptionType, String... args) {

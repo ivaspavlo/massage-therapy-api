@@ -1,6 +1,8 @@
 package pavlo.pro.massagetherapyapi.service.impl;
 
 import java.util.List;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pavlo.pro.massagetherapyapi.config.PropertiesConfig;
@@ -14,6 +16,7 @@ import pavlo.pro.massagetherapyapi.service.RoleService;
 
 import static pavlo.pro.massagetherapyapi.exception.EntityType.ROLE;
 
+@Slf4j
 @Component
 public class RoleServiceImpl implements RoleService {
 
@@ -33,7 +36,9 @@ public class RoleServiceImpl implements RoleService {
         }
         Role roleToCreate = new Role().setName(roleName);
         try {
-            return roleRepository.insert(roleToCreate);
+            Role created = roleRepository.insert(roleToCreate);
+            log.info("Created instance of Role with id: {}", created.getId());
+            return created;
         } catch(Exception exception) {
             throw exception(ROLE, ExceptionType.ENTITY_EXCEPTION);
         }
@@ -41,7 +46,9 @@ public class RoleServiceImpl implements RoleService {
 
     public List<Role> getAllRoles() throws RuntimeException {
         try {
-            return roleRepository.findAll();
+            List<Role> foundRoles = roleRepository.findAll();
+            log.info("Found all instances of Role, quantity: {}", foundRoles.size());
+            return foundRoles;
         } catch(Exception exception) {
             throw exception(ROLE, ExceptionType.ENTITY_EXCEPTION);
         }
@@ -49,7 +56,9 @@ public class RoleServiceImpl implements RoleService {
 
     public Role findRoleByName(String roleName) throws RuntimeException {
         try {
-            return roleRepository.findByName(roleName);
+            Role found = roleRepository.findByName(roleName);
+            log.info("Found instance of Role by name: {}; with id: {}", found.getName(), found.getId());
+            return found;
         } catch(Exception exception) {
             throw exception(ROLE, ExceptionType.ENTITY_NOT_FOUND, roleName);
         }
