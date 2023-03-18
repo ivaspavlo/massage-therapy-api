@@ -10,8 +10,12 @@ import java.util.Optional;
 @Component
 public class AppException {
 
-    @Autowired
     private static PropertiesConfig propertiesConfig;
+
+    @Autowired
+    public AppException(PropertiesConfig propertiesConfig) {
+        AppException.propertiesConfig = propertiesConfig;
+    }
 
     public static RuntimeException throwException(EntityType entityType, ExceptionType exceptionType, String... args) {
         String messageTemplate = getMessageTemplate(entityType, exceptionType);
