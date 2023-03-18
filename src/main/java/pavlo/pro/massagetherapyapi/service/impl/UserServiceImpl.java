@@ -96,7 +96,7 @@ public class UserServiceImpl implements UserService {
     }
 
     private RuntimeException exception(EntityType entityType, ExceptionType exceptionType, String... args) {
-        return AppException.throwException(entityType, exceptionType, args);
+        return AppException.buildException(entityType, exceptionType, args);
     }
 
 }

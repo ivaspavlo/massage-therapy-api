@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import pavlo.pro.massagetherapyapi.config.PropertiesConfig;
 import pavlo.pro.massagetherapyapi.dto.RoleDto;
 import pavlo.pro.massagetherapyapi.exception.AppException;
-import pavlo.pro.massagetherapyapi.exception.EntityType;
 import pavlo.pro.massagetherapyapi.exception.ExceptionType;
 import pavlo.pro.massagetherapyapi.model.Role;
 import pavlo.pro.massagetherapyapi.repository.RoleRepository;
@@ -32,7 +31,7 @@ public class RoleServiceImpl implements RoleService {
         String roleName = propertiesConfig.getConfigValue(roleNamePrefix) + newRole.getName().toUpperCase();
         Role existingRole = roleRepository.findByName(roleName);
         if (existingRole != null) {
-            throw exception(ROLE, ExceptionType.DUPLICATE_ENTITY, newRole.getName());
+            throw AppException.buildException(ROLE, ExceptionType.DUPLICATE_ENTITY, newRole.getName());
         }
         Role roleToCreate = new Role().setName(roleName);
         try {
@@ -40,7 +39,7 @@ public class RoleServiceImpl implements RoleService {
             log.info("Created instance of Role with id: {}", created.getId());
             return created;
         } catch(Exception exception) {
-            throw exception(ROLE, ExceptionType.ENTITY_EXCEPTION);
+            throw AppException.buildException(ROLE, ExceptionType.ENTITY_EXCEPTION);
         }
     }
 
@@ -50,7 +49,7 @@ public class RoleServiceImpl implements RoleService {
             log.info("Found all instances of Role, quantity: {}", foundRoles.size());
             return foundRoles;
         } catch(Exception exception) {
-            throw exception(ROLE, ExceptionType.ENTITY_EXCEPTION);
+            throw AppException.buildException(ROLE, ExceptionType.ENTITY_EXCEPTION);
         }
     }
 
@@ -60,13 +59,8 @@ public class RoleServiceImpl implements RoleService {
             log.info("Found instance of Role by name: {}; with id: {}", found.getName(), found.getId());
             return found;
         } catch(Exception exception) {
-            throw exception(ROLE, ExceptionType.ENTITY_NOT_FOUND, roleName);
+            throw AppException.buildException(ROLE, ExceptionType.ENTITY_NOT_FOUND, roleName);
         }
-    }
-
-    // TODO: move to utils
-    private RuntimeException exception(EntityType entityType, ExceptionType exceptionType, String... args) {
-        return AppException.throwException(entityType, exceptionType, args);
     }
 
 }
