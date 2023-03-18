@@ -12,7 +12,7 @@ import pavlo.pro.massagetherapyapi.exception.ExceptionType;
 import pavlo.pro.massagetherapyapi.model.BookingSlot;
 import pavlo.pro.massagetherapyapi.model.Product;
 import pavlo.pro.massagetherapyapi.repository.BookingSlotRepository;
-import pavlo.pro.massagetherapyapi.repository.security.CustomUserDetails;
+import pavlo.pro.massagetherapyapi.security.CustomUserDetails;
 import pavlo.pro.massagetherapyapi.service.BookingService;
 import pavlo.pro.massagetherapyapi.service.ProductService;
 

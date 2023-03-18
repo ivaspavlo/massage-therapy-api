@@ -4,6 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -25,10 +27,17 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
     }
 
     @ExceptionHandler(AppException.DuplicateEntityException.class)
-    public final ResponseEntity handleNotFountExceptions1(Exception ex, WebRequest request) {
+    public final ResponseEntity handleNotFoundExceptions(Exception ex, WebRequest request) {
         Response response = Response.duplicateEntity();
         response.addErrorMsgToResponse(ex.getMessage(), ex);
         return new ResponseEntity(response, HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(BadCredentialsException.class)
+    public final ResponseEntity handleWrongCredentialsExceptions(BadCredentialsException ex, WebRequest request) {
+        Response response = Response.wrongCredentials();
+        response.addErrorMsgToResponse(ex.getMessage(), ex);
+        return new ResponseEntity(response, HttpStatus.FORBIDDEN);
     }
 
     @ExceptionHandler(Exception.class)

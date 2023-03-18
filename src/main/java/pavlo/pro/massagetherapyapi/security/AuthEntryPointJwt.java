@@ -1,4 +1,4 @@
-package pavlo.pro.massagetherapyapi.repository.security;
+package pavlo.pro.massagetherapyapi.security;
 
 import java.io.IOException;
 
