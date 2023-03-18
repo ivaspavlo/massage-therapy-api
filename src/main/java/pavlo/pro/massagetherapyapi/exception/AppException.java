@@ -17,12 +17,8 @@ public class AppException {
         AppException.propertiesConfig = propertiesConfig;
     }
 
-    public static RuntimeException throwException(EntityType entityType, ExceptionType exceptionType, String... args) {
+    public static RuntimeException buildException(EntityType entityType, ExceptionType exceptionType, String... args) {
         String messageTemplate = getMessageTemplate(entityType, exceptionType);
-        return throwException(exceptionType, messageTemplate, args);
-    }
-
-    private static RuntimeException throwException(ExceptionType exceptionType, String messageTemplate, String... args) {
         if (ExceptionType.ENTITY_NOT_FOUND.equals(exceptionType)) {
             return new EntityNotFoundException(format(messageTemplate, args));
         } else if (ExceptionType.DUPLICATE_ENTITY.equals(exceptionType)) {

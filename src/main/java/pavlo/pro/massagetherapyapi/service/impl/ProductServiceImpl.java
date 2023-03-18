@@ -6,8 +6,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import pavlo.pro.massagetherapyapi.exception.AppException;
-import pavlo.pro.massagetherapyapi.exception.EntityType;
-import pavlo.pro.massagetherapyapi.exception.ExceptionType;
 import pavlo.pro.massagetherapyapi.model.Product;
 import pavlo.pro.massagetherapyapi.dto.request.CreateProductReq;
 import pavlo.pro.massagetherapyapi.dto.request.UpdateProductReq;
@@ -41,13 +39,13 @@ public class ProductServiceImpl implements ProductService {
             log.info("Created product with title: {}; and id: {}", created.getTitle(), created.getId());
             return created;
         }
-        throw exception(PRODUCT, DUPLICATE_ENTITY, createProductReq.getTitle());
+        throw AppException.buildException(PRODUCT, DUPLICATE_ENTITY, createProductReq.getTitle());
     }
 
     public Product updateProduct(String productId, UpdateProductReq updateProductReq) throws RuntimeException {
         Optional<Product> productOptional = productRepository.findById(productId);
         if (productOptional.isEmpty()) {
-            throw exception(PRODUCT, ENTITY_NOT_FOUND, productId);
+            throw AppException.buildException(PRODUCT, ENTITY_NOT_FOUND, productId);
         }
         Product product = productOptional.get();
         if (updateProductReq.getTitle() != null) {
@@ -81,13 +79,9 @@ public class ProductServiceImpl implements ProductService {
     public Product getProductById(String productId) {
         Optional<Product> productOptional = productRepository.findById(productId);
         if (productOptional.isEmpty()) {
-            throw exception(PRODUCT, ENTITY_NOT_FOUND, productId);
+            throw AppException.buildException(PRODUCT, ENTITY_NOT_FOUND, productId);
         }
         log.info("Found product by id: {}", productId);
         return productOptional.get();
-    }
-
-    private RuntimeException exception(EntityType entityType, ExceptionType exceptionType, String... args) {
-        return AppException.throwException(entityType, exceptionType, args);
     }
 }

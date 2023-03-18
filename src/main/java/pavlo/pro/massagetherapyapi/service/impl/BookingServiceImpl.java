@@ -54,7 +54,7 @@ public class BookingServiceImpl implements BookingService {
     ) throws RuntimeException {
         Product massage = productService.getProductById(massageId);
         if (massage == null) {
-            throw exception(EntityType.PRODUCT, ExceptionType.ENTITY_NOT_FOUND, massageId);
+            throw AppException.buildException(EntityType.PRODUCT, ExceptionType.ENTITY_NOT_FOUND, massageId);
         }
         CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String userId = userDetails.getId();
@@ -64,7 +64,7 @@ public class BookingServiceImpl implements BookingService {
             log.info("Created instance of BookingSlot with id: {}", created.getId());
             return created;
         } catch (Exception exception) {
-            throw exception(EntityType.PRODUCT, ExceptionType.DATABASE_EXCEPTION);
+            throw AppException.buildException(EntityType.PRODUCT, ExceptionType.DATABASE_EXCEPTION);
         }
     }
 
@@ -76,7 +76,7 @@ public class BookingServiceImpl implements BookingService {
             log.info("Deleted instance of BookingSlot with id: {}", bookingSlotId);
             return true;
         } catch (Exception error) {
-            throw exception(EntityType.PRODUCT, ExceptionType.DATABASE_EXCEPTION);
+            throw AppException.buildException(EntityType.PRODUCT, ExceptionType.DATABASE_EXCEPTION);
         }
     }
 
@@ -102,16 +102,8 @@ public class BookingServiceImpl implements BookingService {
                 .setUserId(userId)
                 .setTimeZone(timeZone);
         } catch (Exception exception) {
-            throw exception(EntityType.BOOKING_SLOT, ExceptionType.ENTITY_EXCEPTION);
+            throw AppException.buildException(EntityType.BOOKING_SLOT, ExceptionType.ENTITY_EXCEPTION);
         }
-    }
-
-    private RuntimeException exception(
-        EntityType entityType,
-        ExceptionType exceptionType,
-        String... args
-    ) {
-        return AppException.throwException(entityType, exceptionType, args);
     }
 
 }
