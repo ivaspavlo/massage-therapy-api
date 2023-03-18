@@ -38,6 +38,12 @@ public class Response<T> {
         return response;
     }
 
+    public static <T> Response<T> wrongCredentials() {
+        Response<T> response = new Response<>();
+        response.setStatus(Status.WRONG_CREDENTIALS);
+        return response;
+    }
+
     public void addErrorMsgToResponse(String errorMsg, Exception ex) {
         ResponseError error = new ResponseError()
             .setDetails(errorMsg)

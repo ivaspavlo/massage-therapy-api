@@ -1,5 +1,6 @@
-package pavlo.pro.massagetherapyapi.repository.security;
+package pavlo.pro.massagetherapyapi.security;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+@Slf4j
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
@@ -29,6 +31,7 @@ public class CustomUserDetailsService implements UserDetailsService {
             List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());
             return buildUserForAuthentication(user, authorities);
         } else {
+            log.info("Cannot find user with email: {}", email);
             throw new UsernameNotFoundException("User with email " + email + " does not exist.");
         }
     }
