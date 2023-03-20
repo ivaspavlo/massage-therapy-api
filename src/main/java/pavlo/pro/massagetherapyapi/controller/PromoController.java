@@ -19,12 +19,21 @@ public class PromoController {
         );
     }
 
-    @GetMapping("/{promo}")
+    @GetMapping
     public Response getPromo(
-        @PathVariable("id") String promo
+        @PathVariable("promoCode") String promoCode
     ) {
         return Response.ok().setPayload(
-            promoService.getPromo(promo)
+            promoService.getPromo(promoCode)
+        );
+    }
+
+    @DeleteMapping()
+    public Response deletePromo(
+        @PathVariable("promoCode") String promoCode
+    ) {
+        return Response.ok().setPayload(
+            promoService.deletePromo(promoCode)
         );
     }
 

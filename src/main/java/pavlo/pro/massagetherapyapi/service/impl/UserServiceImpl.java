@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 
 import pavlo.pro.massagetherapyapi.exception.AppException;
-import pavlo.pro.massagetherapyapi.exception.EntityType;
 import pavlo.pro.massagetherapyapi.exception.ExceptionType;
 import pavlo.pro.massagetherapyapi.model.enums.ERole;
 import pavlo.pro.massagetherapyapi.model.Role;
@@ -36,7 +35,7 @@ public class UserServiceImpl implements UserService {
     public User signup(SignupReq signupRequest) throws ResponseStatusException {
         User user = userRepository.findByEmail(signupRequest.getEmail());
         if (user != null) {
-            throw exception(USER, ExceptionType.DUPLICATE_ENTITY, signupRequest.getEmail());
+            throw AppException.buildException(USER, ExceptionType.DUPLICATE_ENTITY, signupRequest.getEmail());
         }
         Role userRole = roleRepository.findByName(ERole.ROLE_ADMIN.toString());
         user = new User()
@@ -51,7 +50,7 @@ public class UserServiceImpl implements UserService {
             log.info("Created User with id: {}", created.getId());
             return created;
         } catch (Exception exception) {
-            throw exception(USER, ExceptionType.ENTITY_EXCEPTION);
+            throw AppException.buildException(USER, ExceptionType.ENTITY_EXCEPTION);
         }
     }
 
@@ -62,14 +61,14 @@ public class UserServiceImpl implements UserService {
             log.info("Found User by email: {}; with id: {}", email, user.get().getId());
             return user.get();
         }
-        throw exception(USER, ExceptionType.ENTITY_NOT_FOUND, email);
+        throw AppException.buildException(USER, ExceptionType.ENTITY_NOT_FOUND, email);
     }
 
     @Override
     public User updateUser(String userId, UpdateUserReq updateUserReq) throws RuntimeException {
         Optional<User> userOptional = userRepository.findById(userId);
         if (userOptional.isEmpty()) {
-            throw exception(USER, ExceptionType.ENTITY_NOT_FOUND, userId);
+            throw AppException.buildException(USER, ExceptionType.ENTITY_NOT_FOUND, userId);
         }
         User user = userOptional.get();
         if (updateUserReq.getFirstName() != null) {
@@ -93,10 +92,6 @@ public class UserServiceImpl implements UserService {
         User updated = userRepository.save(user);
         log.info("Updated password for User with id: {}", userData.getId());
         return updated;
-    }
-
-    private RuntimeException exception(EntityType entityType, ExceptionType exceptionType, String... args) {
-        return AppException.buildException(entityType, exceptionType, args);
     }
 
 }
