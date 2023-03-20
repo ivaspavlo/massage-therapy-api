@@ -1,662 +1,107 @@
-INFO -- 2023-03-18 14:51:11.274 [background-preinit] org.hibernate.validator.internal.util.Version -- HV000001: Hibernate Validator 6.2.5.Final
-INFO -- 2023-03-18 14:51:11.345 [main] pavlo.pro.massagetherapyapi.MassageTherapyApiApplication -- Starting MassageTherapyApiApplication using Java 11.0.16.1 on Pavels-MacBook-Pro.local with PID 34140 (/Users/pavelivashchenko/Developer/massage-therapy-api/target/classes started by pavelivashchenko in /Users/pavelivashchenko/Developer/massage-therapy-api)
-INFO -- 2023-03-18 14:51:11.351 [main] pavlo.pro.massagetherapyapi.MassageTherapyApiApplication -- The following 1 profile is active: "prod"
-INFO -- 2023-03-18 14:51:12.351 [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate -- Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-INFO -- 2023-03-18 14:51:12.429 [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate -- Finished Spring Data repository scanning in 73 ms. Found 5 MongoDB repository interfaces.
-INFO -- 2023-03-18 14:51:12.768 [main] com.ulisesbocchio.jasyptspringboot.configuration.EnableEncryptablePropertiesBeanFactoryPostProcessor -- Post-processing PropertySource instances
-INFO -- 2023-03-18 14:51:12.771 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Skipping PropertySource configurationProperties [class org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource
-INFO -- 2023-03-18 14:51:12.771 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Skipping PropertySource servletConfigInitParams [class org.springframework.core.env.PropertySource$StubPropertySource
-INFO -- 2023-03-18 14:51:12.771 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Skipping PropertySource servletContextInitParams [class org.springframework.core.env.PropertySource$StubPropertySource
-INFO -- 2023-03-18 14:51:12.773 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource systemProperties [org.springframework.core.env.PropertiesPropertySource] to EncryptableMapPropertySourceWrapper
-INFO -- 2023-03-18 14:51:12.773 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource systemEnvironment [org.springframework.boot.env.SystemEnvironmentPropertySourceEnvironmentPostProcessor$OriginAwareSystemEnvironmentPropertySource] to EncryptableSystemEnvironmentPropertySourceWrapper
-INFO -- 2023-03-18 14:51:12.773 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource random [org.springframework.boot.env.RandomValuePropertySource] to EncryptablePropertySourceWrapper
-INFO -- 2023-03-18 14:51:12.773 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource Config resource 'class path resource [application-prod.properties]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
-INFO -- 2023-03-18 14:51:12.773 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource Config resource 'class path resource [application.properties]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
-INFO -- 2023-03-18 14:51:12.774 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource class path resource [custom.properties] [org.springframework.core.io.support.ResourcePropertySource] to EncryptableMapPropertySourceWrapper
-INFO -- 2023-03-18 14:51:13.035 [main] com.ulisesbocchio.jasyptspringboot.filter.DefaultLazyPropertyFilter -- Property Filter custom Bean not found with name 'encryptablePropertyFilter'. Initializing Default Property Filter
-INFO -- 2023-03-18 14:51:13.046 [main] com.ulisesbocchio.jasyptspringboot.resolver.DefaultLazyPropertyResolver -- Property Resolver custom Bean not found with name 'encryptablePropertyResolver'. Initializing Default Property Resolver
-INFO -- 2023-03-18 14:51:13.048 [main] com.ulisesbocchio.jasyptspringboot.detector.DefaultLazyPropertyDetector -- Property Detector custom Bean not found with name 'encryptablePropertyDetector'. Initializing Default Property Detector
-INFO -- 2023-03-18 14:51:13.198 [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer -- Tomcat initialized with port(s): 8080 (http)
-INFO -- 2023-03-18 14:51:13.212 [main] org.apache.coyote.http11.Http11NioProtocol -- Initializing ProtocolHandler ["http-nio-8080"]
-INFO -- 2023-03-18 14:51:13.213 [main] org.apache.catalina.core.StandardService -- Starting service [Tomcat]
-INFO -- 2023-03-18 14:51:13.213 [main] org.apache.catalina.core.StandardEngine -- Starting Servlet engine: [Apache Tomcat/9.0.69]
-INFO -- 2023-03-18 14:51:13.347 [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -- Initializing Spring embedded WebApplicationContext
-INFO -- 2023-03-18 14:51:13.347 [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext -- Root WebApplicationContext: initialization completed in 1942 ms
-INFO -- 2023-03-18 14:51:13.418 [main] com.ulisesbocchio.jasyptspringboot.encryptor.DefaultLazyEncryptor -- String Encryptor custom Bean not found with name 'jasyptStringEncryptor'. Initializing Default String Encryptor
-INFO -- 2023-03-18 14:51:13.431 [main] com.ulisesbocchio.jasyptspringboot.configuration.StringEncryptorBuilder -- Encryptor config not found for property jasypt.encryptor.algorithm, using default value: PBEWITHHMACSHA512ANDAES_256
-INFO -- 2023-03-18 14:51:13.431 [main] com.ulisesbocchio.jasyptspringboot.configuration.StringEncryptorBuilder -- Encryptor config not found for property jasypt.encryptor.key-obtention-iterations, using default value: 1000
-INFO -- 2023-03-18 14:51:13.432 [main] com.ulisesbocchio.jasyptspringboot.configuration.StringEncryptorBuilder -- Encryptor config not found for property jasypt.encryptor.pool-size, using default value: 1
-INFO -- 2023-03-18 14:51:13.432 [main] com.ulisesbocchio.jasyptspringboot.configuration.StringEncryptorBuilder -- Encryptor config not found for property jasypt.encryptor.provider-name, using default value: null
-INFO -- 2023-03-18 14:51:13.432 [main] com.ulisesbocchio.jasyptspringboot.configuration.StringEncryptorBuilder -- Encryptor config not found for property jasypt.encryptor.provider-class-name, using default value: null
-INFO -- 2023-03-18 14:51:13.433 [main] com.ulisesbocchio.jasyptspringboot.configuration.StringEncryptorBuilder -- Encryptor config not found for property jasypt.encryptor.salt-generator-classname, using default value: org.jasypt.salt.RandomSaltGenerator
-INFO -- 2023-03-18 14:51:13.434 [main] com.ulisesbocchio.jasyptspringboot.configuration.StringEncryptorBuilder -- Encryptor config not found for property jasypt.encryptor.iv-generator-classname, using default value: org.jasypt.iv.RandomIvGenerator
-INFO -- 2023-03-18 14:51:13.435 [main] com.ulisesbocchio.jasyptspringboot.configuration.StringEncryptorBuilder -- Encryptor config not found for property jasypt.encryptor.string-output-type, using default value: base64
-INFO -- 2023-03-18 14:51:13.708 [main] org.mongodb.driver.client -- MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "4.6.1"}, "os": {"type": "Darwin", "name": "Mac OS X", "architecture": "x86_64", "version": "10.15.7"}, "platform": "Java/Homebrew/11.0.16.1+0"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=majority, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=MongoCredential{mechanism=null, userName='stkachuk', source='admin', password=<hidden>, mechanismProperties=<hidden>}, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.Jep395RecordCodecProvider@619c3546]}, clusterSettings={hosts=[127.0.0.1:27017], srvHost=cluster0.4cxev.mongodb.net, srvServiceName=mongodb, mode=MULTIPLE, requiredClusterType=REPLICA_SET, requiredReplicaSetName='atlas-fo286n-shard-0', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='30000 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, sendBufferSize=0}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, sendBufferSize=0}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=true, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, contextProvider=null}
-INFO -- 2023-03-18 14:51:13.713 [cluster-ClusterId{value='6415c1d1f6f2932227af90f3', description='null'}-srv-cluster0.4cxev.mongodb.net] org.mongodb.driver.cluster -- Adding discovered server cluster0-shard-00-01.4cxev.mongodb.net:27017 to client view of cluster
-INFO -- 2023-03-18 14:51:13.739 [cluster-ClusterId{value='6415c1d1f6f2932227af90f3', description='null'}-srv-cluster0.4cxev.mongodb.net] org.mongodb.driver.cluster -- Adding discovered server cluster0-shard-00-02.4cxev.mongodb.net:27017 to client view of cluster
-INFO -- 2023-03-18 14:51:13.741 [cluster-ClusterId{value='6415c1d1f6f2932227af90f3', description='null'}-srv-cluster0.4cxev.mongodb.net] org.mongodb.driver.cluster -- Adding discovered server cluster0-shard-00-00.4cxev.mongodb.net:27017 to client view of cluster
-INFO -- 2023-03-18 14:51:14.365 [cluster-ClusterId{value='6415c1d1f6f2932227af90f3', description='null'}-cluster0-shard-00-01.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:3, serverValue:169337}] to cluster0-shard-00-01.4cxev.mongodb.net:27017
-INFO -- 2023-03-18 14:51:14.365 [cluster-ClusterId{value='6415c1d1f6f2932227af90f3', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:1, serverValue:172730}] to cluster0-shard-00-02.4cxev.mongodb.net:27017
-INFO -- 2023-03-18 14:51:14.365 [cluster-rtt-ClusterId{value='6415c1d1f6f2932227af90f3', description='null'}-cluster0-shard-00-00.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:6, serverValue:170493}] to cluster0-shard-00-00.4cxev.mongodb.net:27017
-INFO -- 2023-03-18 14:51:14.365 [cluster-rtt-ClusterId{value='6415c1d1f6f2932227af90f3', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:5, serverValue:172730}] to cluster0-shard-00-02.4cxev.mongodb.net:27017
-INFO -- 2023-03-18 14:51:14.365 [cluster-ClusterId{value='6415c1d1f6f2932227af90f3', description='null'}-cluster0-shard-00-00.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:2, serverValue:170493}] to cluster0-shard-00-00.4cxev.mongodb.net:27017
-INFO -- 2023-03-18 14:51:14.365 [cluster-rtt-ClusterId{value='6415c1d1f6f2932227af90f3', description='null'}-cluster0-shard-00-01.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:4, serverValue:169339}] to cluster0-shard-00-01.4cxev.mongodb.net:27017
-INFO -- 2023-03-18 14:51:14.366 [cluster-ClusterId{value='6415c1d1f6f2932227af90f3', description='null'}-cluster0-shard-00-01.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Monitor thread successfully connected to server with description ServerDescription{address=cluster0-shard-00-01.4cxev.mongodb.net:27017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=393262267, setName='atlas-fo286n-shard-0', canonicalAddress=cluster0-shard-00-01.4cxev.mongodb.net:27017, hosts=[cluster0-shard-00-00.4cxev.mongodb.net:27017, cluster0-shard-00-02.4cxev.mongodb.net:27017, cluster0-shard-00-01.4cxev.mongodb.net:27017], passives=[], arbiters=[], primary='cluster0-shard-00-02.4cxev.mongodb.net:27017', tagSet=TagSet{[Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='EU_CENTRAL_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=null, setVersion=7, topologyVersion=TopologyVersion{processId=6412e8d55ebe052b52d8b734, counter=3}, lastWriteDate=Sat Mar 18 14:51:14 CET 2023, lastUpdateTimeNanos=112260655220451}
-INFO -- 2023-03-18 14:51:14.366 [cluster-ClusterId{value='6415c1d1f6f2932227af90f3', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Monitor thread successfully connected to server with description ServerDescription{address=cluster0-shard-00-02.4cxev.mongodb.net:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=395449496, setName='atlas-fo286n-shard-0', canonicalAddress=cluster0-shard-00-02.4cxev.mongodb.net:27017, hosts=[cluster0-shard-00-00.4cxev.mongodb.net:27017, cluster0-shard-00-02.4cxev.mongodb.net:27017, cluster0-shard-00-01.4cxev.mongodb.net:27017], passives=[], arbiters=[], primary='cluster0-shard-00-02.4cxev.mongodb.net:27017', tagSet=TagSet{[Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='EU_CENTRAL_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=7fffffff0000000000000280, setVersion=7, topologyVersion=TopologyVersion{processId=6412e7cfda56e2508eb14450, counter=6}, lastWriteDate=Sat Mar 18 14:51:14 CET 2023, lastUpdateTimeNanos=112260655224552}
-INFO -- 2023-03-18 14:51:14.366 [cluster-ClusterId{value='6415c1d1f6f2932227af90f3', description='null'}-cluster0-shard-00-00.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Monitor thread successfully connected to server with description ServerDescription{address=cluster0-shard-00-00.4cxev.mongodb.net:27017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=393262457, setName='atlas-fo286n-shard-0', canonicalAddress=cluster0-shard-00-00.4cxev.mongodb.net:27017, hosts=[cluster0-shard-00-00.4cxev.mongodb.net:27017, cluster0-shard-00-02.4cxev.mongodb.net:27017, cluster0-shard-00-01.4cxev.mongodb.net:27017], passives=[], arbiters=[], primary='cluster0-shard-00-02.4cxev.mongodb.net:27017', tagSet=TagSet{[Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='EU_CENTRAL_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=null, setVersion=7, topologyVersion=TopologyVersion{processId=6412e6d9a36ce41a11a8432d, counter=4}, lastWriteDate=Sat Mar 18 14:51:14 CET 2023, lastUpdateTimeNanos=112260655222361}
-INFO -- 2023-03-18 14:51:14.371 [cluster-ClusterId{value='6415c1d1f6f2932227af90f3', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Setting max election id to 7fffffff0000000000000280 from replica set primary cluster0-shard-00-02.4cxev.mongodb.net:27017
-INFO -- 2023-03-18 14:51:14.371 [cluster-ClusterId{value='6415c1d1f6f2932227af90f3', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Setting max set version to 7 from replica set primary cluster0-shard-00-02.4cxev.mongodb.net:27017
-INFO -- 2023-03-18 14:51:14.371 [cluster-ClusterId{value='6415c1d1f6f2932227af90f3', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Discovered replica set primary cluster0-shard-00-02.4cxev.mongodb.net:27017
-INFO -- 2023-03-18 14:51:14.619 [main] org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor -- Autowired annotation is not supported on static fields: private static pavlo.pro.massagetherapyapi.config.PropertiesConfig pavlo.pro.massagetherapyapi.exception.AppException.propertiesConfig
-INFO -- 2023-03-18 14:51:15.091 [main] pavlo.pro.massagetherapyapi.config.AppEnvironmentAware -- Application active profile -- prod
-INFO -- 2023-03-18 14:51:15.304 [main] org.springframework.security.web.DefaultSecurityFilterChain -- Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@c2f7c63, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4790b897, org.springframework.security.web.context.SecurityContextPersistenceFilter@1f521c69, org.springframework.security.web.header.HeaderWriterFilter@70e1aa20, org.springframework.web.filter.CorsFilter@5cba890e, org.springframework.security.web.authentication.logout.LogoutFilter@2d8c729f, pavlo.pro.massagetherapyapi.security.AuthTokenFilter@173a5fad, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3aeb267, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@13a9cdae, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3a4cb483, org.springframework.security.web.session.SessionManagementFilter@36f05595, org.springframework.security.web.access.ExceptionTranslationFilter@2447940d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1a7a21d0]
-INFO -- 2023-03-18 14:51:15.535 [main] org.apache.coyote.http11.Http11NioProtocol -- Starting ProtocolHandler ["http-nio-8080"]
-INFO -- 2023-03-18 14:51:15.554 [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer -- Tomcat started on port(s): 8080 (http) with context path ''
-INFO -- 2023-03-18 14:51:15.555 [main] com.ulisesbocchio.jasyptspringboot.caching.RefreshScopeRefreshedEventListener -- Refreshing cached encryptable property sources on ServletWebServerInitializedEvent
-INFO -- 2023-03-18 14:51:15.555 [main] com.ulisesbocchio.jasyptspringboot.caching.CachingDelegateEncryptablePropertySource -- Property Source systemProperties refreshed
-INFO -- 2023-03-18 14:51:15.555 [main] com.ulisesbocchio.jasyptspringboot.caching.CachingDelegateEncryptablePropertySource -- Property Source systemEnvironment refreshed
-INFO -- 2023-03-18 14:51:15.555 [main] com.ulisesbocchio.jasyptspringboot.caching.CachingDelegateEncryptablePropertySource -- Property Source random refreshed
-INFO -- 2023-03-18 14:51:15.556 [main] com.ulisesbocchio.jasyptspringboot.caching.CachingDelegateEncryptablePropertySource -- Property Source Config resource 'class path resource [application-prod.properties]' via location 'optional:classpath:/' refreshed
-INFO -- 2023-03-18 14:51:15.556 [main] com.ulisesbocchio.jasyptspringboot.caching.CachingDelegateEncryptablePropertySource -- Property Source Config resource 'class path resource [application.properties]' via location 'optional:classpath:/' refreshed
-INFO -- 2023-03-18 14:51:15.556 [main] com.ulisesbocchio.jasyptspringboot.caching.CachingDelegateEncryptablePropertySource -- Property Source class path resource [custom.properties] refreshed
-INFO -- 2023-03-18 14:51:15.556 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Skipping PropertySource configurationProperties [class org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource
-INFO -- 2023-03-18 14:51:15.556 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Skipping PropertySource servletConfigInitParams [class org.springframework.core.env.PropertySource$StubPropertySource
-INFO -- 2023-03-18 14:51:15.556 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource servletContextInitParams [org.springframework.web.context.support.ServletContextPropertySource] to EncryptableEnumerablePropertySourceWrapper
-INFO -- 2023-03-18 14:51:15.955 [main] pavlo.pro.massagetherapyapi.MassageTherapyApiApplication -- Started MassageTherapyApiApplication in 5.115 seconds (JVM running for 11.076)
-INFO -- 2023-03-18 14:51:22.422 [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -- Initializing Spring DispatcherServlet 'dispatcherServlet'
-INFO -- 2023-03-18 14:51:22.422 [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet -- Initializing Servlet 'dispatcherServlet'
-INFO -- 2023-03-18 14:51:22.424 [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet -- Completed initialization in 2 ms
-INFO -- 2023-03-18 14:51:24.956 [http-nio-8080-exec-1] org.mongodb.driver.connection userName=anonymousUser -- Opened connection [connectionId{localValue:7, serverValue:172884}] to cluster0-shard-00-02.4cxev.mongodb.net:27017
-ERROR-- 2023-03-18 14:51:30.001 [http-nio-8080-exec-1] pavlo.pro.massagetherapyapi.exception.CustomizedResponseEntityExceptionHandler userName=anonymousUser -- returning 500 (internal server error).
-java.lang.NullPointerException: null
-	at pavlo.pro.massagetherapyapi.exception.AppException.format(AppException.java:39) ~[classes/:?]
-	at pavlo.pro.massagetherapyapi.exception.AppException.throwException(AppException.java:25) ~[classes/:?]
-	at pavlo.pro.massagetherapyapi.exception.AppException.throwException(AppException.java:18) ~[classes/:?]
-	at pavlo.pro.massagetherapyapi.service.impl.UserServiceImpl.exception(UserServiceImpl.java:99) ~[classes/:?]
-	at pavlo.pro.massagetherapyapi.service.impl.UserServiceImpl.signup(UserServiceImpl.java:39) ~[classes/:?]
-	at pavlo.pro.massagetherapyapi.controller.UserController.signup(UserController.java:45) ~[classes/:?]
-	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
-	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
-	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
-	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:696) ~[tomcat-embed-core-9.0.69.jar:4.0.FR]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779) ~[tomcat-embed-core-9.0.69.jar:4.0.FR]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:337) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at pavlo.pro.massagetherapyapi.security.AuthTokenFilter.doFilterInternal(AuthTokenFilter.java:52) ~[classes/:?]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:112) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:82) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:221) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:186) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:891) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1784) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+INFO -- 2023-03-19 03:16:51.842 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-00.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Exception in monitor thread while connecting to server cluster0-shard-00-00.4cxev.mongodb.net:27017
+com.mongodb.MongoSocketException: cluster0-shard-00-00.4cxev.mongodb.net
+	at com.mongodb.ServerAddress.getSocketAddresses(ServerAddress.java:217) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.SocketStream.initializeSocket(SocketStream.java:75) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.SocketStream.open(SocketStream.java:65) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:180) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:193) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:157) ~[mongodb-driver-core-4.6.1.jar:?]
 	at java.lang.Thread.run(Thread.java:829) ~[?:?]
-ERROR-- 2023-03-18 14:52:00.602 [http-nio-8080-exec-4] pavlo.pro.massagetherapyapi.exception.CustomizedResponseEntityExceptionHandler userName=anonymousUser -- returning 500 (internal server error).
-java.lang.NullPointerException: null
-	at pavlo.pro.massagetherapyapi.exception.AppException.format(AppException.java:39) ~[classes/:?]
-	at pavlo.pro.massagetherapyapi.exception.AppException.throwException(AppException.java:25) ~[classes/:?]
-	at pavlo.pro.massagetherapyapi.exception.AppException.throwException(AppException.java:18) ~[classes/:?]
-	at pavlo.pro.massagetherapyapi.service.impl.UserServiceImpl.exception(UserServiceImpl.java:99) ~[classes/:?]
-	at pavlo.pro.massagetherapyapi.service.impl.UserServiceImpl.signup(UserServiceImpl.java:39) ~[classes/:?]
-	at pavlo.pro.massagetherapyapi.controller.UserController.signup(UserController.java:45) ~[classes/:?]
-	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
-	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
-	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
-	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:696) ~[tomcat-embed-core-9.0.69.jar:4.0.FR]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779) ~[tomcat-embed-core-9.0.69.jar:4.0.FR]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:337) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at pavlo.pro.massagetherapyapi.security.AuthTokenFilter.doFilterInternal(AuthTokenFilter.java:52) ~[classes/:?]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:112) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:82) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:221) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:186) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:891) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1784) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+Caused by: java.net.UnknownHostException: cluster0-shard-00-00.4cxev.mongodb.net
+	at java.net.InetAddress$CachedAddresses.get(InetAddress.java:797) ~[?:?]
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1519) ~[?:?]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1378) ~[?:?]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1306) ~[?:?]
+	at com.mongodb.ServerAddress.getSocketAddresses(ServerAddress.java:209) ~[mongodb-driver-core-4.6.1.jar:?]
+	... 6 more
+INFO -- 2023-03-19 03:16:59.207 [cluster-rtt-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-00.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:19, serverValue:214434}] to cluster0-shard-00-00.4cxev.mongodb.net:27017
+INFO -- 2023-03-19 03:17:02.785 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-00.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:20, serverValue:214438}] to cluster0-shard-00-00.4cxev.mongodb.net:27017
+INFO -- 2023-03-19 03:17:02.798 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-00.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Monitor thread successfully connected to server with description ServerDescription{address=cluster0-shard-00-00.4cxev.mongodb.net:27017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=229405457, setName='atlas-fo286n-shard-0', canonicalAddress=cluster0-shard-00-00.4cxev.mongodb.net:27017, hosts=[cluster0-shard-00-00.4cxev.mongodb.net:27017, cluster0-shard-00-02.4cxev.mongodb.net:27017, cluster0-shard-00-01.4cxev.mongodb.net:27017], passives=[], arbiters=[], primary='cluster0-shard-00-02.4cxev.mongodb.net:27017', tagSet=TagSet{[Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='EU_CENTRAL_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=null, setVersion=7, topologyVersion=TopologyVersion{processId=6412e6d9a36ce41a11a8432d, counter=4}, lastWriteDate=Sun Mar 19 03:17:02 CET 2023, lastUpdateTimeNanos=113842489051848}
+INFO -- 2023-03-19 03:17:03.339 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-01.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:21, serverValue:213277}] to cluster0-shard-00-01.4cxev.mongodb.net:27017
+INFO -- 2023-03-19 03:17:03.343 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-01.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Monitor thread successfully connected to server with description ServerDescription{address=cluster0-shard-00-01.4cxev.mongodb.net:27017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=457189912, setName='atlas-fo286n-shard-0', canonicalAddress=cluster0-shard-00-01.4cxev.mongodb.net:27017, hosts=[cluster0-shard-00-00.4cxev.mongodb.net:27017, cluster0-shard-00-02.4cxev.mongodb.net:27017, cluster0-shard-00-01.4cxev.mongodb.net:27017], passives=[], arbiters=[], primary='cluster0-shard-00-02.4cxev.mongodb.net:27017', tagSet=TagSet{[Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='EU_CENTRAL_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=null, setVersion=7, topologyVersion=TopologyVersion{processId=6412e8d55ebe052b52d8b734, counter=3}, lastWriteDate=Sun Mar 19 03:17:03 CET 2023, lastUpdateTimeNanos=113843042355103}
+INFO -- 2023-03-19 03:17:03.354 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:22, serverValue:213913}] to cluster0-shard-00-02.4cxev.mongodb.net:27017
+INFO -- 2023-03-19 03:17:03.358 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Monitor thread successfully connected to server with description ServerDescription{address=cluster0-shard-00-02.4cxev.mongodb.net:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=444341248, setName='atlas-fo286n-shard-0', canonicalAddress=cluster0-shard-00-02.4cxev.mongodb.net:27017, hosts=[cluster0-shard-00-00.4cxev.mongodb.net:27017, cluster0-shard-00-02.4cxev.mongodb.net:27017, cluster0-shard-00-01.4cxev.mongodb.net:27017], passives=[], arbiters=[], primary='cluster0-shard-00-02.4cxev.mongodb.net:27017', tagSet=TagSet{[Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='EU_CENTRAL_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=7fffffff0000000000000280, setVersion=7, topologyVersion=TopologyVersion{processId=6412e7cfda56e2508eb14450, counter=6}, lastWriteDate=Sun Mar 19 03:17:03 CET 2023, lastUpdateTimeNanos=113843057352249}
+INFO -- 2023-03-19 03:17:03.384 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Discovered replica set primary cluster0-shard-00-02.4cxev.mongodb.net:27017
+INFO -- 2023-03-19 18:40:43.115 [cluster-rtt-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-00.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:27, serverValue:268959}] to cluster0-shard-00-00.4cxev.mongodb.net:27017
+INFO -- 2023-03-19 18:40:43.293 [cluster-rtt-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-01.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:28, serverValue:267763}] to cluster0-shard-00-01.4cxev.mongodb.net:27017
+INFO -- 2023-03-19 18:40:43.318 [cluster-rtt-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:29, serverValue:264734}] to cluster0-shard-00-02.4cxev.mongodb.net:27017
+INFO -- 2023-03-19 18:40:51.144 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-00.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Exception in monitor thread while connecting to server cluster0-shard-00-00.4cxev.mongodb.net:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:696) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:574) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:410) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:369) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:221) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:157) ~[mongodb-driver-core-4.6.1.jar:?]
 	at java.lang.Thread.run(Thread.java:829) ~[?:?]
-ERROR-- 2023-03-18 14:53:09.775 [http-nio-8080-exec-6] pavlo.pro.massagetherapyapi.exception.CustomizedResponseEntityExceptionHandler userName=anonymousUser -- returning 500 (internal server error).
-java.lang.NullPointerException: null
-	at pavlo.pro.massagetherapyapi.exception.AppException.format(AppException.java:39) ~[classes/:?]
-	at pavlo.pro.massagetherapyapi.exception.AppException.throwException(AppException.java:25) ~[classes/:?]
-	at pavlo.pro.massagetherapyapi.exception.AppException.throwException(AppException.java:18) ~[classes/:?]
-	at pavlo.pro.massagetherapyapi.service.impl.UserServiceImpl.exception(UserServiceImpl.java:99) ~[classes/:?]
-	at pavlo.pro.massagetherapyapi.service.impl.UserServiceImpl.signup(UserServiceImpl.java:39) ~[classes/:?]
-	at pavlo.pro.massagetherapyapi.controller.UserController.signup(UserController.java:45) ~[classes/:?]
-	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
-	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
-	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
-	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:696) ~[tomcat-embed-core-9.0.69.jar:4.0.FR]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779) ~[tomcat-embed-core-9.0.69.jar:4.0.FR]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:337) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at pavlo.pro.massagetherapyapi.security.AuthTokenFilter.doFilterInternal(AuthTokenFilter.java:52) ~[classes/:?]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:112) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:82) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:221) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:186) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:891) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1784) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method) ~[?:?]
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:115) ~[?:?]
+	at java.net.SocketInputStream.read(SocketInputStream.java:168) ~[?:?]
+	at java.net.SocketInputStream.read(SocketInputStream.java:140) ~[?:?]
+	at sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:478) ~[?:?]
+	at sun.security.ssl.SSLSocketInputRecord.readHeader(SSLSocketInputRecord.java:472) ~[?:?]
+	at sun.security.ssl.SSLSocketInputRecord.bytesInCompletePacket(SSLSocketInputRecord.java:70) ~[?:?]
+	at sun.security.ssl.SSLSocketImpl.readApplicationRecord(SSLSocketImpl.java:1454) ~[?:?]
+	at sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:1065) ~[?:?]
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:110) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:135) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:713) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:571) ~[mongodb-driver-core-4.6.1.jar:?]
+	... 5 more
+INFO -- 2023-03-19 18:40:51.207 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-01.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Exception in monitor thread while connecting to server cluster0-shard-00-01.4cxev.mongodb.net:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:696) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:574) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:410) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:369) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:221) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:157) ~[mongodb-driver-core-4.6.1.jar:?]
 	at java.lang.Thread.run(Thread.java:829) ~[?:?]
-ERROR-- 2023-03-18 14:54:07.771 [http-nio-8080-exec-7] pavlo.pro.massagetherapyapi.exception.CustomizedResponseEntityExceptionHandler userName=anonymousUser -- returning 500 (internal server error).
-java.lang.NullPointerException: null
-	at pavlo.pro.massagetherapyapi.exception.AppException.format(AppException.java:39) ~[classes/:?]
-	at pavlo.pro.massagetherapyapi.exception.AppException.throwException(AppException.java:25) ~[classes/:?]
-	at pavlo.pro.massagetherapyapi.exception.AppException.throwException(AppException.java:18) ~[classes/:?]
-	at pavlo.pro.massagetherapyapi.service.impl.UserServiceImpl.exception(UserServiceImpl.java:99) ~[classes/:?]
-	at pavlo.pro.massagetherapyapi.service.impl.UserServiceImpl.signup(UserServiceImpl.java:39) ~[classes/:?]
-	at pavlo.pro.massagetherapyapi.controller.UserController.signup(UserController.java:45) ~[classes/:?]
-	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
-	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
-	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
-	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:696) ~[tomcat-embed-core-9.0.69.jar:4.0.FR]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779) ~[tomcat-embed-core-9.0.69.jar:4.0.FR]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:337) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at pavlo.pro.massagetherapyapi.security.AuthTokenFilter.doFilterInternal(AuthTokenFilter.java:52) ~[classes/:?]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:112) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:82) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:221) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:186) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:891) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1784) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method) ~[?:?]
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:115) ~[?:?]
+	at java.net.SocketInputStream.read(SocketInputStream.java:168) ~[?:?]
+	at java.net.SocketInputStream.read(SocketInputStream.java:140) ~[?:?]
+	at sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:478) ~[?:?]
+	at sun.security.ssl.SSLSocketInputRecord.readHeader(SSLSocketInputRecord.java:472) ~[?:?]
+	at sun.security.ssl.SSLSocketInputRecord.bytesInCompletePacket(SSLSocketInputRecord.java:70) ~[?:?]
+	at sun.security.ssl.SSLSocketImpl.readApplicationRecord(SSLSocketImpl.java:1454) ~[?:?]
+	at sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:1065) ~[?:?]
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:110) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:135) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:713) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:571) ~[mongodb-driver-core-4.6.1.jar:?]
+	... 5 more
+INFO -- 2023-03-19 18:40:51.246 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Exception in monitor thread while connecting to server cluster0-shard-00-02.4cxev.mongodb.net:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:696) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:574) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:410) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:369) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:221) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:157) ~[mongodb-driver-core-4.6.1.jar:?]
 	at java.lang.Thread.run(Thread.java:829) ~[?:?]
-ERROR-- 2023-03-18 14:56:04.780 [http-nio-8080-exec-10] pavlo.pro.massagetherapyapi.exception.CustomizedResponseEntityExceptionHandler userName=anonymousUser -- returning 500 (internal server error).
-java.lang.NullPointerException: null
-	at pavlo.pro.massagetherapyapi.exception.AppException.format(AppException.java:39) ~[classes/:?]
-	at pavlo.pro.massagetherapyapi.exception.AppException.throwException(AppException.java:25) ~[classes/:?]
-	at pavlo.pro.massagetherapyapi.exception.AppException.throwException(AppException.java:18) ~[classes/:?]
-	at pavlo.pro.massagetherapyapi.service.impl.UserServiceImpl.exception(UserServiceImpl.java:99) ~[classes/:?]
-	at pavlo.pro.massagetherapyapi.service.impl.UserServiceImpl.signup(UserServiceImpl.java:39) ~[classes/:?]
-	at pavlo.pro.massagetherapyapi.controller.UserController.signup(UserController.java:45) ~[classes/:?]
-	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
-	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
-	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
-	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:696) ~[tomcat-embed-core-9.0.69.jar:4.0.FR]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.24.jar:5.3.24]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779) ~[tomcat-embed-core-9.0.69.jar:4.0.FR]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:337) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at pavlo.pro.massagetherapyapi.security.AuthTokenFilter.doFilterInternal(AuthTokenFilter.java:52) ~[classes/:?]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:112) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:82) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:221) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:186) ~[spring-security-web-5.7.5.jar:5.7.5]
-	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:891) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1784) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.69.jar:9.0.69]
-	at java.lang.Thread.run(Thread.java:829) ~[?:?]
-INFO -- 2023-03-18 14:56:26.178 [background-preinit] org.hibernate.validator.internal.util.Version -- HV000001: Hibernate Validator 6.2.5.Final
-INFO -- 2023-03-18 14:56:26.252 [main] pavlo.pro.massagetherapyapi.MassageTherapyApiApplication -- Starting MassageTherapyApiApplication using Java 11.0.16.1 on Pavels-MacBook-Pro.local with PID 34178 (/Users/pavelivashchenko/Developer/massage-therapy-api/target/classes started by pavelivashchenko in /Users/pavelivashchenko/Developer/massage-therapy-api)
-INFO -- 2023-03-18 14:56:26.257 [main] pavlo.pro.massagetherapyapi.MassageTherapyApiApplication -- The following 1 profile is active: "prod"
-INFO -- 2023-03-18 14:56:27.325 [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate -- Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-INFO -- 2023-03-18 14:56:27.406 [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate -- Finished Spring Data repository scanning in 74 ms. Found 5 MongoDB repository interfaces.
-INFO -- 2023-03-18 14:56:27.723 [main] com.ulisesbocchio.jasyptspringboot.configuration.EnableEncryptablePropertiesBeanFactoryPostProcessor -- Post-processing PropertySource instances
-INFO -- 2023-03-18 14:56:27.727 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Skipping PropertySource configurationProperties [class org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource
-INFO -- 2023-03-18 14:56:27.728 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Skipping PropertySource servletConfigInitParams [class org.springframework.core.env.PropertySource$StubPropertySource
-INFO -- 2023-03-18 14:56:27.728 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Skipping PropertySource servletContextInitParams [class org.springframework.core.env.PropertySource$StubPropertySource
-INFO -- 2023-03-18 14:56:27.729 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource systemProperties [org.springframework.core.env.PropertiesPropertySource] to EncryptableMapPropertySourceWrapper
-INFO -- 2023-03-18 14:56:27.730 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource systemEnvironment [org.springframework.boot.env.SystemEnvironmentPropertySourceEnvironmentPostProcessor$OriginAwareSystemEnvironmentPropertySource] to EncryptableSystemEnvironmentPropertySourceWrapper
-INFO -- 2023-03-18 14:56:27.730 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource random [org.springframework.boot.env.RandomValuePropertySource] to EncryptablePropertySourceWrapper
-INFO -- 2023-03-18 14:56:27.730 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource Config resource 'class path resource [application-prod.properties]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
-INFO -- 2023-03-18 14:56:27.730 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource Config resource 'class path resource [application.properties]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
-INFO -- 2023-03-18 14:56:27.730 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource class path resource [custom.properties] [org.springframework.core.io.support.ResourcePropertySource] to EncryptableMapPropertySourceWrapper
-INFO -- 2023-03-18 14:56:27.991 [main] com.ulisesbocchio.jasyptspringboot.filter.DefaultLazyPropertyFilter -- Property Filter custom Bean not found with name 'encryptablePropertyFilter'. Initializing Default Property Filter
-INFO -- 2023-03-18 14:56:28.002 [main] com.ulisesbocchio.jasyptspringboot.resolver.DefaultLazyPropertyResolver -- Property Resolver custom Bean not found with name 'encryptablePropertyResolver'. Initializing Default Property Resolver
-INFO -- 2023-03-18 14:56:28.004 [main] com.ulisesbocchio.jasyptspringboot.detector.DefaultLazyPropertyDetector -- Property Detector custom Bean not found with name 'encryptablePropertyDetector'. Initializing Default Property Detector
-INFO -- 2023-03-18 14:56:28.157 [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer -- Tomcat initialized with port(s): 8080 (http)
-INFO -- 2023-03-18 14:56:28.170 [main] org.apache.coyote.http11.Http11NioProtocol -- Initializing ProtocolHandler ["http-nio-8080"]
-INFO -- 2023-03-18 14:56:28.171 [main] org.apache.catalina.core.StandardService -- Starting service [Tomcat]
-INFO -- 2023-03-18 14:56:28.171 [main] org.apache.catalina.core.StandardEngine -- Starting Servlet engine: [Apache Tomcat/9.0.69]
-INFO -- 2023-03-18 14:56:28.306 [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -- Initializing Spring embedded WebApplicationContext
-INFO -- 2023-03-18 14:56:28.306 [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext -- Root WebApplicationContext: initialization completed in 1987 ms
-INFO -- 2023-03-18 14:56:28.373 [main] com.ulisesbocchio.jasyptspringboot.encryptor.DefaultLazyEncryptor -- String Encryptor custom Bean not found with name 'jasyptStringEncryptor'. Initializing Default String Encryptor
-INFO -- 2023-03-18 14:56:28.387 [main] com.ulisesbocchio.jasyptspringboot.configuration.StringEncryptorBuilder -- Encryptor config not found for property jasypt.encryptor.algorithm, using default value: PBEWITHHMACSHA512ANDAES_256
-INFO -- 2023-03-18 14:56:28.388 [main] com.ulisesbocchio.jasyptspringboot.configuration.StringEncryptorBuilder -- Encryptor config not found for property jasypt.encryptor.key-obtention-iterations, using default value: 1000
-INFO -- 2023-03-18 14:56:28.389 [main] com.ulisesbocchio.jasyptspringboot.configuration.StringEncryptorBuilder -- Encryptor config not found for property jasypt.encryptor.pool-size, using default value: 1
-INFO -- 2023-03-18 14:56:28.389 [main] com.ulisesbocchio.jasyptspringboot.configuration.StringEncryptorBuilder -- Encryptor config not found for property jasypt.encryptor.provider-name, using default value: null
-INFO -- 2023-03-18 14:56:28.390 [main] com.ulisesbocchio.jasyptspringboot.configuration.StringEncryptorBuilder -- Encryptor config not found for property jasypt.encryptor.provider-class-name, using default value: null
-INFO -- 2023-03-18 14:56:28.390 [main] com.ulisesbocchio.jasyptspringboot.configuration.StringEncryptorBuilder -- Encryptor config not found for property jasypt.encryptor.salt-generator-classname, using default value: org.jasypt.salt.RandomSaltGenerator
-INFO -- 2023-03-18 14:56:28.392 [main] com.ulisesbocchio.jasyptspringboot.configuration.StringEncryptorBuilder -- Encryptor config not found for property jasypt.encryptor.iv-generator-classname, using default value: org.jasypt.iv.RandomIvGenerator
-INFO -- 2023-03-18 14:56:28.394 [main] com.ulisesbocchio.jasyptspringboot.configuration.StringEncryptorBuilder -- Encryptor config not found for property jasypt.encryptor.string-output-type, using default value: base64
-INFO -- 2023-03-18 14:56:28.659 [main] org.mongodb.driver.client -- MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "4.6.1"}, "os": {"type": "Darwin", "name": "Mac OS X", "architecture": "x86_64", "version": "10.15.7"}, "platform": "Java/Homebrew/11.0.16.1+0"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=majority, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=MongoCredential{mechanism=null, userName='stkachuk', source='admin', password=<hidden>, mechanismProperties=<hidden>}, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.Jep395RecordCodecProvider@50ff7063]}, clusterSettings={hosts=[127.0.0.1:27017], srvHost=cluster0.4cxev.mongodb.net, srvServiceName=mongodb, mode=MULTIPLE, requiredClusterType=REPLICA_SET, requiredReplicaSetName='atlas-fo286n-shard-0', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='30000 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, sendBufferSize=0}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, sendBufferSize=0}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=true, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, contextProvider=null}
-INFO -- 2023-03-18 14:56:28.663 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-srv-cluster0.4cxev.mongodb.net] org.mongodb.driver.cluster -- Adding discovered server cluster0-shard-00-01.4cxev.mongodb.net:27017 to client view of cluster
-INFO -- 2023-03-18 14:56:28.691 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-srv-cluster0.4cxev.mongodb.net] org.mongodb.driver.cluster -- Adding discovered server cluster0-shard-00-02.4cxev.mongodb.net:27017 to client view of cluster
-INFO -- 2023-03-18 14:56:28.692 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-srv-cluster0.4cxev.mongodb.net] org.mongodb.driver.cluster -- Adding discovered server cluster0-shard-00-00.4cxev.mongodb.net:27017 to client view of cluster
-INFO -- 2023-03-18 14:56:29.296 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-01.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:6, serverValue:169609}] to cluster0-shard-00-01.4cxev.mongodb.net:27017
-INFO -- 2023-03-18 14:56:29.296 [cluster-rtt-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-00.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:5, serverValue:170770}] to cluster0-shard-00-00.4cxev.mongodb.net:27017
-INFO -- 2023-03-18 14:56:29.296 [cluster-rtt-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:2, serverValue:172936}] to cluster0-shard-00-02.4cxev.mongodb.net:27017
-INFO -- 2023-03-18 14:56:29.296 [cluster-rtt-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-01.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:4, serverValue:169617}] to cluster0-shard-00-01.4cxev.mongodb.net:27017
-INFO -- 2023-03-18 14:56:29.296 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:1, serverValue:172936}] to cluster0-shard-00-02.4cxev.mongodb.net:27017
-INFO -- 2023-03-18 14:56:29.296 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-00.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:3, serverValue:170768}] to cluster0-shard-00-00.4cxev.mongodb.net:27017
-INFO -- 2023-03-18 14:56:29.297 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Monitor thread successfully connected to server with description ServerDescription{address=cluster0-shard-00-02.4cxev.mongodb.net:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=377696169, setName='atlas-fo286n-shard-0', canonicalAddress=cluster0-shard-00-02.4cxev.mongodb.net:27017, hosts=[cluster0-shard-00-00.4cxev.mongodb.net:27017, cluster0-shard-00-02.4cxev.mongodb.net:27017, cluster0-shard-00-01.4cxev.mongodb.net:27017], passives=[], arbiters=[], primary='cluster0-shard-00-02.4cxev.mongodb.net:27017', tagSet=TagSet{[Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='EU_CENTRAL_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=7fffffff0000000000000280, setVersion=7, topologyVersion=TopologyVersion{processId=6412e7cfda56e2508eb14450, counter=6}, lastWriteDate=Sat Mar 18 14:56:29 CET 2023, lastUpdateTimeNanos=112575587136081}
-INFO -- 2023-03-18 14:56:29.297 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-01.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Monitor thread successfully connected to server with description ServerDescription{address=cluster0-shard-00-01.4cxev.mongodb.net:27017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=371156083, setName='atlas-fo286n-shard-0', canonicalAddress=cluster0-shard-00-01.4cxev.mongodb.net:27017, hosts=[cluster0-shard-00-00.4cxev.mongodb.net:27017, cluster0-shard-00-02.4cxev.mongodb.net:27017, cluster0-shard-00-01.4cxev.mongodb.net:27017], passives=[], arbiters=[], primary='cluster0-shard-00-02.4cxev.mongodb.net:27017', tagSet=TagSet{[Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='EU_CENTRAL_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=null, setVersion=7, topologyVersion=TopologyVersion{processId=6412e8d55ebe052b52d8b734, counter=3}, lastWriteDate=Sat Mar 18 14:56:29 CET 2023, lastUpdateTimeNanos=112575587136120}
-INFO -- 2023-03-18 14:56:29.297 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-00.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Monitor thread successfully connected to server with description ServerDescription{address=cluster0-shard-00-00.4cxev.mongodb.net:27017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=371155685, setName='atlas-fo286n-shard-0', canonicalAddress=cluster0-shard-00-00.4cxev.mongodb.net:27017, hosts=[cluster0-shard-00-00.4cxev.mongodb.net:27017, cluster0-shard-00-02.4cxev.mongodb.net:27017, cluster0-shard-00-01.4cxev.mongodb.net:27017], passives=[], arbiters=[], primary='cluster0-shard-00-02.4cxev.mongodb.net:27017', tagSet=TagSet{[Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='EU_CENTRAL_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=null, setVersion=7, topologyVersion=TopologyVersion{processId=6412e6d9a36ce41a11a8432d, counter=4}, lastWriteDate=Sat Mar 18 14:56:29 CET 2023, lastUpdateTimeNanos=112575587136120}
-INFO -- 2023-03-18 14:56:29.303 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Setting max election id to 7fffffff0000000000000280 from replica set primary cluster0-shard-00-02.4cxev.mongodb.net:27017
-INFO -- 2023-03-18 14:56:29.303 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Setting max set version to 7 from replica set primary cluster0-shard-00-02.4cxev.mongodb.net:27017
-INFO -- 2023-03-18 14:56:29.303 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Discovered replica set primary cluster0-shard-00-02.4cxev.mongodb.net:27017
-INFO -- 2023-03-18 14:56:30.016 [main] pavlo.pro.massagetherapyapi.config.AppEnvironmentAware -- Application active profile -- prod
-INFO -- 2023-03-18 14:56:30.266 [main] org.springframework.security.web.DefaultSecurityFilterChain -- Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@53ddabc6, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@39ac8c0c, org.springframework.security.web.context.SecurityContextPersistenceFilter@1618c98a, org.springframework.security.web.header.HeaderWriterFilter@4e671ef, org.springframework.web.filter.CorsFilter@361f1647, org.springframework.security.web.authentication.logout.LogoutFilter@4f7ef948, pavlo.pro.massagetherapyapi.security.AuthTokenFilter@2a42019a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@787a0fd6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@48b09105, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@51172948, org.springframework.security.web.session.SessionManagementFilter@60ee7a51, org.springframework.security.web.access.ExceptionTranslationFilter@26f204a4, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@36eb8e07]
-INFO -- 2023-03-18 14:56:30.532 [main] org.apache.coyote.http11.Http11NioProtocol -- Starting ProtocolHandler ["http-nio-8080"]
-INFO -- 2023-03-18 14:56:30.555 [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer -- Tomcat started on port(s): 8080 (http) with context path ''
-INFO -- 2023-03-18 14:56:30.556 [main] com.ulisesbocchio.jasyptspringboot.caching.RefreshScopeRefreshedEventListener -- Refreshing cached encryptable property sources on ServletWebServerInitializedEvent
-INFO -- 2023-03-18 14:56:30.556 [main] com.ulisesbocchio.jasyptspringboot.caching.CachingDelegateEncryptablePropertySource -- Property Source systemProperties refreshed
-INFO -- 2023-03-18 14:56:30.556 [main] com.ulisesbocchio.jasyptspringboot.caching.CachingDelegateEncryptablePropertySource -- Property Source systemEnvironment refreshed
-INFO -- 2023-03-18 14:56:30.557 [main] com.ulisesbocchio.jasyptspringboot.caching.CachingDelegateEncryptablePropertySource -- Property Source random refreshed
-INFO -- 2023-03-18 14:56:30.557 [main] com.ulisesbocchio.jasyptspringboot.caching.CachingDelegateEncryptablePropertySource -- Property Source Config resource 'class path resource [application-prod.properties]' via location 'optional:classpath:/' refreshed
-INFO -- 2023-03-18 14:56:30.557 [main] com.ulisesbocchio.jasyptspringboot.caching.CachingDelegateEncryptablePropertySource -- Property Source Config resource 'class path resource [application.properties]' via location 'optional:classpath:/' refreshed
-INFO -- 2023-03-18 14:56:30.557 [main] com.ulisesbocchio.jasyptspringboot.caching.CachingDelegateEncryptablePropertySource -- Property Source class path resource [custom.properties] refreshed
-INFO -- 2023-03-18 14:56:30.557 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Skipping PropertySource configurationProperties [class org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource
-INFO -- 2023-03-18 14:56:30.557 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Skipping PropertySource servletConfigInitParams [class org.springframework.core.env.PropertySource$StubPropertySource
-INFO -- 2023-03-18 14:56:30.557 [main] com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter -- Converting PropertySource servletContextInitParams [org.springframework.web.context.support.ServletContextPropertySource] to EncryptableEnumerablePropertySourceWrapper
-INFO -- 2023-03-18 14:56:30.951 [main] pavlo.pro.massagetherapyapi.MassageTherapyApiApplication -- Started MassageTherapyApiApplication in 5.203 seconds (JVM running for 11.201)
-INFO -- 2023-03-18 14:56:35.067 [http-nio-8080-exec-2] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -- Initializing Spring DispatcherServlet 'dispatcherServlet'
-INFO -- 2023-03-18 14:56:35.068 [http-nio-8080-exec-2] org.springframework.web.servlet.DispatcherServlet -- Initializing Servlet 'dispatcherServlet'
-INFO -- 2023-03-18 14:56:35.071 [http-nio-8080-exec-2] org.springframework.web.servlet.DispatcherServlet -- Completed initialization in 3 ms
-INFO -- 2023-03-18 14:56:35.607 [http-nio-8080-exec-2] org.mongodb.driver.connection userName=anonymousUser -- Opened connection [connectionId{localValue:7, serverValue:172758}] to cluster0-shard-00-02.4cxev.mongodb.net:27017
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method) ~[?:?]
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:115) ~[?:?]
+	at java.net.SocketInputStream.read(SocketInputStream.java:168) ~[?:?]
+	at java.net.SocketInputStream.read(SocketInputStream.java:140) ~[?:?]
+	at sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:478) ~[?:?]
+	at sun.security.ssl.SSLSocketInputRecord.readHeader(SSLSocketInputRecord.java:472) ~[?:?]
+	at sun.security.ssl.SSLSocketInputRecord.bytesInCompletePacket(SSLSocketInputRecord.java:70) ~[?:?]
+	at sun.security.ssl.SSLSocketImpl.readApplicationRecord(SSLSocketImpl.java:1454) ~[?:?]
+	at sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:1065) ~[?:?]
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:110) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:135) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:713) ~[mongodb-driver-core-4.6.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:571) ~[mongodb-driver-core-4.6.1.jar:?]
+	... 5 more
+INFO -- 2023-03-19 18:40:51.396 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-00.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:30, serverValue:268967}] to cluster0-shard-00-00.4cxev.mongodb.net:27017
+INFO -- 2023-03-19 18:40:51.397 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-00.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Monitor thread successfully connected to server with description ServerDescription{address=cluster0-shard-00-00.4cxev.mongodb.net:27017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=180553836, setName='atlas-fo286n-shard-0', canonicalAddress=cluster0-shard-00-00.4cxev.mongodb.net:27017, hosts=[cluster0-shard-00-00.4cxev.mongodb.net:27017, cluster0-shard-00-02.4cxev.mongodb.net:27017, cluster0-shard-00-01.4cxev.mongodb.net:27017], passives=[], arbiters=[], primary='cluster0-shard-00-02.4cxev.mongodb.net:27017', tagSet=TagSet{[Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='EU_CENTRAL_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=null, setVersion=7, topologyVersion=TopologyVersion{processId=6412e6d9a36ce41a11a8432d, counter=4}, lastWriteDate=Sun Mar 19 18:40:51 CET 2023, lastUpdateTimeNanos=113923436735229}
+INFO -- 2023-03-19 18:40:51.545 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-01.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:31, serverValue:267770}] to cluster0-shard-00-01.4cxev.mongodb.net:27017
+INFO -- 2023-03-19 18:40:51.546 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-01.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Monitor thread successfully connected to server with description ServerDescription{address=cluster0-shard-00-01.4cxev.mongodb.net:27017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=300410960, setName='atlas-fo286n-shard-0', canonicalAddress=cluster0-shard-00-01.4cxev.mongodb.net:27017, hosts=[cluster0-shard-00-00.4cxev.mongodb.net:27017, cluster0-shard-00-02.4cxev.mongodb.net:27017, cluster0-shard-00-01.4cxev.mongodb.net:27017], passives=[], arbiters=[], primary='cluster0-shard-00-02.4cxev.mongodb.net:27017', tagSet=TagSet{[Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='EU_CENTRAL_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=null, setVersion=7, topologyVersion=TopologyVersion{processId=6412e8d55ebe052b52d8b734, counter=3}, lastWriteDate=Sun Mar 19 18:40:51 CET 2023, lastUpdateTimeNanos=113923586234566}
+INFO -- 2023-03-19 18:40:51.575 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:32, serverValue:264747}] to cluster0-shard-00-02.4cxev.mongodb.net:27017
+INFO -- 2023-03-19 18:40:51.576 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Monitor thread successfully connected to server with description ServerDescription{address=cluster0-shard-00-02.4cxev.mongodb.net:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=179998045, setName='atlas-fo286n-shard-0', canonicalAddress=cluster0-shard-00-02.4cxev.mongodb.net:27017, hosts=[cluster0-shard-00-00.4cxev.mongodb.net:27017, cluster0-shard-00-02.4cxev.mongodb.net:27017, cluster0-shard-00-01.4cxev.mongodb.net:27017], passives=[], arbiters=[], primary='cluster0-shard-00-02.4cxev.mongodb.net:27017', tagSet=TagSet{[Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='EU_CENTRAL_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=7fffffff0000000000000280, setVersion=7, topologyVersion=TopologyVersion{processId=6412e7cfda56e2508eb14450, counter=6}, lastWriteDate=Sun Mar 19 18:40:51 CET 2023, lastUpdateTimeNanos=113923616356401}
+INFO -- 2023-03-19 18:40:51.576 [cluster-ClusterId{value='6415c30c2cb1346f01342d1a', description='null'}-cluster0-shard-00-02.4cxev.mongodb.net:27017] org.mongodb.driver.cluster -- Discovered replica set primary cluster0-shard-00-02.4cxev.mongodb.net:27017
+INFO -- 2023-03-19 18:40:53.723 [SpringApplicationShutdownHook] org.mongodb.driver.connection -- Opened connection [connectionId{localValue:33, serverValue:264679}] to cluster0-shard-00-02.4cxev.mongodb.net:27017

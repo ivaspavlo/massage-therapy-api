@@ -4,12 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import pavlo.pro.massagetherapyapi.exception.AppException;
+import pavlo.pro.massagetherapyapi.exception.ExceptionType;
 import pavlo.pro.massagetherapyapi.model.Promo;
 import pavlo.pro.massagetherapyapi.repository.PromoRepository;
 import pavlo.pro.massagetherapyapi.service.PromoService;
 
 import java.security.SecureRandom;
 import java.util.Random;
+
+import static pavlo.pro.massagetherapyapi.exception.EntityType.PROMO;
 
 @Slf4j
 @Component
@@ -27,8 +31,22 @@ public class PromoServiceImpl implements PromoService {
 
     public Promo getPromo(String code) {
         Promo found = promoRepository.findByCode(code);
-        log.info("Found instance of Promo with id: {}", found.getId());
-        return promoRepository.findByCode(code);
+        if (found != null) {
+            log.info("Found instance of Promo with id: {}", found.getId());
+            promoRepository.deleteById(found.getId());
+            return found;
+        }
+        throw AppException.buildException(PROMO, ExceptionType.ENTITY_NOT_FOUND, code);
+    }
+
+    public Promo deletePromo(String code) {
+        Promo found = promoRepository.findByCode(code);
+        if (found != null) {
+            log.info("Delete instance of Promo with id: {}", found.getId());
+            promoRepository.deleteById(found.getId());
+            return found;
+        }
+        throw AppException.buildException(PROMO, ExceptionType.ENTITY_NOT_FOUND, code);
     }
 
     private String generatePromoCode() {
