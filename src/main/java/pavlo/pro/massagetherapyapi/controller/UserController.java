@@ -41,13 +41,13 @@ public class UserController {
     AuthenticationManager authenticationManager;
 
     @PostMapping("/auth/signup")
-    public Response signup(@RequestBody @Valid SignupReq signupRequest) {
+    public Response<UserDto> signup(@RequestBody @Valid SignupReq signupRequest) {
         UserDto userDto = convertToDto(userService.signup(signupRequest));
         return Response.ok().setPayload(userDto);
     }
 
     @PostMapping("/auth/signin")
-    public Response signin(@RequestBody @Valid LoginReq loginReq) {
+    public Response<JwtDto> signin(@RequestBody @Valid LoginReq loginReq) {
         UsernamePasswordAuthenticationToken authType = new UsernamePasswordAuthenticationToken(
             loginReq.getEmail(),
             loginReq.getPassword()
@@ -66,7 +66,7 @@ public class UserController {
     }
 
     @PutMapping("/update/{id}")
-    public Response update(
+    public Response<UserDto> update(
         @PathVariable("id") String userId,
         @RequestBody @Valid UpdateUserReq updateUserReq
     ) {

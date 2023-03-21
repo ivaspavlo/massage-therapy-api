@@ -3,6 +3,7 @@ package pavlo.pro.massagetherapyapi.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pavlo.pro.massagetherapyapi.dto.response.Response;
+import pavlo.pro.massagetherapyapi.model.Promo;
 import pavlo.pro.massagetherapyapi.service.PromoService;
 
 @RestController
@@ -13,14 +14,14 @@ public class PromoController {
     private PromoService promoService;
 
     @PostMapping
-    public Response createPromo() {
+    public Response<Promo> createPromo() {
         return Response.ok().setPayload(
             promoService.createPromo()
         );
     }
 
     @GetMapping
-    public Response getPromo(
+    public Response<Promo> getPromo(
         @PathVariable("promoCode") String promoCode
     ) {
         return Response.ok().setPayload(
@@ -29,7 +30,7 @@ public class PromoController {
     }
 
     @DeleteMapping()
-    public Response deletePromo(
+    public Response<Promo> deletePromo(
         @PathVariable("promoCode") String promoCode
     ) {
         return Response.ok().setPayload(
