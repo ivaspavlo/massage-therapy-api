@@ -12,6 +12,7 @@ import pavlo.pro.massagetherapyapi.dto.request.UpdateProductReq;
 import pavlo.pro.massagetherapyapi.dto.response.PaginationRes;
 import pavlo.pro.massagetherapyapi.dto.response.Response;
 import pavlo.pro.massagetherapyapi.model.Product;
+import pavlo.pro.massagetherapyapi.model.User;
 import pavlo.pro.massagetherapyapi.service.ProductService;
 
 import javax.validation.Valid;
@@ -29,13 +30,13 @@ public class ProductController {
     private ModelMapper modelMapper;
 
     @PostMapping("/create")
-    public Response addProduct(@RequestBody @Valid CreateProductReq createProductReq) {
+    public Response<ProductDto> addProduct(@RequestBody @Valid CreateProductReq createProductReq) {
         ProductDto productDto = modelMapper.map(productService.createProduct(createProductReq), ProductDto.class);
         return Response.ok().setPayload(productDto);
     }
 
     @PutMapping("/update/{id}")
-    public Response updateProduct(
+    public Response<ProductDto> updateProduct(
         @PathVariable("id") String productId,
         @RequestBody @Valid UpdateProductReq updateProductReq
     ) {
@@ -47,7 +48,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public Response getProductById(
+    public Response<ProductDto> getProductById(
         @PathVariable("id") String productId
     ) {
         ProductDto productDto = modelMapper.map(
@@ -58,7 +59,7 @@ public class ProductController {
     }
 
     @GetMapping()
-    public Response getProducts(
+    public Response<PaginationRes> getProducts(
         @RequestParam(defaultValue = "0") int page,
         @RequestParam(defaultValue = "3") int size
     ) {

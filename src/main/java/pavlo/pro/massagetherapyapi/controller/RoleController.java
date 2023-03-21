@@ -23,16 +23,17 @@ public class RoleController {
     private ModelMapper modelMapper;
 
     @PostMapping("/create")
-    public Response createRole(
+    public Response<Role> createRole(
         @RequestBody @Valid RoleDto roleDto
     ) {
         Role createdRole = roleService.createRole(roleDto);
-        modelMapper.map(createdRole, RoleDto.class);
-        return Response.ok().setPayload(createdRole);
+        return Response.ok().setPayload(
+            modelMapper.map(createdRole, RoleDto.class)
+        );
     }
 
     @GetMapping("")
-    public Response getAllRoles() {
+    public Response<List<RoleDto>> getAllRoles() {
         List<Role> roles = roleService.getAllRoles();
         List<RoleDto> rolesDto = roles.stream()
             .map((role) -> modelMapper.map(role, RoleDto.class))
@@ -41,11 +42,12 @@ public class RoleController {
     }
 
     @GetMapping("/{name}")
-    public Response findRoleByName(
+    public Response<RoleDto> findRoleByName(
         @PathVariable("name") String roleName
     ) {
-        RoleDto roleDto = modelMapper.map(roleService.findRoleByName(roleName), RoleDto.class);
-        return Response.ok().setPayload(roleDto);
+        return Response.ok().setPayload(
+            modelMapper.map(roleService.findRoleByName(roleName), RoleDto.class)
+        );
     }
 
 }

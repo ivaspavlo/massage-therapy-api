@@ -7,6 +7,7 @@ import pavlo.pro.massagetherapyapi.dto.response.Response;
 import pavlo.pro.massagetherapyapi.service.BookingService;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.TimeZone;
 
 @RestController
@@ -17,7 +18,7 @@ public class BookingController {
     private BookingService bookingService;
 
     @PostMapping("/add/{massageId}")
-    public Response addBookingSlots(
+    public Response<BookingSlotDto> addBookingSlots(
         TimeZone timeZone,
         @PathVariable("massageId") String massageId,
         @RequestBody @Valid BookingSlotDto bookingSlotsDto
@@ -28,7 +29,7 @@ public class BookingController {
     }
 
     @GetMapping("/{id}")
-    public Response getAvailableSlotsPerMassageId(
+    public Response<List<BookingSlotDto>> getAvailableSlotsPerMassageId(
         @PathVariable("id") String massageId,
         @RequestParam(defaultValue = "2") int monthQty
     ) {
@@ -38,7 +39,7 @@ public class BookingController {
     }
 
     @DeleteMapping("/{id}")
-    public Response removeBookingSlot(
+    public Response<BookingSlotDto> removeBookingSlot(
         @PathVariable("id") String bookingSlotId
     ) {
         return Response.ok().setPayload(

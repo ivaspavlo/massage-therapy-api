@@ -12,16 +12,24 @@ import java.util.Date;
 public class Response<T> {
 
     private Status status;
-    private T payload;
     private Object errors;
     private Object metadata;
+    private T payload;
 
     public enum Status {
-        OK, BAD_REQUEST, UNAUTHORIZED, VALIDATION_EXCEPTION, EXCEPTION, WRONG_CREDENTIALS, ACCESS_DENIED, NOT_FOUND, DUPLICATE_ENTITY
+        OK,
+        WRONG_CREDENTIALS,
+        NOT_FOUND,
+        DUPLICATE_ENTITY,
+        BAD_REQUEST,
+        UNAUTHORIZED,
+        VALIDATION_EXCEPTION,
+        EXCEPTION,
+        ACCESS_DENIED
     }
 
-    public static <T> Response<T> ok() {
-        Response<T> response = new Response<>();
+    public static Response ok() {
+        Response response = new Response();
         response.setStatus(Status.OK);
         return response;
     }
