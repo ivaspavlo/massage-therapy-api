@@ -20,12 +20,7 @@ public class Response<T> {
         OK,
         WRONG_CREDENTIALS,
         NOT_FOUND,
-        DUPLICATE_ENTITY,
-        BAD_REQUEST,
-        UNAUTHORIZED,
-        VALIDATION_EXCEPTION,
-        EXCEPTION,
-        ACCESS_DENIED
+        DUPLICATE_ENTITY
     }
 
     public static Response ok() {
