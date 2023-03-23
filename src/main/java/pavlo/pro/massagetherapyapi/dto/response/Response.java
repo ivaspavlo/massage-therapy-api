@@ -23,11 +23,6 @@ public class Response<T> {
         DUPLICATE_ENTITY
     }
 
-    public Response<T> addPayload(T payload) {
-        this.payload = payload;
-        return this;
-    }
-
     public static Response ok() {
         Response response = new Response();
         response.setStatus(Status.OK);
