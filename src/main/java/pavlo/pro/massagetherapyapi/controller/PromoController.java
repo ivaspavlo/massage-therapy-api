@@ -20,7 +20,7 @@ public class PromoController {
         );
     }
 
-    @GetMapping
+    @GetMapping("{promoCode}")
     public Response<Promo> getPromo(
         @PathVariable("promoCode") String promoCode
     ) {
@@ -29,7 +29,7 @@ public class PromoController {
         );
     }
 
-    @DeleteMapping()
+    @DeleteMapping("{promoCode}")
     public Response<Promo> deletePromo(
         @PathVariable("promoCode") String promoCode
     ) {
