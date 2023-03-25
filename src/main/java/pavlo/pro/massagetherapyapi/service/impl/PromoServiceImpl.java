@@ -2,7 +2,6 @@ package pavlo.pro.massagetherapyapi.service.impl;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pavlo.pro.massagetherapyapi.exception.AppException;
 import pavlo.pro.massagetherapyapi.exception.ExceptionType;
@@ -20,7 +19,6 @@ import static pavlo.pro.massagetherapyapi.exception.EntityType.PROMO;
 @AllArgsConstructor
 public class PromoServiceImpl implements PromoService {
 
-    @Autowired
     private PromoRepository promoRepository;
 
     public Promo createPromo() {
