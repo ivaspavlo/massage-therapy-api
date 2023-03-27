@@ -31,7 +31,6 @@ public class PromoServiceImpl implements PromoService {
         Promo found = promoRepository.findByCode(code);
         if (found != null) {
             log.info("Found instance of Promo with id: {}", found.getId());
-            promoRepository.deleteById(found.getId());
             return found;
         }
         throw AppException.buildException(PROMO, ExceptionType.ENTITY_NOT_FOUND, code);
