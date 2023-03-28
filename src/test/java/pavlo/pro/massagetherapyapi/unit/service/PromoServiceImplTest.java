@@ -44,7 +44,6 @@ public class PromoServiceImplTest {
     public void whenGetPromo_shouldReturnPromoInstance() {
         when(mockPromoRepository.findByCode(testPromoCode)).thenReturn(mockPromo);
         Promo found = mockPromoServiceImpl.getPromo(testPromoCode);
-        System.out.println(found);
         assertThat(found).isInstanceOf(Promo.class);
     }
 
@@ -58,6 +57,28 @@ public class PromoServiceImplTest {
                 mockPromoServiceImpl.getPromo(testPromoCode);
             },
             "Should throw when Promo with the provided code doesn't exist."
+        );
+        assertThat(thrown).isInstanceOf(RuntimeException.class);
+    }
+
+    @DisplayName("When deletePromo is triggered should return Promo instance.")
+    @Test
+    public void whenDeletePromo_shouldReturnPromoInstance() {
+        when(mockPromoRepository.findByCode(testPromoCode)).thenReturn(mockPromo);
+        Promo deleted = mockPromoServiceImpl.deletePromo(testPromoCode);
+        assertThat(deleted).isInstanceOf(Promo.class);
+    }
+
+    @DisplayName("When deletePromo is triggered should throw RuntimeException.")
+    @Test
+    public void whenDeletePromo_shouldReturnRuntimeException() {
+        RuntimeException thrown = assertThrows(
+                RuntimeException.class,
+                () -> {
+                    when(mockPromoRepository.findByCode(testPromoCode)).thenReturn(null);
+                    mockPromoServiceImpl.deletePromo(testPromoCode);
+                },
+                "Should throw when Promo with the provided code doesn't exist."
         );
         assertThat(thrown).isInstanceOf(RuntimeException.class);
     }
