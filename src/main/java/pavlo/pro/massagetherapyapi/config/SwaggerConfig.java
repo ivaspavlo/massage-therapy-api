@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Configuration
-public class SwaggerConfiguration {
+public class SwaggerConfig {
     public static final String AUTHORIZATION_HEADER = "Authorization";
 
     private ApiInfo apiInfo() {
